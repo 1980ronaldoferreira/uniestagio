@@ -17,9 +17,6 @@
         <link href="assets/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
         <link href="assets/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
         <link href="assets/css/main.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-        <link rel="stylesheet" href="./css/vendor/normalize.css">
-        <link rel="stylesheet" href="assets/css/gallery.prefixed.css">
-        <link rel="stylesheet" href="assets/css/gallery.theme.css">
     </head>
     <body>
         <nav class="light-blue lighten-1" role="navigation">
@@ -30,14 +27,14 @@
                 </ul>
                 <ul id="dropdown1" class="dropdown-content">
                     <li><a href="#!">Login</a></li>
-                    <li><a href="cadastro_user.jsp">Criar Conta</a></li>
+                    <li><a href="#!">Criar Conta</a></li>
                     <li class="divider"></li>
                     <li><a href="#!">three</a></li>
                 </ul>
                 <ul id="nav-mobile" class="side-nav">
                     <li><a href="#!">Vagas</a></li>
                     <li><a href="#!">Login</a></li>
-                    <li><a href="cadastro_user.jsp">Criar Conta</a></li>
+                    <li><a href="#!">Criar Conta</a></li>
                     <li class="divider"></li>
                     <li><a href="#!">three</a></li>
                 </ul>
@@ -45,76 +42,71 @@
             </div>
         </nav>
         <div class="section no-pad-bot" id="index-banner">
-            <div class="gallery autoplay items-3">
-                    <div id="item-1" class="control-operator"></div>
-                    <div id="item-2" class="control-operator"></div>
-                    <div id="item-3" class="control-operator"></div>
-
-                    <figure class="item">
-                        <img class="img-size" src="http://www.fundospaisagens.com/Imagens/estrada-rural-no-campo.jpg">
-                    </figure>
-                    
-                    <figure class="item">
-                        <img class="img-size"src="http://www.fundospaisagens.com/Imagens/estrada-rural-no-campo.jpg">
-                    </figure>
-
-                    <figure class="item">
-                        <img class="img-size" src="http://www.fundospaisagens.com/Imagens/estrada-rural-no-campo.jpg">
-                    </figure>
-
-                    <div class="controls">
-                        <a href="#item-1" class="control-button">◉</a>
-                        <a href="#item-2" class="control-button">◉</a>
-                        <a href="#item-3" class="control-button">◉</a>
-                    </div>
+            <div class="container">
+                <br><br>
+                <h1 class="header center orange-text">Starter Template</h1>
+                <div class="row center">
+                    <h5 class="header col s12 light">A modern responsive front-end framework based on Material Design</h5>
                 </div>
+                
+                <div class="row center">
+                    <a href="http://materializecss.com/getting-started.html" id="download-button" class="btn-large waves-effect waves-light orange">Get Started</a>
+                </div>
+                <br><br>
+
+            </div>
         </div>
+        
 
         <div class="container">
             <div class="section">
 
-                <!--   Icon Section   -->
+
                 <div class="row">
-                    <div class="col s12 m4">
-                        <div class="icon-block">
-                            <div class="col s12">
-                                <h2 class="center light-blue-text"><a href="#"><img src="img/contact.png" class="rede"></img></a></h2>
-                            </div>
-                            <h5 class="center">Contatos</h5>
-                            <p class="light">We did most of the heavy lifting for you to provide a default stylings that incorporate our custom components. Additionally, we refined animations and transitions to provide a smoother experience for developers.</p>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col s12 m4">
-                            <div class="icon-block">
-                                <div class="col s12">
-                                    <h2 class="center light-blue-text"><a href="lista_vaga.jsp"><img src="img/vagas.png" class="rede"></img></a></h2>
+                    <div class="col s12">
+                        <div class="col s6 ">
+                            <div class="card blue-grey darken-1">
+                                <div class="card-content white-text">
+                                    <span class="card-title">Título da vaga</span>
+                                    <ul>
+                                        <li>area</li>
+                                        <li>Localidade</li>
+                                        <li>Salário</li>
+                                        <li>Tipo de contrato</li>
+                                        <li>Jornada</li>
+                                    </ul>
                                 </div>
-                                <h5 class="center">Vagas</h5>
-                                <p class="light">We did most of the heavy lifting for you to provide a default stylings that incorporate our custom components. Additionally, we refined animations and transitions to provide a smoother experience for developers.</p>
-                            </div>
-                        </div>
-
-
-                        <div class="row">
-                            <div class="col s12 m4">
-                                <div class="icon-block">
-                                    <div class="col s12">
-                                        <h2 class="center light-blue-text"><a href="#"><img src="img/cadastro.png" class="rede"></img></a></h2>
-                                    </div>
-                                    <h5 class="center">Cadastre-se</h5>
-                                    <p class="light">We did most of the heavy lifting for you to provide a default stylings that incorporate our custom components. Additionally, we refined animations and transitions to provide a smoother experience for developers.</p>
+                                <div class="card-action">
+                                    <a>  <i class="material-icons">email</i>  Encaminhar E-Mail para</a>
+                                    <a>  TESTE@teste.com.br</a>
                                 </div>
                             </div>
-
                         </div>
 
+                        <div class="col s6 ">
+                            <div class="card blue-grey darken-1">
+                                <div class="card-content white-text">
+                                    <span class="card-title">Título da vaga</span>
+                                    <ul>
+                                        <li>area</li>
+                                        <li>Localidade</li>
+                                        <li>Salário</li>
+                                        <li>Tipo de contrato</li>
+                                        <li>Jornada</li>
+                                    </ul>
+                                </div>
+                                <div class="card-action">
+                                    <a>  <i class="material-icons">email</i>  Encaminhar E-Mail para</a>
+                                    <a>  TESTE@teste.com.br</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="section">
+                </div>    
 
-                    </div>
-                </div>
+            </div>
+            <div class="section">
+
             </div>
         </div>
         <br><br>

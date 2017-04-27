@@ -16,8 +16,8 @@
                             <h2> <i class="material-icons left medium">work</i>UNIESTÁGIOS</h2>
                             <br>
                             <br>
-                            <h6 class="black-text"> <i class="material-icons">lock_outline</i>Área de Login </h6>
-                            <h6 class="black-text"> Sistema desenvolvido para ajudar a divulgação de vagas de estágios</h6>
+                            <h6 class="black-text"> <i class="fa fa-sign-in" aria-hidden="true"></i>  Área de Login. </h6>
+                            <h6 class="black-text"> Sistema desenvolvido para ajudar a divulgação de vagas de estágios.</h6>
                         </span>
                     </div>
                     <div class="card-content">

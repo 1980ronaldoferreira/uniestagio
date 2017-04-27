@@ -76,6 +76,7 @@ jornada varchar(255) not null,
 contrato varchar(255) not null,
 salario varchar(255) not null,
 localidade varchar(255) not null,
+activities varchar(255) not null,
 
 primary key(id),
 constraint fk_empresas_vagas foreign key (empresa_id) references empresas (id)

@@ -39,6 +39,12 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Vagas.findByLocalidade", query = "SELECT v FROM Vagas v WHERE v.localidade = :localidade")})
 public class Vagas implements Serializable {
 
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 255)
+    @Column(name = "Activities")
+    private String activities;
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -86,7 +92,7 @@ public class Vagas implements Serializable {
         this.id = id;
     }
 
-    public Vagas(Integer id, String area, String titulo, String jornada, String contrato, String salario, String localidade) {
+    public Vagas(Integer id, String area, String titulo, String jornada, String contrato, String salario, String localidade,String activities) {
         this.id = id;
         this.area = area;
         this.titulo = titulo;
@@ -94,6 +100,7 @@ public class Vagas implements Serializable {
         this.contrato = contrato;
         this.salario = salario;
         this.localidade = localidade;
+        this.activities = activities;
     }
 
     public Integer getId() {
@@ -183,6 +190,14 @@ public class Vagas implements Serializable {
     @Override
     public String toString() {
         return "entityBean.Vagas[ id=" + id + " ]";
+    }
+
+    public String getActivities() {
+        return activities;
+    }
+
+    public void setActivities(String activities) {
+        this.activities = activities;
     }
     
 }

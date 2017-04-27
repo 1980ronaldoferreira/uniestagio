@@ -1,10 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@include file="header.jsp" %>
-<div class="section">
-
-</div>
-
-
+<div class="section"></div>
 <div class="container">
     <div class="row">
         <div class="col s12 m8 offset-m2">
@@ -20,7 +16,20 @@
                             <h6 class="black-text"> Sistema desenvolvido para ajudar a divulgação de vagas de estágios.</h6>
                         </span>
                     </div>
+
                     <div class="card-content">
+                        <div class="row"> 
+                            <h6 class="grey-text">Qual tipo de Login ?</h6>
+                            <div class="col s1">
+                                <input class="with-gap" name="group3" type="radio" id="check1" value="type"/>
+                                <label for="check1">Empresa</label>
+                            </div>
+                            <div class="col s1 offset-m1">
+                                <input class="with-gap" name="group3" type="radio" id="check2" value="type"/>
+                                <label for="check2">Estudante</label>
+                            </div>
+                        </div>
+
                         <div class="input-field">
                             <input class="validate" id="username" type="text">
                             <label for="username">Username</label>
@@ -40,6 +49,9 @@
                                 </div>
                             </div>
                         </div>
+
+
+
                     </div>
                     <div class="card-action blue-grey lighten-3">
                         <div class="center-align">
@@ -57,3 +69,9 @@
     </div>
 </div>
 <%@include file="footer.jsp" %>
+<script>
+
+    $(document).ready(function () {
+        $('select').material_select();
+    });
+</script>

@@ -21,6 +21,8 @@
         <link rel="stylesheet" href="./css/vendor/normalize.css">
         <link rel="stylesheet" href="assets/css/gallery.prefixed.css">
         <link rel="stylesheet" href="assets/css/gallery.theme.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+        
     </head>
     <body>
         <nav class="light-blue lighten-1" role="navigation">

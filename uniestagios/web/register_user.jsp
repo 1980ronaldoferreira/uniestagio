@@ -92,6 +92,22 @@
             <div id="tab2" class="col s12">
                 <form action="" method="">
                     <div class="row">
+
+                        <div class="row">
+                            <div class="section">
+
+                            </div>
+
+                            <div class="input-field col s6">
+                                <input placeholder="kronamix" id="username" type="text" class="validate" name="nickname" required>
+                                <label for="username">Nome de usuário</label>
+                            </div>
+                            <div class="input-field col s6">
+                                <input id="password" type="password" class="validate" name="password" required>
+                                <label for="password">Password</label>
+                            </div>
+                        </div>
+
                         <div class="input-field col s3">
                             <input  id="cnpj" type="text" class="validate" name="cnpj" required>
                             <label for="cnpj">CNPJ</label>

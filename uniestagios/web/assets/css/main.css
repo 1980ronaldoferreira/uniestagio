@@ -71,3 +71,70 @@ section{
 .footer-full{
     with:100%;
 }
+
+.img-banner{
+    width: 100%;
+}  
+
+.logo-nav{
+    width: 195px;
+    margin: 5px;
+}
+
+.menu-banner{
+    background-color: #18607f;
+    height: 80px;
+    text-align: center;
+    color:#ff9800;
+    
+}
+
+.menu-banner-center{
+    background-color: #ff9800;
+    height: 80px;
+    text-align: center;
+    color:#18607f;
+}
+
+.menu-banner-text{
+    padding:5px;
+    font-size: 25px;
+}
+
+.menu-banner-text:hover{
+ 
+    border-bottom: solid 3px #18607f;
+}
+
+.menu-banner-text:active{
+ 
+    border-bottom: solid 3px #ff9800;
+}
+
+.menu-banner .link-menu-banner{
+    color:#ff9800;
+}
+
+.menu-banner .link-menu-banner:active{
+    color:#ff9800;
+}
+.menu-banner .link-menu-banner:hover{
+    color:#fff;
+    
+}
+
+.menu-banner-center .link-menu-banner{
+    color:#18607f;
+}
+
+.menu-banner-center .link-menu-banner:active{
+    color:#18607f;
+}
+
+.menu-banner-center .link-menu-banner:hover{
+    color:#fff;
+}
+
+.border-orange{
+    border:solid #ff9800 1px;
+}

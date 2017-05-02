@@ -1,8 +1,9 @@
-<footer class="page-footer orange">
+<footer class="page-footer orange ">
     <div class="container">
         <div class="row">
             <div class="col l6 s12">
                 <h5 class="white-text">Uniestágios</h5>
+                <h6><a class="white-text" href="company.jsp">Quem Somos ?</a></h6>
                 <p class="grey-text text-lighten-4">
                     Estamos nas redes sociais
                 </p>
@@ -15,9 +16,10 @@
                        
                     </li>
                 </ul>
-
+                
 
             </div>
+            
             <div class="col l3 s12">
                 <h6 class="white-text">É Empresa ?</h6>
                 <ul>

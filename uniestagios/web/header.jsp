@@ -28,10 +28,10 @@
     </head>
     <body>
         <nav class="light-blue lighten-1" role="navigation">
-            <div class="nav-wrapper container "><a id="logo-container" href="index.jsp" class="brand-logo">UNIESTÁGIOS</a> 
+            <div class="nav-wrapper container "><a id="logo-container" href="index.jsp" class="brand-logo"><img src="img/logo.png" class="logo-nav"></a> 
                 <ul class="right hide-on-med-and-down">
                     <li><a href="list_jobs.jsp">Vagas</a></li>
-                    <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Logar-se<i class="material-icons right">arrow_drop_down</i></a></li>
+                    <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Logar-se/Cadastrar-se<i class="material-icons right">arrow_drop_down</i></a></li>
                 </ul>
                 <ul id="dropdown1" class="dropdown-content">
                     <li><a href="login.jsp">Login</a></li>
@@ -47,3 +47,4 @@
                 </ul> 
                 <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
         </nav>
+        <img class="img-banner" src="img/banner.png">

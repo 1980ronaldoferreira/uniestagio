@@ -24,61 +24,71 @@
             <div id="tab1" class="col s12">
                 <div class="section">   </div>
                 <div class="row border-orange">
-                        <form action="#" method="">
-                            <div class="section">
-                                <div class="row  orange-text">
-                                    <h4 class="header center">CADASTRO DE ESTUDANTE</h4> 
-                                    <div class="col s9 offset-s2">
-                                        <div class="section"></div>
-                                        <div class="input-field col s6">
-                                            <input id="username" type="text" class="validate" name="nickname" required>
-                                            <label for="username">Nome de Usuário</label>
-                                        </div>
-                                        <div class="input-field col s6  ">
-                                            <input id="password" type="password" class="validate" name="password" required>
-                                            <label for="password">Password</label>
-                                        </div>
-                                        <div class="input-field col s12">
+                    <form action="#" method="">
+                        <div class="section">
+                            <div class="row  orange-text">
+                                <h4 class="header center">CADASTRO DE ESTUDANTE</h4> 
+                                <div class="col s9 offset-s2">
+                                    <div class="section"></div>
 
-                                            <input  id="first_name" type="text" class="validate" name="name" required>
-                                            <label for="first_name">Nome</label>
-                                        </div>
-                                        <div class="input-field col s12">
-                                            <input id="last_name" type="text" class="validate" name="last_name" required>
-                                            <label for="last_name">Sobrenome</label>
-                                        </div>
+                                    <div class="input-field col s12">
+                                        <input  type="hidden" name="type" value="student">
+                                    </div>
 
-                                        <div class="input-field col s12">
-                                            <input placeholder="exemplo@exemplo.com" id="emailEstudant" type="email" name="email" class="validate" data-error="Invalido" data-success="ok!" required>
-                                            <label for="emailEstudant">E-mail</label>
-                                        </div>
+                                    <div class="input-field col s6">
+                                        <input id="username" type="text" class="validate" name="nickname" required>
+                                        <label for="username">Nome de Usuário</label>
+                                    </div>
+                                    <div class="input-field col s6  ">
+                                        <input id="password" type="password" class="validate" name="password" required>
+                                        <label for="password">Password</label>
+                                    </div>
+                                    <div class="input-field col s12">
 
-                                        <div class="input-field col s12">
-                                            <input placeholder="(DD) + Telefone" id="cellPhoneEstudant" type="text"  name="cellPhone" class="validate" required>
-                                            <label for="cellPhoneEstudant">Telefone</label>
-                                        </div>
-                                        <div class="input-field col s12">
-                                            <button class="btn waves-effect waves-light light-blue lighten-1" type="submit" name="action">CADASTRAR
-                                                <i class="fa fa-floppy-o" aria-hidden="true"></i>
-                                            </button>
-                                            <div class="section">   </div>
-                                        </div>
+                                        <input  id="first_name" type="text" class="validate" name="name" required>
+                                        <label for="first_name">Nome</label>
+                                    </div>
+                                    <div class="input-field col s12">
+                                        <input id="last_name" type="text" class="validate" name="last_name" required>
+                                        <label for="last_name">Sobrenome</label>
+                                    </div>
+
+                                    <div class="input-field col s12">
+                                        <input placeholder="exemplo@exemplo.com" id="emailEstudant" type="email" name="email" class="validate" data-error="Invalido" data-success="ok!" required>
+                                        <label for="emailEstudant">E-mail</label>
+                                    </div>
+
+                                    <div class="input-field col s12">
+                                        <input placeholder="(DD) + Telefone" id="cellPhoneEstudant" type="text"  name="cellPhone" class="validate" required>
+                                        <label for="cellPhoneEstudant">Telefone</label>
+                                    </div>
+                                    <div class="input-field col s12">
+                                        <button class="btn waves-effect waves-light light-blue lighten-1" type="submit" name="action">CADASTRAR
+                                            <i class="fa fa-floppy-o" aria-hidden="true"></i>
+                                        </button>
+                                        <div class="section">   </div>
                                     </div>
                                 </div>
+                            </div>
 
-                        </form>
-                    </div>
+                    </form>
                 </div>
             </div>
-
         </div>
-        <div id="tab2" class="col s12">
-            <form action="" method="">
-                <div class="section">
+
+    </div>
+    <div id="tab2" class="col s12">
+        <form action="" method="">
+            <div class="section">
                 <div class="row border-orange">
                     <h4 class="header center orange-text">CADASTRO DE EMPRESA</h4> 
                     <div class="col s9 offset-s2 ">
-                         <div class="section">   </div>
+                        <div class="section">   </div>
+
+                        <div class="input-field col s12">
+                            <input  type="hidden" name="type" value="company">
+                        </div>
+
                         <div class="input-field col s6">
                             <input placeholder="kronamix" id="username" type="text" class="validate" name="nickname" required>
                             <label for="username">Nome de usuário</label>
@@ -131,9 +141,9 @@
                         </div>
                     </div>
                 </div>
-            </form>
-        </div>
+        </form>
     </div>
+</div>
 </div>
 </div>
 <br><br>

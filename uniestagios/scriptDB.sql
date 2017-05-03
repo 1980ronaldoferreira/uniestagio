@@ -20,6 +20,7 @@ CREATE TABLE users (
 id int unsigned not null auto_increment,
 username varchar(255) unique not null,
 senha varchar(255) not null,
+type varchar(8) not null,
 
 primary key(id)
 );
@@ -75,8 +76,10 @@ titulo varchar(255) not null,
 jornada varchar(255) not null,
 contrato varchar(255) not null,
 salario varchar(255) not null,
-localidade varchar(255) not null,
-activities varchar(255) not null,
+estado varchar(255) not null,
+cidade varchar(255) not null,
+obs varchar(255) not null,
+activities varchar(255),
 
 primary key(id),
 constraint fk_empresas_vagas foreign key (empresa_id) references empresas (id)

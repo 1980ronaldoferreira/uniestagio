@@ -21,12 +21,12 @@
                         <div class="row"> 
                             <h6 class="grey-text">Qual tipo de Login ?</h6>
                             <div class="col s1">
-                                <input class="with-gap" name="group3" type="radio" id="check1" value="type"/>
-                                <label for="check1">Empresa</label>
+                                <input class="with-gap" name="type" type="radio" id="company" value="typcompany"/>
+                                <label for="company">Empresa</label>
                             </div>
                             <div class="col s1 offset-m1">
-                                <input class="with-gap" name="group3" type="radio" id="check2" value="type"/>
-                                <label for="check2">Estudante</label>
+                                <input class="with-gap" name="type" type="radio" id="student" value="student"/>
+                                <label for="student">Estudante</label>
                             </div>
                         </div>
 

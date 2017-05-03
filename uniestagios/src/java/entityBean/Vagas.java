@@ -36,14 +36,11 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Vagas.findByJornada", query = "SELECT v FROM Vagas v WHERE v.jornada = :jornada")
     , @NamedQuery(name = "Vagas.findByContrato", query = "SELECT v FROM Vagas v WHERE v.contrato = :contrato")
     , @NamedQuery(name = "Vagas.findBySalario", query = "SELECT v FROM Vagas v WHERE v.salario = :salario")
-    , @NamedQuery(name = "Vagas.findByLocalidade", query = "SELECT v FROM Vagas v WHERE v.localidade = :localidade")})
+    , @NamedQuery(name = "Vagas.findByEstado", query = "SELECT v FROM Vagas v WHERE v.estado = :estado")
+    , @NamedQuery(name = "Vagas.findByCidade", query = "SELECT v FROM Vagas v WHERE v.cidade = :cidade")
+    , @NamedQuery(name = "Vagas.findByObs", query = "SELECT v FROM Vagas v WHERE v.obs = :obs")
+    , @NamedQuery(name = "Vagas.findByActivities", query = "SELECT v FROM Vagas v WHERE v.activities = :activities")})
 public class Vagas implements Serializable {
-
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 255)
-    @Column(name = "Activities")
-    private String activities;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -79,8 +76,21 @@ public class Vagas implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 255)
-    @Column(name = "localidade")
-    private String localidade;
+    @Column(name = "estado")
+    private String estado;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 255)
+    @Column(name = "cidade")
+    private String cidade;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 255)
+    @Column(name = "obs")
+    private String obs;
+    @Size(max = 255)
+    @Column(name = "activities")
+    private String activities;
     @JoinColumn(name = "empresa_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Empresas empresaId;
@@ -92,15 +102,16 @@ public class Vagas implements Serializable {
         this.id = id;
     }
 
-    public Vagas(Integer id, String area, String titulo, String jornada, String contrato, String salario, String localidade,String activities) {
+    public Vagas(Integer id, String area, String titulo, String jornada, String contrato, String salario, String estado, String cidade, String obs) {
         this.id = id;
         this.area = area;
         this.titulo = titulo;
         this.jornada = jornada;
         this.contrato = contrato;
         this.salario = salario;
-        this.localidade = localidade;
-        this.activities = activities;
+        this.estado = estado;
+        this.cidade = cidade;
+        this.obs = obs;
     }
 
     public Integer getId() {
@@ -151,12 +162,36 @@ public class Vagas implements Serializable {
         this.salario = salario;
     }
 
-    public String getLocalidade() {
-        return localidade;
+    public String getEstado() {
+        return estado;
     }
 
-    public void setLocalidade(String localidade) {
-        this.localidade = localidade;
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    public String getCidade() {
+        return cidade;
+    }
+
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
+    }
+
+    public String getObs() {
+        return obs;
+    }
+
+    public void setObs(String obs) {
+        this.obs = obs;
+    }
+
+    public String getActivities() {
+        return activities;
+    }
+
+    public void setActivities(String activities) {
+        this.activities = activities;
     }
 
     public Empresas getEmpresaId() {
@@ -190,14 +225,6 @@ public class Vagas implements Serializable {
     @Override
     public String toString() {
         return "entityBean.Vagas[ id=" + id + " ]";
-    }
-
-    public String getActivities() {
-        return activities;
-    }
-
-    public void setActivities(String activities) {
-        this.activities = activities;
     }
     
 }

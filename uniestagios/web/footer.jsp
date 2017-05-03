@@ -24,6 +24,7 @@
                 <h6 class="white-text">É Empresa ?</h6>
                 <ul>
                     <li><a class="white-text" href="register_user.jsp">Registrar-se</a></li>
+                    <li><a class="white-text" href="register_jobs.jsp">Anunciar Vaga</a></li>
                 </ul>
             </div>
             <div class="col l3 s12">

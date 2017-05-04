@@ -95,12 +95,10 @@
                                 <span class="card-title">Desenvolvedor PHP JR</span>
                                 <ul>
                                     <li><b>Área:</b> Desenvolvimento de Software</li>
-                                    <li><b>Localidade:</b> Centro - SP</li>
                                     <li><b>Salário:</b> R$ 900,00</li>
                                     <li><b>Tipo de contrato:</b> Estagío</li>
                                     <li><b>Jornada:</b> 4 horas Diarias</li>
-                                    <li><b>Estado</b> SP</li>
-                                    <li><b>Cidade:</b> Barueri</li>
+                                    <li><b>Local:</b> SP / Barueri</li>
                                     <li><b>Atividades/ Requisitos:</b> 
                                         Conhecimentos Técnicos:
                                         Experiência em apoiar área de negócios ... 
@@ -114,12 +112,10 @@
                                                 <h4>Desenvolvedor PHP JR</h4>
                                                 <ul>
                                                     <li><b>Área:</b> Desenvolvimento de Software</li>
-                                                    <li><b>Localidade:</b> Centro - SP</li>
                                                     <li><b>Salário:</b> R$ 900,00</li>
                                                     <li><b>Tipo de contrato:</b> Estagío</li>
                                                     <li><b>Jornada:</b> 4 horas Diarias</li>
-                                                    <li><b>Estado</b> SP</li>
-                                                    <li><b>Cidade:</b> Barueri</li>
+                                                    <li><b>Local:</b> SP / Barueri</li>
                                                     <li><b>Atividades/ Requisitos:</b> 
                                                         Conhecimentos Técnicos:
                                                         Experiência em apoiar área de negócios 
@@ -162,12 +158,10 @@
                                                     <span class="card-title">Desenvolvedor PHP JR</span>
                                                     <ul>
                                                         <li><b>Área:</b> Desenvolvimento de Software</li>
-                                                        <li><b>Localidade:</b> Centro - SP</li>
                                                         <li><b>Salário:</b> R$ 900,00</li>
                                                         <li><b>Tipo de contrato:</b> Estagío</li>
                                                         <li><b>Jornada:</b> 4 horas Diarias</li>
-                                                        <li><b>Estado</b> SP</li>
-                                                        <li><b>Cidade:</b> Barueri</li>
+                                                        <li><b>Local:</b> SP / Barueri</li>
                                                         <li><b>Atividades/ Requisitos:</b> 
                                                             Conhecimentos Técnicos:
                                                             Experiência em apoiar área de negócios ... 
@@ -181,12 +175,10 @@
                                                                     <h4>Desenvolvedor PHP JR</h4>
                                                                     <ul>
                                                                         <li><b>Área:</b> Desenvolvimento de Software</li>
-                                                                        <li><b>Localidade:</b> Centro - SP</li>
                                                                         <li><b>Salário:</b> R$ 900,00</li>
                                                                         <li><b>Tipo de contrato:</b> Estagío</li>
                                                                         <li><b>Jornada:</b> 4 horas Diarias</li>
-                                                                        <li><b>Estado</b> SP</li>
-                                                                        <li><b>Cidade:</b> Barueri</li>
+                                                                        <li><b>Local:</b> SP / Barueri</li>
                                                                         <li><b>Atividades/ Requisitos:</b> 
                                                                             Conhecimentos Técnicos:
                                                                             Experiência em apoiar área de negócios 
@@ -226,12 +218,10 @@
                                                                         <span class="card-title">Desenvolvedor PHP JR</span>
                                                                         <ul>
                                                                             <li><b>Área:</b> Desenvolvimento de Software</li>
-                                                                            <li><b>Localidade:</b> Centro - SP</li>
                                                                             <li><b>Salário:</b> R$ 900,00</li>
                                                                             <li><b>Tipo de contrato:</b> Estagío</li>
                                                                             <li><b>Jornada:</b> 4 horas Diarias</li>
-                                                                            <li><b>Estado</b> SP</li>
-                                                                            <li><b>Cidade:</b> Barueri</li>
+                                                                            <li><b>Local:</b> SP / Barueri</li>
                                                                             <li><b>Atividades/ Requisitos:</b> 
                                                                                 Conhecimentos Técnicos:
                                                                                 Experiência em apoiar área de negócios ... 
@@ -245,12 +235,10 @@
                                                                                         <h4>Desenvolvedor PHP JR</h4>
                                                                                         <ul>
                                                                                             <li><b>Área:</b> Desenvolvimento de Software</li>
-                                                                                            <li><b>Localidade:</b> Centro - SP</li>
                                                                                             <li><b>Salário:</b> R$ 900,00</li>
                                                                                             <li><b>Tipo de contrato:</b> Estagío</li>
                                                                                             <li><b>Jornada:</b> 4 horas Diarias</li>
-                                                                                            <li><b>Estado</b> SP</li>
-                                                                                            <li><b>Cidade:</b> Barueri</li>
+                                                                                            <li><b>Local:</b> SP / Barueri</li>
                                                                                             <li><b>Atividades/ Requisitos:</b> 
                                                                                                 Conhecimentos Técnicos:
                                                                                                 Experiência em apoiar área de negócios 
@@ -290,12 +278,10 @@
                                                                                                 <span class="card-title">Desenvolvedor PHP JR</span>
                                                                                                 <ul>
                                                                                                     <li><b>Área:</b> Desenvolvimento de Software</li>
-                                                                                                    <li><b>Localidade:</b> Centro - SP</li>
                                                                                                     <li><b>Salário:</b> R$ 900,00</li>
                                                                                                     <li><b>Tipo de contrato:</b> Estagío</li>
                                                                                                     <li><b>Jornada:</b> 4 horas Diarias</li>
-                                                                                                    <li><b>Estado</b> SP</li>
-                                                                                                    <li><b>Cidade:</b> Barueri</li>
+                                                                                                    <li><b>Local:</b> SP / Barueri</li>
                                                                                                     <li><b>Atividades/ Requisitos:</b> 
                                                                                                         Conhecimentos Técnicos:
                                                                                                         Experiência em apoiar área de negócios ... 
@@ -309,12 +295,10 @@
                                                                                                                 <h4>Desenvolvedor PHP JR</h4>
                                                                                                                 <ul>
                                                                                                                     <li><b>Área:</b> Desenvolvimento de Software</li>
-                                                                                                                    <li><b>Localidade:</b> Centro - SP</li>
                                                                                                                     <li><b>Salário:</b> R$ 900,00</li>
                                                                                                                     <li><b>Tipo de contrato:</b> Estagío</li>
                                                                                                                     <li><b>Jornada:</b> 4 horas Diarias</li>
-                                                                                                                    <li><b>Estado</b> SP</li>
-                                                                                                                    <li><b>Cidade:</b> Barueri</li>
+                                                                                                                    <li><b>Local:</b> SP / Barueri</li>
                                                                                                                     <li><b>Atividades/ Requisitos:</b> 
                                                                                                                         Conhecimentos Técnicos:
                                                                                                                         Experiência em apoiar área de negócios 

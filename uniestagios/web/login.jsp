@@ -61,8 +61,9 @@
                 </div>
             </form>
             <div class="row">
-                <div class="col s4">
-                    <a href="register_user.jsp">Registrar</a>
+                <div class="col s6">
+                    Não possue c?
+                    <a href="register_user.jsp">REGISTRAR-SE</a>
                 </div>
             </div>
         </div>
@@ -70,7 +71,6 @@
 </div>
 <%@include file="footer.jsp" %>
 <script>
-
     $(document).ready(function () {
         $('select').material_select();
     });

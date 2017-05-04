@@ -60,6 +60,8 @@
                         <br>
                         Você Poderá também acessar nosso chat! <a href="">aqui</a>.
                         <br>
+                        Você Poderá saber sobre nós ! <a href="">aqui</a>.
+                        <br>
                     </p>
                 </div>
             </div>
@@ -95,11 +97,199 @@
                 </div>
 
             </div>
-            <div class="section">
-
-            </div>
         </div>
     </div>
 </div>
-<br><br>
+
+<div class="container">
+    <h3 class="center  orange-text header ">Vagas Recentes</h3>
+    <div class="section">
+        <div class="row">
+            <div class="row">
+                <div class="col s4 m4">
+                    <div class="card grey darken-3">
+                        <div class="card-content white-text">
+                            <span class="card-title">Desenvolvedor PHP JR</span>
+                            <ul>
+                                <li><b>Área:</b> Desenvolvimento de Software</li>
+                                <li><b>Jornada:</b> 4 horas Diarias</li>
+                                <li><b>Local:</b> SP / Barueri</li>
+                        </div>
+                        <div class="card-action">
+                            <a class="orange-text" href="#modal1">Leia mais</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="modal1" class="modal">
+                    <div class="modal-content">
+                        <h4>Desenvolvedor PHP JR</h4>
+                        <ul>
+                            <li><b>Área:</b> Desenvolvimento de Software</li>
+                            <li><b>Salário:</b> R$ 900,00</li>
+                            <li><b>Tipo de contrato:</b> Estagío</li>
+                            <li><b>Jornada:</b> 4 horas Diarias</li>
+                            <li><b>Local:</b> SP / Barueri</li>
+                            <li><b>Atividades/ Requisitos:</b> 
+                                Conhecimentos Técnicos:
+                                Experiência em apoiar área de negócios 
+                                <%--adicionar id de cada vaga como referencia de link do modal" --%>
+                                no estudo das oportunidades
+                                Técnicas de Levantamento de Requisitos
+                                Experiência em escrever especificações funcionais
+                                Apoiar à área de negócios homologação das soluções desenvolvidas por TI
+                                Arquitetura de Software
+                                Conhecimentos nos processos de ciclo de desenvolvimento de TI
+                                Experiência em Projetos Digitais, Web, E-Commerce
+
+                                <br>
+                                Experiência:
+                                Experiência em projetos de Tecnologia Digital
+                                Experiência como Analista de Negócios
+
+                            </li>
+                            <li>
+                                <b>Envie seu Curriculo</b>
+
+                                <i class="material-icons">email</i><p class="orange-text">                                       
+                                    kronamil@rh.com.br</p>
+
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="#!" class="modal-action modal-close waves-effect waves-green  blue white-text btn-flat">Fechar</a>
+                    </div>
+                </div>
+
+                <div class="col s4 m4">
+                    <div class="card grey darken-3">
+                        <div class="card-content white-text">
+                            <span class="card-title">Desenvolvedor PHP JR</span>
+                            <ul>
+                                <li><b>Área:</b> Desenvolvimento de Software</li>
+                                <li><b>Jornada:</b> 4 horas Diarias</li>
+                                <li><b>Local:</b> SP / Barueri</li>
+                        </div>
+                        <div class="card-action">
+                            <a class="orange-text" href="#modal2">Leia mais</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="modal2" class="modal">
+                    <div class="modal-content">
+                        <h4>Desenvolvedor PHP JR</h4>
+                        <ul>
+                            <li><b>Área:</b> Desenvolvimento de Software</li>
+                            <li><b>Salário:</b> R$ 900,00</li>
+                            <li><b>Tipo de contrato:</b> Estagío</li>
+                            <li><b>Jornada:</b> 4 horas Diarias</li>
+                            <li><b>Local:</b> SP / Barueri</li>
+                            <li><b>Atividades/ Requisitos:</b> 
+                                Conhecimentos Técnicos:
+                                Experiência em apoiar área de negócios 
+                                <%--adicionar id de cada vaga como referencia de link do modal" --%>
+                                no estudo das oportunidades
+                                Técnicas de Levantamento de Requisitos
+                                Experiência em escrever especificações funcionais
+                                Apoiar à área de negócios homologação das soluções desenvolvidas por TI
+                                Arquitetura de Software
+                                Conhecimentos nos processos de ciclo de desenvolvimento de TI
+                                Experiência em Projetos Digitais, Web, E-Commerce
+
+                                <br>
+                                Experiência:
+                                Experiência em projetos de Tecnologia Digital
+                                Experiência como Analista de Negócios
+
+                            </li>
+                            <li>
+                                <b>Envie seu Curriculo</b>
+
+                                <i class="material-icons">email</i><p class="orange-text">                                       
+                                    kronamil@rh.com.br</p>
+
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="#!" class="modal-action modal-close waves-effect waves-green  blue white-text btn-flat">Fechar</a>
+                    </div>
+                </div>
+                <div class="col s4 m4">
+                    <div class="card grey darken-3">
+                        <div class="card-content white-text">
+                            <span class="card-title">Desenvolvedor PHP JR</span>
+                            <ul>
+                                <li><b>Área:</b> Desenvolvimento de Software</li>
+                                <li><b>Jornada:</b> 4 horas Diarias</li>
+                                <li><b>Local:</b> SP / Barueri</li>
+                        </div>
+                        <div class="card-action">
+                            <a class="orange-text" href="#modal3">Leia mais</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="modal3" class="modal">
+                    <div class="modal-content">
+                        <h4>Desenvolvedor PHP JR</h4>
+                        <ul>
+                            <li><b>Área:</b> Desenvolvimento de Software</li>
+                            <li><b>Salário:</b> R$ 900,00</li>
+                            <li><b>Tipo de contrato:</b> Estagío</li>
+                            <li><b>Jornada:</b> 4 horas Diarias</li>
+                            <li><b>Local:</b> SP / Barueri</li>
+                            <li><b>Atividades/ Requisitos:</b> 
+                                Conhecimentos Técnicos:
+                                Experiência em apoiar área de negócios 
+                                <%--adicionar id de cada vaga como referencia de link do modal" --%>
+                                no estudo das oportunidades
+                                Técnicas de Levantamento de Requisitos
+                                Experiência em escrever especificações funcionais
+                                Apoiar à área de negócios homologação das soluções desenvolvidas por TI
+                                Arquitetura de Software
+                                Conhecimentos nos processos de ciclo de desenvolvimento de TI
+                                Experiência em Projetos Digitais, Web, E-Commerce
+
+                                <br>
+                                Experiência:
+                                Experiência em projetos de Tecnologia Digital
+                                Experiência como Analista de Negócios
+
+                            </li>
+                            <li>
+                                <b>Envie seu Curriculo</b>
+
+                                <i class="material-icons">email</i><p class="orange-text">                                       
+                                    kronamil@rh.com.br</p>
+
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="#!" class="modal-action modal-close waves-effect waves-green  blue white-text btn-flat">Fechar</a>
+                    </div>
+                </div>
+            </div>
+            <%--Adicionar as ultimas 3 vagas cadastrada --%>
+
+        </div>
+    </div>
+</div>
 <%@include file="footer.jsp" %>
+<script>
+    $(document).ready(function () {
+        // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+        $('.modal').modal();
+
+        $('select').material_select();
+
+
+
+    });
+
+
+
+</script>

@@ -14,7 +14,7 @@
 <div class="container">
     <div class="section">
         <div id="tab2" class="col s12">
-            <form action="" method="">
+            <form action="#" method="POST">
                 <div class="row">
                     <div class="section"></div>
 

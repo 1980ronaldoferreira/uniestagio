@@ -37,13 +37,13 @@
                     <li><a href="login.jsp">Login</a></li>
                     <li><a href="register_user.jsp">Criar Conta</a></li>
                     <li class="divider"></li>
-                    <li><a href="#!">three</a></li>
+                    <li><a href="#!">Logout</a></li>
                 </ul>
                 <ul id="nav-mobile" class="side-nav" style="transform: translateX(-50px);">
                     <li><a href="login.jsp">-..:: Login ::..</a></li>
                     <li><a href="register_user.jsp">...:::: Criar Conta :::...</a></li>
                     <li class="divider"></li>
-                    <li><a href="#!">...:::: three :::...</a></li>
+                    <li><a href="#!">...:::: Logout :::...</a></li>
                 </ul> 
                 <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
         </nav>

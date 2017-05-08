@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controllers;
+package br.com.uniestagios.controllers;
 
-import beans.User;
+import br.com.uniestagios.beans.User;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -19,13 +19,13 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import models.UserDAO;
+import br.com.uniestagios.models.UserDAO;
 
 /**
  *
  * @author alefsilva
  */
-public class UsersController extends HttpServlet {
+public class UserStudentController extends HttpServlet {
 
       private static final long serialVersionUID = 1L;
         /**
@@ -137,7 +137,7 @@ public class UsersController extends HttpServlet {
                     // Cria um atributo para informar sobre  a inclusão
                     //request.setAttribute("mensagem", alunoDAO.toString());
                     // Redireciona para a View
-                    request.getRequestDispatcher("views/mensagem.jsp").
+                    request.getRequestDispatcher("login.jsp").
                             forward(request, response);
                     break;
 
@@ -320,7 +320,7 @@ public class UsersController extends HttpServlet {
           try {
               processRequest(request, response);
           } catch (SQLException ex) {
-              Logger.getLogger(UsersController.class.getName()).log(Level.SEVERE, null, ex);
+              Logger.getLogger(UserStudentController.class.getName()).log(Level.SEVERE, null, ex);
           }
     }
 
@@ -338,7 +338,7 @@ public class UsersController extends HttpServlet {
           try {
               processRequest(request, response);
           } catch (SQLException ex) {
-              Logger.getLogger(UsersController.class.getName()).log(Level.SEVERE, null, ex);
+              Logger.getLogger(UserStudentController.class.getName()).log(Level.SEVERE, null, ex);
           }
     }
 

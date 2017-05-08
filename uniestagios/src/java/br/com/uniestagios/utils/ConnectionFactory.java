@@ -2,7 +2,7 @@
  * Arquivo: ConnectionFactory.java
  *
  */
-package utils;
+package br.com.uniestagios.utils;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

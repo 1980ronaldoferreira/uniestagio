@@ -1,9 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <servlet>
-        <servlet-name>UsersController</servlet-name>
-        <servlet-class>controllers.UsersController</servlet-class>
+        <servlet-name>UserCompanyController</servlet-name>
+        <servlet-class>br.com.uniestagios.controllers.UserCompanyController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>JobsController</servlet-name>
+        <servlet-class>br.com.uniestagios.controllers.JobsController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UsersController</servlet-name>
+        <servlet-class>br.com.uniestagios.controllers.UserStudentController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UserCompanyController</servlet-name>
+        <url-pattern>/UserCompanyController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>JobsController</servlet-name>
+        <url-pattern>/JobsController</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>UsersController</servlet-name>
         <url-pattern>/UsersController</url-pattern>

@@ -24,7 +24,7 @@
             <div id="tab1" class="col s12">
                 <div class="section">   </div>
                 <div class="row border-orange">
-                    <form action="UsersController" method="POST" name="cadastrar">
+                    <form action="UserStudentController" method="POST" name="cadastrar">
                         <div class="section">
                             <div class="row  orange-text">
                                 <h4 class="header center">CADASTRO DE ESTUDANTE</h4> 
@@ -40,7 +40,7 @@
                                     </div>
 
                                     <div class="input-field col s6">
-                                        <input id="username" type="text" class="validate" name="username" >
+                                        <input id="username" type="text" class="validate" name="username" focus>
                                         <label for="username">Nome de Usuário</label>
                                     </div>
                                     <div class="input-field col s6  ">
@@ -102,7 +102,7 @@
                             </div>
 
                             <div class="input-field col s6">
-                                <input placeholder="kronamix" id="username" type="text" class="validate" name="nickname" required>
+                                <input placeholder="kronamix" id="username" type="text" class="validate" name="nickname" required focus>
                                 <label for="username">Nome de usuário</label>
                             </div>
                             <div class="input-field col s6">

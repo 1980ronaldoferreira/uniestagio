@@ -24,7 +24,7 @@
             <div id="tab1" class="col s12">
                 <div class="section">   </div>
                 <div class="row border-orange">
-                    <form action="UserStudentController" method="POST" name="cadastrar">
+                    <form action="UserController" method="POST" name="cadastrar">
                         <div class="section">
                             <div class="row  orange-text">
                                 <h4 class="header center">CADASTRO DE ESTUDANTE</h4> 

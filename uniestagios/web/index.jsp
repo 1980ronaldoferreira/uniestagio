@@ -5,13 +5,13 @@
         <div class="row">
             <div class="col s12">
                 <div class="col s4  menu-banner">
-                    <a href="register_user.jsp" class="link-menu-banner"><p class="flow-text menu-banner-text"><span>EMPRESA</span><br>Contrate aqui seu estagiário!</p></a>
+                    <a href="register_user.jsp" class="link-menu-banner flow-text menu-banner-text">EMPRESA<br>Contrate aqui seu estagiário!</a>
                 </div>
                 <div class="col s4  menu-banner-center">
-                    <a href="register_user.jsp" class="link-menu-banner"> <p class="flow-text menu-banner-text"><span>ESTUDANTE</span><br>Cadastrar-se aqui!</p></a>
+                    <a href="register_user.jsp" class="link-menu-banner flow-text menu-banner-text">ESTUDANTE<br>Cadastrar-se aqui!</a>
                 </div>
                 <div class="col s4  menu-banner">
-                    <a href="list_jobs.jsp" class="link-menu-banner"><p class="flow-text menu-banner-text"><span>VAGAS</span><br>Encontre aqui!</p></a>
+                    <a href="list_jobs.jsp" class="link-menu-banner  flow-text menu-banner-text">VAGAS<br>Encontre aqui!</a>
                 </div>
             </div>
         </div>

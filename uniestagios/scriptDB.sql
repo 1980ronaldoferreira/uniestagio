@@ -86,4 +86,4 @@ constraint fk_empresas_vagas foreign key (empresa_id) references empresas (id)
 );
 
 -- Adidionando Administrador
-INSERT INTO users (username,senha) VALUES('admin','admin8520');
+INSERT INTO users (username,senha,type) VALUES('admin','admin8520','admin');

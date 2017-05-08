@@ -97,18 +97,8 @@ section{
 }
 
 .menu-banner-text{
-    padding:5px;
-    font-size: 25px;
-}
-
-.menu-banner-text:hover{
- 
-    border-bottom: solid 3px #18607f;
-}
-
-.menu-banner-text:active{
- 
-    border-bottom: solid 3px #ff9800;
+    padding:10px;
+    font-size: 20px;
 }
 
 .menu-banner .link-menu-banner{

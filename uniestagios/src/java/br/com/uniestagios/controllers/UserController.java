@@ -69,7 +69,7 @@ public class UserController extends HttpServlet {
             switch (flag) {
                 case "cadastrar":
                     username = request.getParameter("username");
-                    senha = request.getParameter("password");
+                    senha = request.getParameter("senha ");
                     type = request.getParameter("type");
 
                     // Cria o objeto e e atribui os dados recebidos
@@ -104,14 +104,14 @@ public class UserController extends HttpServlet {
                         request.setAttribute("mensagem", "Não há registros para serem listados");
 
                         // Redireciona para a View
-                        request.getRequestDispatcher("views/mensagem.jsp").
+                        request.getRequestDispatcher("list_jobs.jsp").
                                 forward(request, response);
                     } else {
                         // Cria um atributo com o aluno para ser utilizado na View
                         request.setAttribute("listaUsers", users);
 
                         // Redireciona para a View
-                        request.getRequestDispatcher("views/lista_usuarios.jsp").
+                        request.getRequestDispatcher("list_jobs.jsp").
                                 forward(request, response);
                     }
 

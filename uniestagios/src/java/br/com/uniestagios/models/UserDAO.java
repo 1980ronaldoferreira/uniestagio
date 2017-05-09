@@ -26,7 +26,7 @@ public class UserDAO {
     private static Connection CONNECTION = null;
     private static String status;
 
-    private static final String SQL_INSERT = "INSERT INTO users (username, password, type) VALUES (?,?,?)";
+    private static final String SQL_INSERT = "INSERT INTO users (username, senha, perfil) VALUES (?,?,?)";
     private static final String SQL_UPDATE = "UPDATE users SET username=?, password=?, type=? WHERE id=?";
     private static final String SQL_DELETE = "DELETE FROM users WHERE id=?";
     private static final String SQL_FIND_ALL_ORDER_NAME = "SELECT * FROM users ORDER BY username"; 
@@ -59,9 +59,9 @@ public class UserDAO {
             // Atribui os valores ao objeto ps
             try (PreparedStatement ps = CONNECTION.prepareStatement(SQL_INSERT)) {
                 // seta os valores
-                ps.setString(0, user.getUsername());
-                ps.setString(1, user.getPassword());
-                ps.setString(2, user.getType());
+                ps.setString(1, user.getUsername());
+                ps.setString(2, user.getSenha());
+                ps.setString(3, user.getType());
 
                 // Executa o sql (execute)
                 ps.execute();
@@ -89,7 +89,7 @@ public class UserDAO {
             try (PreparedStatement ps = CONNECTION.prepareStatement(SQL_UPDATE)) {
                 // seta os valores
                 ps.setString(1, user.getUsername());
-                ps.setString(2, user.getPassword());
+                ps.setString(2, user.getSenha());
                 ps.setString(3, user.getType());
 
                 // Executa o sql (executeUpdate)
@@ -146,7 +146,7 @@ public class UserDAO {
                     User user = new User();
                     user.setId(rs.getString("id"));
                     user.setUsername(rs.getString("username"));
-                    user.setPassword(rs.getString("password"));
+                    user.setSenha(rs.getString("senha"));
                     user.setType(rs.getString("type"));
 
                     users.add(user);
@@ -173,7 +173,7 @@ public class UserDAO {
                 user = new User();
                 user.setId(rs.getString("id"));
                 user.setUsername(rs.getString("username"));
-                user.setPassword(rs.getString("Password"));
+                user.setSenha(rs.getString("senha"));
                 user.setType(rs.getString("type"));
 
                 users.add(user);

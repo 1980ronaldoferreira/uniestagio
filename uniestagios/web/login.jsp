@@ -62,7 +62,7 @@
             </form>
             <div class="row">
                 <div class="col s6">
-                    Não possue c?
+                    Não possue cadastro ? ->
                     <a href="register_user.jsp">REGISTRAR-SE</a>
                 </div>
             </div>

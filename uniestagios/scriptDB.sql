@@ -20,7 +20,7 @@ CREATE TABLE users (
 id int unsigned not null auto_increment,
 username varchar(255) unique not null,
 senha varchar(255) not null,
-type varchar(8) not null,
+perfil varchar(8) not null,
 
 primary key(id)
 );

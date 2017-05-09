@@ -32,7 +32,7 @@
                                     <div class="section"></div>
 
                                     <div class="input-field col s12">
-                                        <input  type="hidden" name="type" value="student">
+                                        <input  type="hidden" name="perfil" value="student">
                                     </div>
 
                                     <div class="input-field col s12">

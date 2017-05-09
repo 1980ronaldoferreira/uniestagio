@@ -14,7 +14,7 @@ public class User {
     
     private String id;
     private String username;
-    private String password;
+    private String senha;
     private String type;
     
    
@@ -47,17 +47,17 @@ public class User {
     }
 
     /**
-     * @return the password
+     * @return the senha
      */
-    public String getPassword() {
-        return password;
+    public String getSenha() {
+        return senha;
     }
 
     /**
-     * @param password the password to set
+     * @param senha the senha to set
      */
-    public void setPassword(String password) {
-        this.password = password;
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
 
     /**

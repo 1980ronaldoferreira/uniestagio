@@ -75,7 +75,7 @@ public class UserController extends HttpServlet {
                     // Cria o objeto e e atribui os dados recebidos
                     user = new User();
                     user.setUsername(username);
-                    user.setPassword(senha);
+                    user.setSenha(senha);
                     user.setType(type);
 
                     /**
@@ -184,7 +184,7 @@ public class UserController extends HttpServlet {
                     // Cria o objeto e e atribui os dados recebidos
                     user = new User();
                     user.setUsername(username);
-                    user.setPassword(senha);
+                    user.setSenha(senha);
                     user.setType(type);
 
                     // Cria um objeto para receber os campos, exceto o RA que é o identificador

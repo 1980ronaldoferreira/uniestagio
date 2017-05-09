@@ -22,7 +22,7 @@
     </head>
     <body>
         <nav class="light-blue lighten-1" role="navigation">
-            <div class="nav-wrapper container "><a id="logo-container" href="index.jsp" class="brand-logo"><img src="../img/logo.png" class="logo-nav"></a> 
+            <div class="nav-wrapper container "><a id="logo-container" href="../index.jsp" class="brand-logo"><img src="../img/logo.png" class="logo-nav"></a> 
                 <ul class="right hide-on-med-and-down">
                     <li><a href="list_jobs.jsp">Vagas</a></li>
                     <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Logar-se/Cadastrar-se<i class="material-icons right">arrow_drop_down</i></a></li>
@@ -42,3 +42,23 @@
                 <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
         </nav>
         <img class="img-banner" src="../img/banner.png">
+        <div class="section">
+            <div class="row">
+                <h4 class="header center orange-text"> PAINEL DE ADMINISTRAÇÃO</h4>
+                <hr>
+                <div class="col s2 center ">
+                    <div class="col s12">
+                        <div class="card grey lighten-4">
+                            <div class="card-content white-text">
+                                <span class="card-title black-text"><a href="index.jsp"><b>MENU</b></a></span>
+                                <div class="card-action">
+                                </div>
+                                <ul>
+                                    <li>
+                                        <a  class="orange-text" href="users.jsp">USUÁRIOS</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>

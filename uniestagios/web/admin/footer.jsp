@@ -1,3 +1,5 @@
+</div>
+</div>
 <footer class="page-footer orange ">
     <div class="container">
         <div class="row">
@@ -9,17 +11,17 @@
                 </p>
                 <ul>
                     <li class="collection-item avatar">
-                         <img src="../img/youtube.png" alt="" height="20px" width="20px">
+                        <img src="../img/youtube.png" alt="" height="20px" width="20px">
                         <img src="../img/twitter.png" alt="" height="20px" width="20px">
                         <img src="../img/facebook.png" alt="" height="20px" width="20px">
                         <img src="../img/snap.png" alt="" height="20px" width="20px">
-                       
+
                     </li>
                 </ul>
-                
+
 
             </div>
-            
+
             <div class="col l3 s12">
                 <h6 class="white-text">É Empresa ?</h6>
                 <ul>
@@ -40,7 +42,7 @@
     </div>
     <div class="footer-copyright">
         <div class="container">
-           Ⓡ Todos Direitos Reservados <a class="orange-text text-lighten-3" href="http://materializecss.com">TADS UNINOVE</a>
+            Ⓡ Todos Direitos Reservados <a class="orange-text text-lighten-3" href="http://materializecss.com">TADS UNINOVE</a>
         </div>
     </div>
 </footer>

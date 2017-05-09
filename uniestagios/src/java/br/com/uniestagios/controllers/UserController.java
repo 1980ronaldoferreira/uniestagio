@@ -69,8 +69,8 @@ public class UserController extends HttpServlet {
             switch (flag) {
                 case "cadastrar":
                     username = request.getParameter("username");
-                    senha = request.getParameter("senha ");
-                    type = request.getParameter("type");
+                    senha = request.getParameter("senha");
+                    type = request.getParameter("perfil");
 
                     // Cria o objeto e e atribui os dados recebidos
                     user = new User();
@@ -84,7 +84,8 @@ public class UserController extends HttpServlet {
                      */
                     userDAO = new UserDAO();
                     UserDAO.create(user);
-
+                    
+                    request.setAttribute("username", username);
                     // Cria um atributo para informar sobre  a inclusão
                     //request.setAttribute("mensagem", alunoDAO.toString());
                     // Redireciona para a View
@@ -255,7 +256,7 @@ public class UserController extends HttpServlet {
         }
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -291,15 +292,5 @@ public class UserController extends HttpServlet {
             Logger.getLogger(UserController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
 
 }

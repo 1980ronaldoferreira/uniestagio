@@ -30,9 +30,7 @@ public class UserDAO {
     private static final String SQL_UPDATE = "UPDATE users SET username=?, password=?, type=? WHERE id=?";
     private static final String SQL_DELETE = "DELETE FROM users WHERE id=?";
     private static final String SQL_FIND_ALL_ORDER_NAME = "SELECT * FROM users ORDER BY username"; 
-    private static final String SQL_FIND_ALL = "SELECT * FROM users"; 
     private static final String SQL_FIND_BY_USERNAME = "SELECT * FROM users WHERE username like ?";
-    private static final String SQL_FIND_BY_ID = "SELECT * FROM produto WHERE id = ?";
     protected static final String SQL_FIND_BY_FORNECEDOR = "SELECT * FROM produto WHERE fornecedor_id = ?";
     
 

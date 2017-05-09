@@ -28,7 +28,7 @@
                         <div class="section">
                             <div class="row  orange-text">
                                 <h4 class="header center">CADASTRO DE ESTUDANTE</h4> 
-                                <div class="col s9 offset-s2">
+                                <div class="col s8 offset-s2">
                                     <div class="section"></div>
 
                                     <div class="input-field col s12">

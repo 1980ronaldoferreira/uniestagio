@@ -21,7 +21,7 @@
                         <div class="row"> 
                             <h6 class="grey-text">Qual tipo de Login ?</h6>
                             <div class="col s1">
-                                <input class="with-gap" name="type" type="radio" id="company" value="typcompany"/>
+                                <input class="with-gap" name="type" type="radio" id="company" value="company"/>
                                 <label for="company">Empresa</label>
                             </div>
                             <div class="col s1 offset-m1">
@@ -31,7 +31,7 @@
                         </div>
 
                         <div class="input-field">
-                            <input class="validate" id="username" type="text">
+                            <input class="validate" id="username" type="text" value="${username}">
                             <label for="username">Username</label>
                         </div>
 

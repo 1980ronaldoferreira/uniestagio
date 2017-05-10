@@ -11,9 +11,15 @@
 
         <!-- CSS  -->
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        
+        <link href="assets/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+        <link href="assets/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+        <link href="assets/css/main.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+        
         <link href="../assets/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
         <link href="../assets/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
         <link href="../assets/css/main.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+        
         <link rel="stylesheet" href="./css/vendor/normalize.css">
         <link rel="stylesheet" href="assets/css/gallery.prefixed.css">
         <link rel="stylesheet" href="assets/css/gallery.theme.css">
@@ -22,8 +28,9 @@
     </head>
     <body>
         <nav class="light-blue lighten-1" role="navigation">
-            <div class="nav-wrapper container "><a id="logo-container" href="../index.jsp" class="brand-logo"><img src="../img/logo.png" class="logo-nav"></a> 
+            <div class="nav-wrapper container "><a id="logo-container" href="../index.jsp" class="brand-logo"><img src="http://localhost:8080/uniestagios/img/logo.png" class="logo-nav"></a> 
                 <ul class="right hide-on-med-and-down">
+                    <li><a href="http://localhost:8080/uniestagios/">SITE</a></li>
                     <li><a href="list_jobs.jsp">Vagas</a></li>
                     <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Logar-se/Cadastrar-se<i class="material-icons right">arrow_drop_down</i></a></li>
                 </ul>
@@ -41,7 +48,6 @@
                 </ul> 
                 <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
         </nav>
-        <img class="img-banner" src="../img/banner.png">
         <div class="section">
             <div class="row">
                 <h4 class="header center orange-text"> PAINEL DE ADMINISTRAÇÃO</h4>
@@ -50,12 +56,12 @@
                     <div class="col s12">
                         <div class="card grey lighten-4">
                             <div class="card-content white-text">
-                                <span class="card-title black-text"><a href="index.jsp"><b>MENU</b></a></span>
+                                <span class="card-title black-text"><a href="http://localhost:8080/uniestagios/admin/index.jsp"><b>MENU</b></a></span>
                                 <div class="card-action">
                                 </div>
                                 <ul>
                                     <li>
-                                        <a  class="orange-text" href="users.jsp">USUÁRIOS</a>
+                                        <a  class="orange-text" href="http://localhost:8080/uniestagios/UserController?flag=list">USUÁRIOS</a>
                                     </li>
                                 </ul>
                             </div>

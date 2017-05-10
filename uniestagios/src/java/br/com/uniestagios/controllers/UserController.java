@@ -7,6 +7,7 @@ package br.com.uniestagios.controllers;
 
 import br.com.uniestagios.beans.User;
 import br.com.uniestagios.models.UserDAO;
+import br.com.uniestagios.models.UserDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -68,22 +69,26 @@ public class UserController extends HttpServlet {
 
             switch (flag) {
                 case "cadastrar":
+                    
                     username = request.getParameter("username");
-                    senha = request.getParameter("senha");
+                    senha = request.getParameter("pass");
                     type = request.getParameter("perfil");
-
+                     
+                     System.out.println(username);
+                     System.out.println(senha);
+                     System.out.println(type);
                     // Cria o objeto e e atribui os dados recebidos
                     user = new User();
                     user.setUsername(username);
                     user.setSenha(senha);
                     user.setType(type);
-
+                    
+                    userDAO = new UserDAO();
+                    userDAO.create(user);
                     /**
                      * Repassa os valores dos atributos para o objeto DAO que
                      * irá manipular os dados e gravar no banco
                      */
-                    userDAO = new UserDAO();
-                    UserDAO.create(user);
                     
                     request.setAttribute("username", username);
                     // Cria um atributo para informar sobre  a inclusão
@@ -92,27 +97,27 @@ public class UserController extends HttpServlet {
                     request.getRequestDispatcher("login.jsp").
                             forward(request, response);
                     break;
-                case "listar":
+                case "list":
                     // Busca no model os dados
                     userDAO = new UserDAO();
 
                     // Coloca todos os alunos em uma lista
-                    users = userDAO.listar();
+                    listUsers = userDAO.findAll();
 
                     // se não for encontrado nenhum registro, retorna a mensagem
-                    if (users.isEmpty()) {
+                    if (listUsers.isEmpty()) {
                         // Cria um atributo com o aluno para ser utilizado na View
                         request.setAttribute("mensagem", "Não há registros para serem listados");
 
                         // Redireciona para a View
-                        request.getRequestDispatcher("list_jobs.jsp").
+                        request.getRequestDispatcher("admin/index.jsp").
                                 forward(request, response);
                     } else {
                         // Cria um atributo com o aluno para ser utilizado na View
-                        request.setAttribute("listaUsers", users);
+                        request.setAttribute("listaUsers", listUsers);
 
                         // Redireciona para a View
-                        request.getRequestDispatcher("list_jobs.jsp").
+                        request.getRequestDispatcher("admin/users.jsp").
                                 forward(request, response);
                     }
 

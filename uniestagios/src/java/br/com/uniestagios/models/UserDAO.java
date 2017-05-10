@@ -8,13 +8,10 @@ package br.com.uniestagios.models;
 import br.com.uniestagios.beans.User;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import br.com.uniestagios.utils.ConnectionFactory;
+import java.sql.ResultSet;
+import java.util.ArrayList;
 
 /**
  *
@@ -22,175 +19,249 @@ import br.com.uniestagios.utils.ConnectionFactory;
  */
 public class UserDAO {
 
-    // Declaração das variáveis globais
     private static Connection CONNECTION = null;
-    private static String status;
+    private static String MSG = null;
 
     private static final String SQL_INSERT = "INSERT INTO users (username, senha, perfil) VALUES (?,?,?)";
-    private static final String SQL_UPDATE = "UPDATE users SET username=?, password=?, type=? WHERE id=?";
+    private static final String SQL_UPDATE = "UPDATE users SET username=?, senha=?, perfil=? WHERE id=?";
     private static final String SQL_DELETE = "DELETE FROM users WHERE id=?";
-    private static final String SQL_FIND_ALL_ORDER_NAME = "SELECT * FROM users ORDER BY username"; 
-    private static final String SQL_FIND_BY_USERNAME = "SELECT * FROM users WHERE username like ?";
-    protected static final String SQL_FIND_BY_FORNECEDOR = "SELECT * FROM produto WHERE fornecedor_id = ?";
-    
+    private static final String SQL_FIND_ID = "SELECT * FROM users WHERE id = ?";
+    private static final String SQL_FIND_ALL_ORDER_NAME = "SELECT * FROM users ORDER BY username";
+    private static final String SQL_FIND_SEARCH = "SELECT * FROM users WHERE username LIKE ? or perfil LIKE ?";
 
-    /**
-     * Método construtor da classe
-     *
-     * @throws SQLException
-     */
     public UserDAO() throws SQLException {
-        // Retorna a conexao no momento da chamada da classe
+
         UserDAO.CONNECTION = ConnectionFactory.getInstance().getConnection();
+
     }
 
-    /**
-     * Realiza a inclusão de um novo registro no banco de dados
-     *
-     * @param user
-     */
-    @SuppressWarnings("empty-statement")
-
-    public static void create(User user) {
-
+    public void create(User u) {
         try {
-            // Atribui os valores ao objeto ps
+
             try (PreparedStatement ps = CONNECTION.prepareStatement(SQL_INSERT)) {
-                // seta os valores
-                ps.setString(1, user.getUsername());
-                ps.setString(2, user.getSenha());
-                ps.setString(3, user.getType());
-
-                // Executa o sql (execute)
-                ps.execute();
-
-                // Fecha o ps
-                ps.close();
-            }
-
-            // Fecha a conexão
-            CONNECTION.close();
-
-            // Retorna o status da inserção
-            status = "Inserido com Sucesso!";
-
-        } catch (SQLException ex) {
-            // Lança um erro novo personalizado 
-            status = "Erro ao inserir o usuario";
-        }
-    }
-
-    public void update(User user) {
-        try {
-            
-                // Atribui os valores ao objeto ps
-            try (PreparedStatement ps = CONNECTION.prepareStatement(SQL_UPDATE)) {
-                // seta os valores
-                ps.setString(1, user.getUsername());
-                ps.setString(2, user.getSenha());
-                ps.setString(3, user.getType());
-
-                // Executa o sql (executeUpdate)
+                ps.setString(1, u.getUsername());
+                ps.setString(2, u.getSenha());
+                ps.setString(3, u.getType());
                 ps.executeUpdate();
-
-                // Fecha o ps
-                ps.close();
             }
 
-            // Fecha a conexão
             CONNECTION.close();
 
-            // Retorna o status da inserção
-            status = "Atualizado com Sucesso!";
+            MSG = "Usuario Cadastrado com sucesso!";
 
         } catch (SQLException ex) {
             // Lança um erro novo personalizado 
-            status = "Erro ao atualizar os dados do usuario";
+            MSG = "Erro ao inserir o usuario";
         }
+
     }
 
-    public void delete(User user) {
-        try {
-            
-            // Atribui os valores ao objeto ps
-            try (PreparedStatement ps = CONNECTION.prepareStatement(SQL_DELETE)) {
-                // seta os valores
-                ps.setString(1, user.getId());
+    public ArrayList<User> findAll() throws SQLException {
 
-                // Executa o sql (executeUpdate)
-                ps.executeUpdate();
+        PreparedStatement ps = CONNECTION.prepareStatement(SQL_FIND_ALL_ORDER_NAME);
+        ResultSet rs = ps.executeQuery();
 
-                // Fecha o ps
-                ps.close();
-            }
+        ArrayList<User> users = new ArrayList();
 
-            // Fecha a conexão
-            CONNECTION.close();
+        while (rs.next()) {
+            User u = new User();
+            u.setId(rs.getInt("id"));
+            u.setUsername(rs.getString("username"));
+            u.setSenha(rs.getString("senha"));
+            u.setType(rs.getString("perfil"));
 
-            // Retorna o status da inserção
-            status = "Excluído com Sucesso!";
-
-        } catch (SQLException ex) {
-            // Lança um erro novo personalizado 
-            status = "Erro ao excluir o aluno";
+            users.add(u);
         }
+
+        return users;
+
     }
 
-    public List<User> listar() {
-        List<User> users = new ArrayList<>();
-        try {
-            try (PreparedStatement ps = CONNECTION.prepareStatement(SQL_FIND_ALL_ORDER_NAME); ResultSet rs = ps.executeQuery()) {
-                while (rs.next()) {
-                    User user = new User();
-                    user.setId(rs.getString("id"));
-                    user.setUsername(rs.getString("username"));
-                    user.setSenha(rs.getString("senha"));
-                    user.setType(rs.getString("type"));
-
-                    users.add(user);
-                }
-            }
-            return users;
-
-        } catch (SQLException ex) {
-            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
-            throw new RuntimeException("Falha ao listar os alunos.", ex);
-        }
-    }
-
-    public List<User> pesquisar(User user) {
-        List<User> users = new ArrayList<>();
+    public void update(User u) {
         
         try {
-            PreparedStatement ps = CONNECTION.prepareStatement(SQL_FIND_BY_USERNAME);
-            ps.setString(1, '%' + user.getUsername() + '%');
-
-            ResultSet rs = ps.executeQuery();
-
-            while (rs.next()) {
-                user = new User();
-                user.setId(rs.getString("id"));
-                user.setUsername(rs.getString("username"));
-                user.setSenha(rs.getString("senha"));
-                user.setType(rs.getString("type"));
-
-                users.add(user);
+            try (PreparedStatement ps = CONNECTION.prepareStatement(SQL_UPDATE)) {
+                ps.setString(1, u.getUsername());
+                ps.setString(2, u.getSenha());
+                ps.setString(3, u.getType());
+                ps.setInt(4, u.getId());
+                ps.executeUpdate();
             }
-            return users;
+
+            CONNECTION.close();
+
+            MSG = "Usuario Atualizar com sucesso!";
 
         } catch (SQLException ex) {
-            throw new RuntimeException("Falha ao listar os alunos.", ex);
+            // Lança um erro novo personalizado 
+            MSG = "Erro ao Atualizar o usuario";
         }
+
     }
-  
-    /**
-     * Método que retorna o status da operação realizada
-     *
-     * @return String
-     */
-    @Override
-    public String toString() {
-        return status;
+
+    public void destroy(User u) throws SQLException {
+
+        PreparedStatement ps = CONNECTION.prepareStatement(SQL_DELETE);
+        ps.setInt(1, u.getId());
+        ps.executeUpdate();
+
+    }
+
+    public User findId(User u) throws SQLException {
+        PreparedStatement ps = CONNECTION.prepareStatement(SQL_FIND_ID);
+        ps.setInt(1, u.getId());
+
+        ResultSet rs = ps.executeQuery();
+
+        User user = null;
+
+        if (rs.next()) {
+            user = new User();
+            user.setId(rs.getInt("id"));
+            user.setUsername(rs.getString("username"));
+            user.setSenha(rs.getString("senha"));
+            user.setType(rs.getString("perfil"));
+
+        }
+
+        return user;
+    }
+
+    public ArrayList<User> search(User u) throws SQLException {
+
+        ArrayList<User> users = new ArrayList();
+
+        PreparedStatement ps = CONNECTION.prepareStatement(SQL_FIND_SEARCH);
+        ps.setString(1, '%' + u.getUsername() + '%');
+        ps.setString(2, '%' + u.getType() + '%');
+        ResultSet rs = ps.executeQuery();
+
+        while (rs.next()) {
+            User user = new User();
+            user.setId(rs.getInt("id"));
+            user.setUsername(rs.getString("username"));
+            user.setSenha(rs.getString("senha"));
+            user.setType(rs.getString("perfil"));
+
+            users.add(user);
+        }
+
+        return users;
+
+    }
+
+    public static void main(String[] args) {
+        /*
+        User u1 = new User();
+        u1.setUsername("TESTE 4");
+        u1.setSenha("123444");
+        u1.setType("student");
+       
+        try {
+            
+            UserDAO uDAO = new UserDAO();
+            uDAO.create(u1);
+
+            System.out.println("Usuario cadastrados com sucesso.");
+            
+        } catch (SQLException ex) {
+            
+            ex.getStackTrace();
+        }
+        ___________________________________________________
+         
+
+        User u1 = new User();
+        u1.setId(3);
+
+        User u2 = new User();
+        u2.setId(10);
+
+        UserDAO uDAO;
+        try {
+
+            uDAO = new UserDAO();
+            uDAO.destroy(u1);
+            uDAO.destroy(u2);
+            System.out.println("Usuario deletado com sucesso!");
+
+        } catch (SQLException ex) {
+            ex.getStackTrace();
+        }
+    ___________________________________________________
+        
+        
+        User u = new User();
+        u.setUsername("ATUALIZADO 1");
+        u.setSenha("NOVA SENHA");
+        u.setType("company");
+        u.setId(4);
+        
+        try{
+            
+        UserDAO uDAO = new UserDAO();
+        uDAO.update(u);
+        System.out.println("Usuario atualizado com sucesso!");
+        } catch (SQLException ex) {
+            ex.getStackTrace();
+        }
+        
+         
+___________________________________________________
+        
+        User u = new User();
+        u.setId(4);
+        
+        try{
+            
+        UserDAO uDAO = new UserDAO();
+        User uresult = uDAO.findId(u);
+        
+        System.out.println("sucesso! => " + uresult);
+        
+        } catch (SQLException ex) {
+            System.out.println("Erro !");
+            ex.getStackTrace();
+        }
+
+         ___________________________________________________
+        
+
+        try{
+        
+            UserDAO uDAO = new UserDAO();    
+        ArrayList<User> list = uDAO.findAll();
+        
+        for(User u : list){
+            System.out.println("sucesso! => " + u );
+        }
+        
+        
+        } catch (SQLException ex) {
+            System.out.println("Erro !");
+            ex.getStackTrace();
+        }
+
+         ___________________________________________________
+
+        try {
+            User u = new User();
+            u.setUsername("t");
+
+            UserDAO uDAO = new UserDAO();
+            ArrayList<User> list = uDAO.search(u);
+
+            list.forEach((ul) -> {
+                System.out.println("sucesso! => " + ul);
+            });
+
+        } catch (SQLException ex) {
+            System.out.println("Erro !");
+            ex.getStackTrace();
+        }
+
+         */
+
     }
 
 }

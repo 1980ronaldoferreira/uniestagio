@@ -12,7 +12,7 @@ package br.com.uniestagios.beans;
 public class User {
     
     
-    private String id;
+    private int id;
     private String username;
     private String senha;
     private String type;
@@ -21,14 +21,14 @@ public class User {
     /**
      * @return the id
      */
-    public String getId() {
+    public int getId() {
         return id;
     }
 
     /**
      * @param id the id to set
      */
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -73,6 +73,21 @@ public class User {
     public void setType(String type) {
         this.type = type;
     }
+
+    @Override
+    public String toString() {
+        String user = "USERNAME =>" 
+                + username 
+                + " SENHA =>" 
+                + senha
+                + " PERFIL =>"
+                + type;
+        
+        
+        return user; 
+    }
+    
+    
     
     
     

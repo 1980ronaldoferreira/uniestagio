@@ -32,7 +32,7 @@
                                     <div class="section"></div>
 
                                     <div class="input-field col s12">
-                                        <input  type="hidden" name="perfil" value="student">
+                                        <input  type="hidden" name="perfil" value="Estudante">
                                     </div>
 
                                     <div class="input-field col s12">
@@ -40,25 +40,25 @@
                                     </div>
 
                                     <div class="input-field col s6">
-                                        <input id="username" type="text" class="validate" name="username" focus>
-                                        <label for="username">Nome de Usuário</label>
+                                        <input id="name" type="text" name="username" focus>
+                                        <label for="name">Nome de Usuário</label>
                                     </div>
                                     <div class="input-field col s6  ">
-                                        <input id="password" type="password" class="validate" name="password" >
+                                        <input id="password" type="password"  name="pass" >
                                         <label for="password">Password</label>
                                     </div>
                                     <div class="input-field col s12">
 
-                                        <input  id="first_name" type="text" class="validate" name="name" >
+                                        <input  id="first_name" type="text"  name="name" >
                                         <label for="first_name">Nome</label>
                                     </div>
                                     <div class="input-field col s12">
-                                        <input id="last_name" type="text" class="validate" name="last_name" >
+                                        <input id="last_name" type="text" name="last_name" >
                                         <label for="last_name">Sobrenome</label>
                                     </div>
 
                                     <div class="input-field col s12">
-                                        <input id="cpf" type="text" name="cpf" class="validate" data-error="Invalido" data-success="ok!" >
+                                        <input id="cpf" type="text" name="cpf" data-error="Invalido" data-success="ok!" >
                                         <label for="cpf">E-mail</label>
                                     </div>
 

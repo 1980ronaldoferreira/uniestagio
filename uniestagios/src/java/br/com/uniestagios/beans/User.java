@@ -76,7 +76,9 @@ public class User {
 
     @Override
     public String toString() {
-        String user = "USERNAME =>" 
+        String user = "ID =>" 
+                + id
+                + " USERNAME =>" 
                 + username 
                 + " SENHA =>" 
                 + senha

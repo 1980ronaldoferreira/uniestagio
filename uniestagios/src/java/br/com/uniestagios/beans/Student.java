@@ -9,10 +9,9 @@ package br.com.uniestagios.beans;
  *
  * @author alefsilva
  */
-public class Student {
+public class Student extends User {
+         private int id,user_id;
          private String 
-            id,
-            user_id,
             nome,
             sobrenome,
             cpf ,
@@ -29,28 +28,28 @@ public class Student {
     /**
      * @return the id
      */
-    public String getId() {
+    public int getIdStudent() {
         return id;
     }
 
     /**
      * @param id the id to set
      */
-    public void setId(String id) {
+    public void setIdStudent(int id) {
         this.id = id;
     }
 
     /**
      * @return the user_id
      */
-    public String getUser_id() {
+    public int getUser_id() {
         return user_id;
     }
 
     /**
      * @param user_id the user_id to set
      */
-    public void setUser_id(String user_id) {
+    public void setUser_id(int user_id) {
         this.user_id = user_id;
     }
 

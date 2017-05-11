@@ -1,6 +1,8 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@include file="header.jsp" %>
-<div class="section"></div>
+<div class="section">
+        <h4 class="header center orange white-text">${ msg }</h4>
+</div>
 <div class="container">
     <div class="row">
         <div class="col s12 m8 offset-m2">

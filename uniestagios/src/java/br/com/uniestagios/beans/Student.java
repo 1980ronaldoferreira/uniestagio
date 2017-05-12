@@ -10,20 +10,17 @@ package br.com.uniestagios.beans;
  * @author alefsilva
  */
 public class Student extends User {
-         private int id,user_id;
-         private String 
-            nome,
-            sobrenome,
-            cpf ,
-            email,
-            telefone;
-         
-         
-    
-    public void Student(){
-        
+
+    private int id, user_id;
+    private String nome;
+    private String sobrenome;
+    private String cpf;
+    private String email;
+    private String telefone;
+
+    public void Student() {
+
     }
-    
 
     /**
      * @return the id
@@ -122,7 +119,5 @@ public class Student extends User {
     public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
-    
-    
-   
+
 }

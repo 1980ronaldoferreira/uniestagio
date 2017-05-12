@@ -1,7 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@include file="header.jsp" %>
 <div class="section">
-        <h4 class="header center orange white-text">${ msg }</h4>
+    <h4 class="header center orange white-text">${ msg }</h4>
 </div>
 <div class="container">
     <div class="row">
@@ -34,7 +34,7 @@
 
                         <div class="input-field">
                             <input class="validate" id="username" type="text" value="${username}">
-                            <label for="username">Username</label>
+                            <label for="username">Nome de Usuario ou CPF</label>
                         </div>
 
                         <div class="row">
@@ -51,23 +51,24 @@
                                 </div>
                             </div>
                         </div>
-
+                        <div>
+                            <button type="submit" class="btn blue-grey darken-1">Acessar <i class="fa fa-sign-in" aria-hidden="true"></i></button>
+                            <button onclick="history.go(-1);" class="btn grey ">Voltar <i class="fa fa-undo" aria-hidden="true"></i></button>
+                        </div>
 
 
                     </div>
-                    <div class="card-action blue-grey lighten-3">
-                        <div class="center-align">
-                            <button type="submit" class="btn blue-grey darken-1"><i class="material-icons left">vpn_key</i>Login</button>
+                    <div class="card-action blue-grey darken-1">
+                        <div class="row">
+                            <div class="col s6">
+                                <span class="white-text"> Não possue cadastro, Clique</span>
+                                <a href="register_user.jsp">AQUI</a>.
+                            </div>
                         </div>
                     </div>
                 </div>
             </form>
-            <div class="row">
-                <div class="col s6">
-                    Não possue cadastro ? ->
-                    <a href="register_user.jsp">REGISTRAR-SE</a>
-                </div>
-            </div>
+
         </div>
     </div>
 </div>

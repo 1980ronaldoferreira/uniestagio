@@ -5,8 +5,10 @@
  */
 package br.com.uniestagios.controllers;
 
+import br.com.uniestagios.beans.Company;
 import br.com.uniestagios.beans.Student;
 import br.com.uniestagios.beans.User;
+import br.com.uniestagios.models.CompanyDAO;
 import br.com.uniestagios.models.StudentDAO;
 import br.com.uniestagios.models.UserDAO;
 import java.io.IOException;
@@ -20,7 +22,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.xml.bind.ParseConversionEvent;
 
 /**
  *
@@ -58,31 +59,45 @@ public class UserController extends HttpServlet {
             String senha;
             String type;
 
-            // Tabela Estudantes
+            //Variavel para manipulação de id de usuarios
             int user_id;
+
+            // Tabela Estudantes
             String name;
-            String last_name;
+            String lastName;
             String cpf;
-            String email;
             String cellPhone;
+            String email;
+
+            
+            // Tabela Esmpresas
+
+            String cnpj;
+            String socialReason;
+            String nameCompany;
+            String emailCompany;
+            String phoneCompany;
+            String responsible;
+            String companyBranch;
 
             // Variáveis para tratamento das mensagens de erro
             String tituloErro = "";
             String erro = "";
-            
+
             User user = new User();
             UserDAO userDAO = new UserDAO();
             ArrayList<User> listUsers = new ArrayList();
             List<User> users;
+            List<User> listUsersStudents;
+            List<User> listUsersCompanys;
             List<User> pesquisa;
             List<User> userUpdateDAO;
-            
-            
+
             Student s = new Student();
             StudentDAO stDAO = new StudentDAO();
             
-            
-            
+            Company c = new Company();
+            CompanyDAO cDAO = new CompanyDAO();
 
             switch (flag) {
                 case "cadastrar":
@@ -103,83 +118,112 @@ public class UserController extends HttpServlet {
                     UserDAO uDAO = new UserDAO();
                     user_id = userDAO.findLastid().getId();
 
-                    System.out.println(user_id);
 
                     if ("Estudante".equals(type)) {
-                        
+
                         name = request.getParameter("name");
-                        last_name = request.getParameter("last_name");
+                        lastName = request.getParameter("last_name");
                         cpf = request.getParameter("cpf");
                         email = request.getParameter("email");
                         cellPhone = request.getParameter("cellPhone");
-                        
+
                         System.out.println(cpf);
-                        
+
                         s = new Student();
                         s.setUser_id(user_id);
                         s.setNome(name);
-                        s.setSobrenome(last_name);
+                        s.setSobrenome(lastName);
                         s.setCpf(cpf);
                         s.setEmail(email);
                         s.setTelefone(cellPhone);
-                        
+
                         stDAO = new StudentDAO();
                         stDAO.create(s);
-                        
-                        /**
-                     * Repassa os valores dos atributos para o objeto DAO que
-                     * irá manipular os dados e gravar no banco
-                     */
-                    request.setAttribute("username", username);
-                    request.setAttribute("msg", stDAO.getMSG());
-                    // Cria um atributo para informar sobre  a inclusão
-                    //request.setAttribute("mensagem", alunoDAO.toString());
-                    // Redireciona para a View
-                    request.getRequestDispatcher("login.jsp").
-                            forward(request, response);
 
-                    } 
-                    
-                    
-                    
-                    
-                    
                         /**
-                     * Repassa os valores dos atributos para o objeto DAO que
-                     * irá manipular os dados e gravar no banco
-                     */
-                    request.setAttribute("username", username);
-                    request.setAttribute("msg", userDAO.getMSG());
-                    // Cria um atributo para informar sobre  a inclusão
-                    //request.setAttribute("mensagem", alunoDAO.toString());
-                    // Redireciona para a View
-                    request.getRequestDispatcher("login.jsp").
-                            forward(request, response);
-                    
+                         * Repassa os valores dos atributos para o objeto DAO
+                         * que irá manipular os dados e gravar no banco
+                         */
+                        request.setAttribute("username", username);
+                        request.setAttribute("msg", stDAO.getMSG());
+                        // Cria um atributo para informar sobre  a inclusão
+                        //request.setAttribute("mensagem", alunoDAO.toString());
+                        // Redireciona para a View
+                        request.getRequestDispatcher("login.jsp").
+                                forward(request, response);
+
+                    } else {
+                        
+                        cnpj = request.getParameter("cnpj");
+                        socialReason = request.getParameter("socialReason");
+                        nameCompany = request.getParameter("nameCompany");
+                        emailCompany = request.getParameter("email");
+                        phoneCompany = request.getParameter("phoneCompany");
+                        responsible = request.getParameter("responsible");
+                        companyBranch = request.getParameter("companyBranch");
+                        
+                        c = new Company();
+                        c.setUser_id(user_id);
+                        c.setCnpj(cnpj);
+                        c.setRazao_social(socialReason);
+                        c.setNome_fantasia(nameCompany);
+                        c.setEmail(emailCompany);
+                        c.setTelefone(phoneCompany);
+                        c.setResponsavel(responsible);
+                        c.setRamo_atividades(companyBranch);
+                        
+                        cDAO = new CompanyDAO();
+                        cDAO.create(c);
+                                              
+
+                        /**
+                         * Repassa os valores dos atributos para o objeto DAO
+                         * que irá manipular os dados e gravar no banco
+                         */
+                        request.setAttribute("username", username);
+                        request.setAttribute("msg",  cDAO.getMSG());
+                        // Cria um atributo para informar sobre  a inclusão
+                        //request.setAttribute("mensagem", alunoDAO.toString());
+                        // Redireciona para a View
+                        request.getRequestDispatcher("login.jsp").
+                                forward(request, response);
+                    }
+
                     break;
                 case "list":
                     // Busca no model os dados
                     userDAO = new UserDAO();
 
                     // Coloca todos os alunos em uma lista
-                    listUsers = userDAO.findAll();
+                    listUsersStudents = userDAO.findAllStudent();
+                    listUsersCompanys = userDAO.findAllCompany();
+                    
+                    System.out.println(listUsersCompanys);
 
                     // se não for encontrado nenhum registro, retorna a mensagem
-                    if (listUsers.isEmpty()) {
-                        // Cria um atributo com o aluno para ser utilizado na View
-                        request.setAttribute("mensagem", "Não há registros para serem listados");
-
+//                    if (listUsersStudents.isEmpty() || listUsersCompanys.isEmpty()) {
+//                        
+//                        if(listUsersStudents.isEmpty()){
+//                            request.setAttribute("msg", "Não há Estudantes Cadastrados para serem listados");
+//                        }
+//                        
+//                        if(listUsersCompanys.isEmpty()){
+//                            request.setAttribute("msg", "Não há Empresas Cadastradas para serem listados");
+//                        }
+//                        
+                                              
                         // Redireciona para a View
-                        request.getRequestDispatcher("admin/index.jsp").
-                                forward(request, response);
-                    } else {
+//                        request.getRequestDispatcher("admin/users.jsp").
+//                                forward(request, response);
+//                    } else {
                         // Cria um atributo com o aluno para ser utilizado na View
-                        request.setAttribute("listaUsers", listUsers);
+                        request.setAttribute("listaUsers", listUsersStudents);
+                        request.setAttribute("listaCompany", listUsersCompanys);
 
                         // Redireciona para a View
                         request.getRequestDispatcher("admin/users.jsp").
                                 forward(request, response);
-                    }
+//                    }
 
                     break;
 
@@ -269,18 +313,47 @@ public class UserController extends HttpServlet {
                     break;
 
                 case "destroy":
-                    /**
-                     * Cria o objeto aluno e atribui o RA para pesquisa
-                     */
+                    String perfil;
+                    
+                    perfil = request.getParameter("perfil");
+                    
+                    if("estudante".equals(perfil)){
+                    s = new Student();
+                    s.setUser_id(Integer.parseInt(request.getParameter("id")));
+                    
                     user = new User();
-                    user.setId(Integer.parseInt(request.getParameter("id")));
+                    user.setId(s.getUser_id());
 
-                    // Busca no model os dados
+                    stDAO = new StudentDAO();
+                    stDAO.destroy(s);
+
                     userDAO = new UserDAO();
-
-                    // Coloca todos os alunos em uma lista
                     userDAO.destroy(user);
-                    request.setAttribute("msg", userDAO.getMSG());
+                    
+                    request.setAttribute("msg", stDAO.getMSG());
+                    
+                    }
+                    
+                    if("empresa".equals(perfil)){
+                    c = new Company();
+                    c.setUser_id(Integer.parseInt(request.getParameter("id")));
+                    
+                    user = new User();
+                    user.setId(c.getUser_id());
+
+                    cDAO = new CompanyDAO();
+                    cDAO.destroy(c);
+
+                    userDAO = new UserDAO();
+                    userDAO.destroy(user);
+                   
+                    request.setAttribute("msg", cDAO.getMSG());
+                    
+                    }
+                    
+                    
+                   
+                    
                     // Cria um atributo com o aluno para ser utilizado na View
                     //request.setAttribute("mensagem", userDAO.toString());
 

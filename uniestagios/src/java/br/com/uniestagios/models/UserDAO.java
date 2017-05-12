@@ -5,6 +5,7 @@
  */
 package br.com.uniestagios.models;
 
+import br.com.uniestagios.beans.Company;
 import br.com.uniestagios.beans.Student;
 import br.com.uniestagios.beans.User;
 import java.sql.Connection;
@@ -29,7 +30,8 @@ public class UserDAO {
     private static final String SQL_FIND_ID = "SELECT * FROM users WHERE id = ?";
     private static final String SQL_FIND_ALL_ORDER_NAME = "SELECT * FROM users ORDER BY username";
     private static final String SQL_FIND_SEARCH = "SELECT * FROM users WHERE username LIKE ? or perfil LIKE ?";
-    private static final String SQL_FIND_ALL_STUDENT = "SELECT nome,sobrenome,cpf,email,telefone FROM users INNER JOIN estudantes ON users.id = estudantes.user_id";
+    private static final String SQL_FIND_ALL_STUDENT = "SELECT * FROM users INNER JOIN estudantes ON users.id = estudantes.user_id";
+    private static final String SQL_FIND_ALL_COMPANY = "SELECT * FROM users INNER JOIN empresas ON users.id = empresas.user_id";
     private static final String SQL_FIND_LAST_ID = "SELECT id FROM users ORDER BY id DESC LIMIT 1";
 
     public UserDAO() throws SQLException {
@@ -50,11 +52,12 @@ public class UserDAO {
 
             CONNECTION.close();
 
-            setMSG("CADASTRADO COM SUCESSO ! :D ");
+            setMSG("CADASTRADO COM SUCESSO ! <i class=\"fa fa-smile-o\" aria-hidden=\"true\"></i>");
 
         } catch (SQLException ex) {
             // Lança um erro novo personalizado 
-            setMSG("ERRO AO TENTAR CADASTRAR");
+            setMSG("ERRO AO TENTAR CADASTRAR <i class=\"fa fa-frown-o\" aria-hidden=\"true\"></i>");
+            System.out.println(ex.getMessage());
         }
 
     }
@@ -72,11 +75,11 @@ public class UserDAO {
 
             CONNECTION.close();
 
-            setMSG("ATUALIZADO COM SUCESSO COM SUCESSO ! :D ");
+            setMSG("USUÁRIO ATUALIZADO COM SUCESSO COM SUCESSO !<i class=\"fa fa-smile-o\" aria-hidden=\"true\"></i>");
 
         } catch (SQLException ex) {
             // Lança um erro novo personalizado 
-            setMSG("ERRO AO TENTAR ATUALIZAR");
+            setMSG("OPS..  ERRO AO TENTAR ATUALIZAR USUÁRIO <i class=\"fa fa-frown-o\" aria-hidden=\"true\"></i>");
         }
 
     }
@@ -89,11 +92,11 @@ public class UserDAO {
             ps.setInt(1, u.getId());
             ps.executeUpdate();
 
-            setMSG("DELETADO COM SUCESSO ! :D ");
+            setMSG("USUÁRIO DELETADO COM SUCESSO ! <i class=\"fa fa-smile-o\" aria-hidden=\"true\"></i> ");
 
         } catch (SQLException ex) {
             // Lança um erro novo personalizado 
-            setMSG("ERRO AO TENTAR DELETAR ! :C ");
+            setMSG("OPS .. NÃO FOI POSSIVEL DELETAR USUÁRIO ! <i class=\"fa fa-frown-o\" aria-hidden=\"true\"></i> ");
         }
 
     }
@@ -119,7 +122,7 @@ public class UserDAO {
 
     }
 
-    public ArrayList<User> findAllStudant() throws SQLException {
+    public ArrayList<User> findAllStudent() throws SQLException {
 
         PreparedStatement ps = CONNECTION.prepareStatement(SQL_FIND_ALL_STUDENT);
         ResultSet rs = ps.executeQuery();
@@ -129,14 +132,13 @@ public class UserDAO {
         while (rs.next()) {
 
             Student e = new Student();
-            e.setId(rs.getInt("user_id"));
+            e.setUser_id(rs.getInt("user_id"));
             e.setUsername(rs.getString("username"));
-            e.setSenha(rs.getString("senha"));
             e.setNome(rs.getString("nome"));
             e.setSobrenome(rs.getString("sobrenome"));
-            e.setCpf("444.444.44.-45");
-            e.setTelefone("1111");
-            e.setEmail("teste@teste.com");
+            e.setCpf(rs.getString("cpf"));
+            e.setTelefone(rs.getString("email"));
+            e.setEmail(rs.getString("telefone"));
 
             users.add(e);
         }
@@ -147,25 +149,26 @@ public class UserDAO {
 
     public ArrayList<User> findAllCompany() throws SQLException {
 
-        PreparedStatement ps = CONNECTION.prepareStatement(SQL_FIND_ALL_STUDENT);
+        PreparedStatement ps = CONNECTION.prepareStatement(SQL_FIND_ALL_COMPANY);
         ResultSet rs = ps.executeQuery();
 
         ArrayList<User> users = new ArrayList();
 
         while (rs.next()) {
-            Student e = new Student();
-            e.setId(rs.getInt("id"));
-            e.setUsername(rs.getString("username"));
-            e.setSenha(rs.getString("senha"));
-            e.setNome(rs.getString("nome"));
-            e.setSobrenome(rs.getString("sobrenome"));
-            e.setCpf("444.444.44.-45");
-            e.setTelefone("1111");
-            e.setEmail("teste@teste.com");
+            Company c = new Company();
+            c.setUser_id(rs.getInt("user_id"));
+            c.setUsername(rs.getString("username"));
+            c.setCnpj(rs.getString("cnpj"));
+            c.setRazao_social(rs.getString("razao_social"));
+            c.setNome_fantasia(rs.getString("nome_fantasia"));
+            c.setTelefone(rs.getString("telefone"));
+            c.setEmail(rs.getString("email"));
+            c.setResponsavel(rs.getString("responsavel"));
+            c.setRamo_atividades("ramo_atividades");
 
-            users.add(e);
+            users.add(c);
         }
-
+        
         return users;
 
     }

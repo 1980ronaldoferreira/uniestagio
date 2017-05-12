@@ -9,43 +9,45 @@ package br.com.uniestagios.beans;
  *
  * @author alefsilva
  */
-public class Company {
+public class Company extends User{
 
-    private String 
-            id,
-            user_id,
-            cnpj,
-            razao_social,
-            nome_fantasia,
-            telefone,
-            email,
-            ramo_atividades;
+    
+
+    private int id;
+    private int user_id;
+    private String cnpj;
+    private String razao_social;
+    private String nome_fantasia;
+    private String telefone;
+    private String email;
+    private String responsavel;
+    private String ramo_atividades;
 
     /**
      * @return the id
      */
-    public String getId() {
+    public int getIdCompany() {
         return id;
     }
 
     /**
      * @param id the id to set
      */
-    public void setId(String id) {
+    public void setIdCompany(int id) {
         this.id = id;
     }
 
     /**
      * @return the user_id
      */
-    public String getUser_id() {
+    public int getUser_id() {
         return user_id;
     }
 
     /**
      * @param user_id the user_id to set
      */
-    public void setUser_id(String user_id) {
+    public void setUser_id(int user_id) {
         this.user_id = user_id;
     }
 
@@ -118,7 +120,22 @@ public class Company {
     public void setEmail(String email) {
         this.email = email;
     }
+    
+    /*
+    **
+     * @return the responsavel
+     */
+    public String getResponsavel() {
+        return responsavel;
+    }
 
+    /**
+     * @param responsavel the responsavel to set
+     */
+    public void setResponsavel(String responsavel) {
+        this.responsavel = responsavel;
+    }
+    
     /**
      * @return the ramo_atividades
      */

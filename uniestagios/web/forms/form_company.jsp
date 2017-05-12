@@ -1,11 +1,3 @@
-<div class="input-field col s12">
-    <input  type="hidden" name="perfil" value="company">
-</div>
-
-<div class="input-field col s12">
-    <input  type="hidden" name="flag" value="cadastrar">
-</div>
-
 <div class="input-field col s6">
     <input placeholder="kronamix" id="username" type="text" class="validate" name="username"  focus>
     <label for="username">Nome de usuário</label>
@@ -20,7 +12,7 @@
     <label for="cnpj">CNPJ</label>
 </div>
 <div class="input-field col s12">
-    <input id="razaoSocial" type="text" class="validate" name="razaoSocial" >
+    <input id="razaoSocial" type="text" class="validate" name="socialReason" >
     <label for="razaoSocial">Razão Social</label>
 </div>
 

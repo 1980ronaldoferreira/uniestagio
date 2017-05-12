@@ -14,7 +14,7 @@
                     <div class="input-field">
                         <input  type="hidden" name="perfil" value="Estudante">
                         <input  type="hidden" name="flag" value="pesquisar">
-                        <input class="blue-grey white-text" placeholder="Pesquisar" id="search" name="search" type="search" required>
+                        <input class="blue-grey white-text" placeholder="Pesquisar" id="search" name="search" type="search">
                         <label class="label-icon" for="search"><i class="orange-text material-icons">search</i></label>
                         <i class="material-icons">close</i>
                     </div>
@@ -28,8 +28,9 @@
         <table class="striped">
             <thead>
                 <tr>
+                    <th>#</th>
                     <th>USERNAME</th>
-                    <th>NOME</th>
+                    <th>NOME COMPLETO</th>
                     <th>CPF</th>
                     <th>EMAIL</th>
                     <th>TELEFONE</th>
@@ -40,14 +41,15 @@
             <tbody>
                 <c:forEach var="user" items="${listaUsers}">
                     <tr>
+                        <td>${user.user_id}</td>
                         <td>${user.username}</td>
-                        <td> </td>
-                        <td> </td>
-                        <td> </td>
-                        <td> </td>
+                        <td>${user.nome} ${user.sobrenome} </td>
+                        <td>${user.cpf}</td>
+                        <td>${user.telefone} </td>
+                        <td>${user.email} </td>
                         <td>
-                            <a class="waves-effect waves-light btn-floating green" href="UserController?flag=edit&id=${user.id}"><i class="material-icons left">mode_edit</i></a>
-                            <a class="waves-effect waves-light btn-floating red " href="UserController?flag=destroy&id=${user.id}"><i class="material-icons left">delete</i></a>
+                            <a class="waves-effect waves-light btn-floating green" href="UserController?flag=edit&perfil=estudante&id=${user.user_id}"><i class="material-icons left">mode_edit</i></a>
+                            <a class="waves-effect waves-light btn-floating red " href="UserController?flag=destroy&perfil=estudante&id=${user.user_id}"><i class="material-icons left">delete</i></a>
                         </td>
                     </tr>
                 </c:forEach>
@@ -74,8 +76,10 @@
         <table class="striped">
             <thead>
                 <tr>
+                    <th>#</th>
                     <th>USERNAME</th>
                     <th>CNPJ</th>
+                    <th>RAZÃO SOCIAL</th>
                     <th>NOME FANTASIA</th>
                     <th>TELEFONE</th>
                     <th>EMAIL</th>
@@ -86,21 +90,27 @@
             </thead>
 
             <tbody>
+                <c:forEach var="company" items="${listaCompany}">
                 <tr>
-                    <td>UNIESTAGIOS</td>
-                    <td>444.444.444-44</td>
-                    <td>ADMINISTRADOR</td>
-                    <td>11-11111-1111</td>
-                    <td>ADMIN@ADMIN.COM</td>
-                    <td>HENRIQUE BORGES</td>
-                    <td>T.I</td>
+                    <td>${company.user_id}</td>
+                    <td>${company.username}</td>
+                    <td>${company.cnpj}</td>
+                    <td>${company.razao_social}</td>
+                    <td>${company.nome_fantasia}</td>
+                    <td>${company.telefone}</td>
+                    <td>${company.email}</td>
+                    <td>${company.responsavel}</td>
+                    <td>${company.ramo_atividades}</td>
                     <td>
-                        <a class="waves-effect waves-light btn-floating green"><i class="material-icons left">mode_edit</i></a>
                         <a class="waves-effect waves-light btn-floating blue"><i class="material-icons left">description</i></a>
-                        <a class="waves-effect waves-light btn-floating red "><i class="material-icons left">delete</i></a>
+                        <a class="waves-effect waves-light btn-floating blue"><i class="fa fa-briefcase" aria-hidden="true"></i></a>
+                        <a class="waves-effect waves-light btn-floating green" href="UserController?flag=edit&perfil=empresa&id=${company.user_id}"><i class="material-icons left">mode_edit</i></a>
+                        <a class="waves-effect waves-light btn-floating red " href="UserController?flag=destroy&perfil=empresa&id=${company.user_id}"><i class="material-icons left">delete</i></a>
                     </td>
                 </tr>
+                </c:forEach>
             </tbody>
+            
         </table>
 
 

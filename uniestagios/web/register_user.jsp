@@ -30,14 +30,8 @@
                                 <h4 class="header center">CADASTRO DE ESTUDANTE</h4> 
                                 <div class="col s8 offset-s2">
                                     <div class="section"></div>
-
-                                    <div class="input-field col s12">
                                         <input  type="hidden" name="perfil" value="Estudante">
-                                    </div>
-
-                                    <div class="input-field col s12">
                                         <input  type="hidden" name="flag" value="cadastrar">
-                                    </div>
 
                                     <%@include file="forms/form_students.jsp" %>
 
@@ -62,14 +56,8 @@
                         <h4 class="header center orange-text">CADASTRO DE EMPRESA</h4> 
                         <div class="col s9 offset-s2 ">
                             <div class="section">   </div>
-
-                            <div class="input-field col s12">
-                                <input  type="hidden" name="type" value="company">
-                            </div>
-
-                            <div class="input-field col s12">
+                                <input  type="hidden" name="perfil" value="company">
                                 <input  type="hidden" name="flag" value="cadastrar">
-                            </div>
                             <%@include file="forms/form_company.jsp" %>
                             <div class="input-field col s12">
                                 <button class="btn waves-effect waves-light light-blue lighten-1" type="submit" name="action">Cadastrar

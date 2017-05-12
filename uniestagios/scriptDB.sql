@@ -27,7 +27,7 @@ primary key(id)
 
 -- CRIANDO TABLE DE ESTUDANTES
 CREATE TABLE estudantes (
-id int unsigned not null auto_increment,
+estudante_id int unsigned not null auto_increment,
 user_id int unsigned not null,
 nome varchar(255) not null,
 sobrenome varchar(255) not null,
@@ -41,13 +41,14 @@ constraint fk_users_estudantes foreign key (user_id) references users (id)
 
 -- CRIANDO TABLE DE EMPRESAS
 CREATE TABLE empresas (
-id int unsigned not null auto_increment,
+empresa_id int unsigned not null auto_increment,
 user_id int unsigned not null,
 cnpj varchar(255) not null,
 razao_social varchar(255) not null,
 nome_fantasia varchar(255) not null,
 telefone varchar(255) not null,
 email varchar(255) unique not null,
+responsavel varchar(255) unique not null,
 ramo_atividades varchar(255) unique not null,
 
 primary key(id),
@@ -56,7 +57,7 @@ constraint fk_users_empresas foreign key (user_id) references users (id)
 
 -- CRIANDO TABLE DE ENDEREÇOS
 CREATE TABLE enderecos (
-id int unsigned not null auto_increment,
+endereco_id int unsigned not null auto_increment,
 user_id int unsigned not null,
 logradouro varchar(255) not null,
 bairro varchar(255) not null,

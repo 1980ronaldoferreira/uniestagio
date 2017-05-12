@@ -28,7 +28,7 @@
     </head>
     <body>
         <nav class="light-blue lighten-1" role="navigation">
-            <div class="nav-wrapper container "><a id="logo-container" href="../index.jsp" class="brand-logo"><img src="http://localhost:8080/uniestagios/img/logo.png" class="logo-nav"></a> 
+            <div class="nav-wrapper container "><a id="logo-container" href="index.jsp" class="brand-logo"><img src="http://localhost:8080/uniestagios/img/logo.png" class="logo-nav"></a> 
                 <ul class="right hide-on-med-and-down">
                     <li><a href="http://localhost:8080/uniestagios/">SITE</a></li>
                     <li><a href="list_jobs.jsp">Vagas</a></li>

@@ -99,11 +99,11 @@ public class CompanyDAO {
             ps.setInt(1, c.getUser_id());
             ps.executeUpdate();
 
-            setMSG("DELETADO COM SUCESSO ! <i class=\"fa fa-smile-o\" aria-hidden=\"true\"></i>" );
+            setMSG("<h4 class=\"header center orange white-text\"> DELETADO COM SUCESSO ! <i class=\"fa fa-smile-o\" aria-hidden=\"true\"></i></h4>" );
 
         } catch (SQLException ex) {
             // Lança um erro novo personalizado 
-            setMSG("ERRO AO TENTAR DELETAR ! <i class=\"fa fa-frown-o\" aria-hidden=\"true\"></i>" );
+            setMSG("<h4 class=\"header center red white-text\">  ERRO AO TENTAR DELETAR ! <i class=\"fa fa-frown-o\" aria-hidden=\"true\"></i></h4>" );
         }
 
     }

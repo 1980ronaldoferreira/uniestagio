@@ -284,7 +284,8 @@ public class UserController extends HttpServlet {
 
                        if(listStudents.isEmpty()){
                            request.setAttribute("NotFoundStudent", "Ops !! Nenhum Usuário Estudante Encontrado <button class=\"waves-effect waves-light btn blue-grey\" onclick=\"history.go(-1);\" \">Voltar<button>");
-                       }else if(listCompanys.isEmpty()){
+                       }
+                       if(listCompanys.isEmpty()){
                            request.setAttribute("NotFoundCompany", "Ops !! Nenhum Usuário Empresa Encontrado <button class=\"waves-effect waves-light btn blue-grey\" onclick=\"history.go(-1);\" \">Voltar<button>");
                        }     
                         

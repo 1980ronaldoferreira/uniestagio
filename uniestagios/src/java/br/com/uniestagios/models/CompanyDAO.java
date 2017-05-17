@@ -28,8 +28,9 @@ public class CompanyDAO {
 
     private static final String SQL_UPDATE = "UPDATE users SET username=?, senha=?, perfil=? WHERE id=?";
     private static final String SQL_DELETE = "DELETE FROM empresas WHERE user_id=?";
-    private static final String SQL_FIND_ID = "SELECT * FROM users WHERE id = ?";
-    private static final String SQL_FIND_SEARCH = "SELECT * FROM users WHERE username LIKE ? or perfil LIKE ?";
+    private static final String SQL_FIND_ID = "SELECT * FROM users INNER JOIN empresas ON users.id = empresas.user_id WHERE user_id = ?";
+    private static final String SQL_FIND_SEARCH = "SELECT * FROM users\n" +
+"INNER JOIN empresas ON users.id = empresas.user_id WHERE username LIKE ? or cnpj LIKE ? or razao_social LIKE ?  or nome_fantasia LIKE ? or email LIKE ? or responsavel LIKE ? or ramo_atividades LIKE ?";
 
 
 
@@ -54,11 +55,11 @@ public class CompanyDAO {
 
             CONNECTION.close();
 
-            setMSG("EMPRESA CADASTRADO COM SUCESSO ! <i class=\"fa fa-smile-o\" aria-hidden=\"true\"></i>");
+            setMSG("<h4 class=\"header center orange white-text\"> EMPRESA CADASTRADO COM SUCESSO ! <i class=\"fa fa-smile-o\" aria-hidden=\"true\"></i></h4>");
 
         } catch (SQLException ex) {
             // Lança um erro novo personalizado 
-            setMSG("ERRO AO TENTAR CADASTRAR NOVA EMPRESA  <i class=\"fa fa-frown-o\" aria-hidden=\"true\"></i>");
+            setMSG("<h4 class=\"header center red white-text\"> ERRO AO TENTAR CADASTRAR NOVA EMPRESA  <i class=\"fa fa-frown-o\" aria-hidden=\"true\"></i></h4>");
             System.out.println(ex.getMessage());
         }
 
@@ -104,43 +105,64 @@ public class CompanyDAO {
     }
 
 
-    public User findId(User u) throws SQLException {
+    public ArrayList<Company>  findId(Company c) throws SQLException {
+        
+         ArrayList<Company> users = new ArrayList();
+         
+         
         PreparedStatement ps = CONNECTION.prepareStatement(SQL_FIND_ID);
-        ps.setInt(1, u.getId());
+        ps.setInt(1, c.getUser_id());
 
         ResultSet rs = ps.executeQuery();
 
-        User user = null;
+        Company company = null;
 
         if (rs.next()) {
-            user = new User();
-            user.setId(rs.getInt("id"));
-            user.setUsername(rs.getString("username"));
-            user.setSenha(rs.getString("senha"));
-            user.setType(rs.getString("perfil"));
-
+            company = new Company();
+            company.setId(rs.getInt("user_id"));
+            company.setUsername(rs.getString("username"));
+            company.setSenha(rs.getString("senha"));
+            company.setCnpj(rs.getString("cnpj"));
+            company.setRazao_social(rs.getString("razao_social"));
+            company.setNome_fantasia(rs.getString("nome_fantasia"));
+            company.setTelefone(rs.getString("telefone"));
+            company.setEmail(rs.getString("email"));
+            company.setResponsavel(rs.getString("responsavel"));
+            company.setRamo_atividades(rs.getString("ramo_atividades"));
+            users.add(company);
         }
 
-        return user;
+        return users;
     }
 
-    public ArrayList<User> search(User u) throws SQLException {
+    public ArrayList<Company> search(Company u) throws SQLException {
 
-        ArrayList<User> users = new ArrayList();
-
+        ArrayList<Company> users = new ArrayList();
+        
         PreparedStatement ps = CONNECTION.prepareStatement(SQL_FIND_SEARCH);
         ps.setString(1, '%' + u.getUsername() + '%');
-        ps.setString(2, '%' + u.getType() + '%');
+        ps.setString(2, '%' + u.getCnpj()+ '%');
+        ps.setString(3, '%' + u.getRazao_social()+ '%');
+        ps.setString(4, '%' + u.getNome_fantasia()+ '%');
+        ps.setString(5, '%' + u.getEmail()+ '%');
+        ps.setString(6, '%' + u.getResponsavel()+ '%');
+        ps.setString(7, '%' + u.getRamo_atividades()+ '%');
         ResultSet rs = ps.executeQuery();
 
         while (rs.next()) {
-            User user = new User();
-            user.setId(rs.getInt("id"));
-            user.setUsername(rs.getString("username"));
-            user.setSenha(rs.getString("senha"));
-            user.setType(rs.getString("perfil"));
+            Company c = new Company();
+            
+            c.setUser_id(rs.getInt("user_id"));
+            c.setUsername(rs.getString("username"));
+            c.setCnpj(rs.getString("cnpj"));
+            c.setRazao_social(rs.getString("razao_social"));
+            c.setNome_fantasia(rs.getString("nome_fantasia"));
+            c.setTelefone(rs.getString("telefone"));
+            c.setEmail(rs.getString("email"));
+            c.setResponsavel(rs.getString("responsavel"));
+            c.setRamo_atividades("ramo_atividades");
 
-            users.add(user);
+            users.add(c);
         }
 
         return users;

@@ -29,9 +29,12 @@ public class StudentDAO {
 
     private static final String SQL_DELETE = "DELETE FROM estudantes WHERE user_id=?";
 
-    private static final String SQL_FIND_ID = "SELECT * FROM users WHERE id = ?";
+    private static final String SQL_FIND_ID = "SELECT * FROM users INNER JOIN estudantes ON users.id = estudantes.user_id WHERE user_id = ?";
 
     private static final String SQL_FIND_ALL_STUDENT = "SELECT * FROM users INNER JOIN estudantes ON users.id = estudantes.user_id";
+    
+    private static final String SQL_FIND_SEARCH = "SELECT * FROM users\n" +
+"INNER JOIN estudantes ON users.id = estudantes.user_id WHERE username LIKE ? or nome LIKE ? or sobrenome LIKE ?  or email LIKE ? or cpf LIKE ?";
 
     
     public StudentDAO() throws SQLException {
@@ -131,73 +134,64 @@ public class StudentDAO {
 
     }
 
-    public ArrayList<User> findAllCompany() throws SQLException {
+    public ArrayList<Student> findId(Student s) throws SQLException {
+        
+        ArrayList<Student> users = new ArrayList();
+        
+        
+        PreparedStatement ps = CONNECTION.prepareStatement(SQL_FIND_ID);
+        ps.setInt(1, s.getUser_id());
 
-        PreparedStatement ps = CONNECTION.prepareStatement(SQL_FIND_ALL_STUDENT);
         ResultSet rs = ps.executeQuery();
 
-        ArrayList<User> users = new ArrayList();
+        Student student = null;
+
+        if (rs.next()) {
+            student = new Student();
+            student.setId(rs.getInt("user_id"));
+            student.setUsername(rs.getString("username"));
+            student.setSenha(rs.getString("senha"));
+            student.setNome(rs.getString("nome"));
+            student.setSobrenome(rs.getString("sobrenome"));
+            student.setCpf(rs.getString("cpf"));
+            student.setEmail(rs.getString("email"));
+            student.setTelefone(rs.getString("telefone"));
+            users.add(student);
+        }
+
+        return users;
+    }
+
+    public ArrayList<Student> search(Student s) throws SQLException {
+
+        ArrayList<Student> users = new ArrayList();
+
+        PreparedStatement ps = CONNECTION.prepareStatement(SQL_FIND_SEARCH);
+        ps.setString(1, '%' + s.getUsername() + '%');
+        ps.setString(2, '%' + s.getNome() + '%');
+        ps.setString(3, '%' + s.getSobrenome()+ '%');
+        ps.setString(4, '%' + s.getEmail() + '%');
+        ps.setString(5, '%' + s.getCpf() + '%');
+        ResultSet rs = ps.executeQuery();
 
         while (rs.next()) {
             Student e = new Student();
-            e.setId(rs.getInt("id"));
+
+            e.setUser_id(rs.getInt("user_id"));
             e.setUsername(rs.getString("username"));
-            e.setSenha(rs.getString("senha"));
             e.setNome(rs.getString("nome"));
             e.setSobrenome(rs.getString("sobrenome"));
-            e.setCpf("444.444.44.-45");
-            e.setTelefone("1111");
-            e.setEmail("teste@teste.com");
+            e.setCpf(rs.getString("cpf"));
+            e.setTelefone(rs.getString("email"));
+            e.setEmail(rs.getString("telefone"));
 
+            
             users.add(e);
         }
 
         return users;
 
     }
-
-    public User findId(User u) throws SQLException {
-        PreparedStatement ps = CONNECTION.prepareStatement(SQL_FIND_ID);
-        ps.setInt(1, u.getId());
-
-        ResultSet rs = ps.executeQuery();
-
-        User user = null;
-
-        if (rs.next()) {
-            user = new User();
-            user.setId(rs.getInt("id"));
-            user.setUsername(rs.getString("username"));
-            user.setSenha(rs.getString("senha"));
-            user.setType(rs.getString("perfil"));
-
-        }
-
-        return user;
-    }
-
-//    public ArrayList<User> search(User u) throws SQLException {
-//
-//        ArrayList<User> users = new ArrayList();
-//
-//        PreparedStatement ps = CONNECTION.prepareStatement(SQL_FIND_SEARCH);
-//        ps.setString(1, '%' + u.getUsername() + '%');
-//        ps.setString(2, '%' + u.getType() + '%');
-//        ResultSet rs = ps.executeQuery();
-//
-//        while (rs.next()) {
-//            User user = new User();
-//            user.setId(rs.getInt("id"));
-//            user.setUsername(rs.getString("username"));
-//            user.setSenha(rs.getString("senha"));
-//            user.setType(rs.getString("perfil"));
-//
-//            users.add(user);
-//        }
-//
-//        return users;
-//
-//    }
     /**
      * @return the MSG
      */

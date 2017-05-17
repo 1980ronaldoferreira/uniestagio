@@ -111,6 +111,18 @@ public class UserTest {
          
 ___________________________________________________
         
+        try{
+            
+        UserDAO uDAO = new UserDAO();
+        User uresult = uDAO.findId(u);
+        
+        System.out.println("sucesso! => " + uresult);
+        
+        } catch (SQLException ex) {
+            System.out.println("Erro !");
+            ex.getStackTrace();
+        }
+        
         User u = new User();
         u.setId(4);
         

@@ -1,7 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@include file="header.jsp" %>
 <div class="section">
-    <h4 class="header center orange white-text">${ msg }</h4>
+    ${ msg }
 </div>
 <div class="container">
     <div class="row">

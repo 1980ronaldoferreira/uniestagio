@@ -92,13 +92,24 @@ public class UserController extends HttpServlet {
             List<User> listUsersCompanys;
             List<User> pesquisa;
             List<User> userUpdateDAO;
-
+            
+            ArrayList<Student> listStudents = new ArrayList();
+            List<Student> StudentEdit;
+            
+            ArrayList<Company> listCompanys = new ArrayList();
+            List<Company> companyEdit;           
+           
+                    
             Student s = new Student();
+            Student studentResult = new Student();
             StudentDAO stDAO = new StudentDAO();
+            
             
             Company c = new Company();
             CompanyDAO cDAO = new CompanyDAO();
-
+            Company CompanyResult = new Company();
+            
+            
             switch (flag) {
                 case "cadastrar":
 
@@ -198,7 +209,6 @@ public class UserController extends HttpServlet {
                     listUsersStudents = userDAO.findAllStudent();
                     listUsersCompanys = userDAO.findAllCompany();
                     
-                    System.out.println(listUsersCompanys);
 
                     // se não for encontrado nenhum registro, retorna a mensagem
 //                    if (listUsersStudents.isEmpty() || listUsersCompanys.isEmpty()) {
@@ -228,32 +238,64 @@ public class UserController extends HttpServlet {
                     break;
 
                 case "pesquisar":
-                    // Cria um novo aluno
-                    user = new User();
+                    // Cria um novo estudante e nova empresa
+                    s = new Student();
+                    c = new Company();
                     /**
                      * Atribui os valores recuperados do formulário O parâmetro
                      * utilizado "pesquisa" é igual para os três campos, pois
                      * está sendo utilizado o LIKE na instrução SQL do DAO
                      */
-                    user.setUsername(request.getParameter("search"));
-
+                    s.setUsername(request.getParameter("search"));
+                    s.setNome(request.getParameter("search"));
+                    s.setSobrenome(request.getParameter("search"));
+                    s.setEmail(request.getParameter("search")); 
+                    s.setCpf(request.getParameter("search"));
+                    
+                    
+                      /**
+                     * Atribui os valores recuperados do formulário O parâmetro
+                     * utilizado "pesquisa" é igual para os três campos, pois
+                     * está sendo utilizado o LIKE na instrução SQL do DAO
+                     */
+                    
+                    c.setUsername(request.getParameter("search"));
+                    c.setCnpj(request.getParameter("search"));
+                    c.setRazao_social(request.getParameter("search"));
+                    c.setNome_fantasia(request.getParameter("search")); 
+                    c.setEmail(request.getParameter("search"));
+                    c.setResponsavel(request.getParameter("search"));
+                    c.setRamo_atividades(request.getParameter("search"));
+                    
                     // Busca no model (DAO) os dados
-                    userDAO = new UserDAO();
-
-                    // Coloca todos os alunos em uma lista
-                    listUsers = userDAO.search(user);
+                    stDAO = new StudentDAO();
+                    cDAO = new CompanyDAO();
+                    
+                     // Coloca todos os usuarios em uma lista
+                    listStudents = stDAO.search(s);
+                    listCompanys = cDAO.search(c);
+                    
 
                     // se não for encontrado nenhum registro, retorna a mensagem
-                    if (listUsers.isEmpty()) {
+                    if (listCompanys.isEmpty() || listStudents.isEmpty()) {
                         // Cria um atributo com o aluno para ser utilizado na View
-                        request.setAttribute("msg", "Ops !! Nenhum Estudante Encontrado <button class=\"waves-effect waves-light btn blue-grey\" onclick=\"history.go(-1);\" \">Voltar<button>");
+                        request.setAttribute("listaUsers", listStudents);
+                        request.setAttribute("listaCompany", listCompanys);
+
+                       if(listStudents.isEmpty()){
+                           request.setAttribute("NotFoundStudent", "Ops !! Nenhum Usuário Estudante Encontrado <button class=\"waves-effect waves-light btn blue-grey\" onclick=\"history.go(-1);\" \">Voltar<button>");
+                       }else if(listCompanys.isEmpty()){
+                           request.setAttribute("NotFoundCompany", "Ops !! Nenhum Usuário Empresa Encontrado <button class=\"waves-effect waves-light btn blue-grey\" onclick=\"history.go(-1);\" \">Voltar<button>");
+                       }     
+                        
 
                         // Redireciona para a View
                         request.getRequestDispatcher("admin/users.jsp").
                                 forward(request, response);
                     } else {
                         // Cria um atributo com o aluno para ser utilizado na View
-                        request.setAttribute("listaUsers", listUsers);
+                             request.setAttribute("listaUsers", listStudents);
+                        request.setAttribute("listaCompany", listCompanys);
 
                         // Redireciona para a View
                         request.getRequestDispatcher("admin/users.jsp").
@@ -261,27 +303,45 @@ public class UserController extends HttpServlet {
                     }
 
                     break;
-                case "editar":
-
+                case "edit":
+                    
+                    type = request.getParameter("perfil");
                     /**
                      * Cria o objeto aluno e atribui o RA para pesquisa
                      */
-                    user = new User();
-                    user.setId(Integer.parseInt(request.getParameter("id")));
-
-                    // Busca no model os dados
-                    userDAO = new UserDAO();
-
-                    // Coloca todos os alunos em uma lista
-                    userUpdateDAO = (List<User>) userDAO.findId(user);
-
-                    // Cria um atributo com o aluno para ser utilizado na View
-                    request.setAttribute("listUser", userUpdateDAO);
-
+                   if("estudante".equals(type)){
+                     s = new Student();
+                                        
+                    s.setUser_id(Integer.parseInt(request.getParameter("id")));
+                    
+                    
+                    stDAO = new StudentDAO();
+                    StudentEdit = stDAO.findId(s);
+                    request.setAttribute("listUser", StudentEdit);
+                    
                     // Redireciona para a View
                     request.getRequestDispatcher("edit_user_student.jsp").
                             forward(request, response);
 
+                    
+                    }
+                    else if("empresa".equals(type)){
+                        
+                    c = new Company();  
+                    c.setUser_id(Integer.parseInt(request.getParameter("id")));
+                    
+                    cDAO = new CompanyDAO();
+                    companyEdit = cDAO.findId(c);
+                    
+                    request.setAttribute("listUser", companyEdit);
+                       System.out.println(companyEdit);
+                    // Redireciona para a View
+                    request.getRequestDispatcher("edit_user_company.jsp").
+                            forward(request, response);
+                    
+                        
+                  }
+                    
                     break;
 
                 case "save":

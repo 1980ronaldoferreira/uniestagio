@@ -15,37 +15,37 @@
                                 <input  type="hidden" name="flag" value="save">
                                 <c:forEach var="u" items="${listUser}">
 
-                                    <input  type="hidden" name="id" value="${u.username}">
+                                    <input  type="hidden" name="id" value="${u.user_id}">
                                     <div class="input-field col s6">
                                         <input id="name" type="text" name="username" value="${u.username}" focus >
                                         <label for="name">Nome de Usuário</label>
                                     </div>
                                     <div class="input-field col s6  ">
-                                        <input id="password" type="password"  name="pass" value="${u.username}">
+                                        <input id="password" type="password"  name="pass" value="${u.senha}">
                                         <label for="password">Password</label>
                                     </div>
                                     <div class="input-field col s12">
 
-                                        <input  id="first_name" type="text"  name="name" value="${u.username}">
+                                        <input  id="first_name" type="text"  name="name" value="${u.nome}">
                                         <label for="first_name">Nome</label>
                                     </div>
                                     <div class="input-field col s12">
-                                        <input id="last_name" type="text" name="last_name" value="${u.username}">
+                                        <input id="last_name" type="text" name="last_name" value="${u.sobrenome}">
                                         <label for="last_name">Sobrenome</label>
                                     </div>
 
                                     <div class="input-field col s12">
-                                        <input id="cpf" type="text" name="cpf" data-error="Invalido" data-success="ok!" value="${u.username}">
+                                        <input id="cpf" type="text" name="cpf" data-error="Invalido" data-success="ok!" value="${u.cpf}">
                                         <label for="cpf">E-mail</label>
                                     </div>
 
                                     <div class="input-field col s12">
-                                        <input placeholder="exemplo@exemplo.com" value="${u.username}" id="emailEstudant" type="email" name="email" class="validate" data-error="Invalido" data-success="ok!" >
+                                        <input placeholder="exemplo@exemplo.com" value="${u.email}" id="emailEstudant" type="email" name="email" class="validate" data-error="Invalido" data-success="ok!" >
                                         <label for="emailEstudant">E-mail</label>
                                     </div>
 
                                     <div class="input-field col s12">
-                                        <input placeholder="(DD) + Telefone" id="cellPhoneEstudant" type="text"  name="cellPhone" class="validate" value="${u.username}">
+                                        <input placeholder="(DD) + Telefone" id="cellPhoneEstudant" type="text"  name="cellPhone" class="validate" value="${u.telefone}">
                                         <label for="cellPhoneEstudant">Telefone</label>
                                     </div>
                                         
@@ -55,7 +55,7 @@
                                         <i class="fa fa-floppy-o" aria-hidden="true"></i>
                                     </button>
 
-                                    <button  onclick="history.go(-1);"  class="btn waves-effect waves-light red"  name="action">Cancelar
+                                    <button  onclick="history.go(-1);"  class="btn waves-effect waves-light red"  name="action">CANCELAR
                                         <i class="fa fa-ban" aria-hidden="true"></i>
                                     </button>
 

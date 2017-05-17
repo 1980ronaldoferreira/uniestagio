@@ -12,7 +12,7 @@
                                 <c:forEach var="u" items="${listUser}">
                                     <input  type="hidden" name="perfil" value="empresa">
                                     <input  type="hidden" name="flag" value="save">
-                                    <input  type="hidden" name="id" value="${u.user_id}">
+                                    <input  type="hidden" name="id" value="${u.id}">
                                     <div class="input-field col s6">
                                         <input placeholder="kronamix" id="username" type="text" class="validate" name="username"  value="${u.username}" focus>
                                         <label for="username">Nome de usuário</label>

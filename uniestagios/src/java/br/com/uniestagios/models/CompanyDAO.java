@@ -25,8 +25,7 @@ public class CompanyDAO {
     private static String MSG = null;
 
     private static final String SQL_INSERT = "INSERT INTO empresas (user_id, cnpj, razao_social,nome_fantasia,telefone,email,responsavel,ramo_atividades) VALUES (?,?,?,?,?,?,?,?)";
-
-    private static final String SQL_UPDATE = "UPDATE users SET username=?, senha=?, perfil=? WHERE id=?";
+    private static final String SQL_UPDATE = "UPDATE empresas SET cnpj=?, razao_social=?, nome_fantasia=?, telefone=?, email=?, responsavel=?, ramo_atividades=? WHERE user_id=?";
     private static final String SQL_DELETE = "DELETE FROM empresas WHERE user_id=?";
     private static final String SQL_FIND_ID = "SELECT * FROM users INNER JOIN empresas ON users.id = empresas.user_id WHERE user_id = ?";
     private static final String SQL_FIND_SEARCH = "SELECT * FROM users\n" +
@@ -65,24 +64,29 @@ public class CompanyDAO {
 
     }
 
-    public void update(User u) {
+    public void update(Company c) {
 
         try {
             try (PreparedStatement ps = CONNECTION.prepareStatement(SQL_UPDATE)) {
-                ps.setString(1, u.getUsername());
-                ps.setString(2, u.getSenha());
-                ps.setString(3, u.getType());
-                ps.setInt(4, u.getId());
+                ps.setString(1, c.getCnpj());
+                ps.setString(2, c.getRazao_social());
+                ps.setString(3, c.getNome_fantasia());
+                ps.setString(4, c.getTelefone());
+                ps.setString(5, c.getEmail());
+                ps.setString(6, c.getResponsavel());
+                ps.setString(7, c.getRamo_atividades());
+                ps.setInt(8, c.getUser_id());
                 ps.executeUpdate();
+                
             }
 
             CONNECTION.close();
 
-            setMSG("ATUALIZADO COM SUCESSO COM SUCESSO ! <i class=\"fa fa-smile-o\" aria-hidden=\"true\"></i>");
+            setMSG("<h4 class=\"header center orange white-text\">ATUALIZADO COM SUCESSO COM SUCESSO ! <i class=\"fa fa-smile-o\" aria-hidden=\"true\"></i></h4>");
 
         } catch (SQLException ex) {
             // Lança um erro novo personalizado 
-            setMSG("ERRO AO TENTAR ATUALIZAR <i class=\"fa fa-frown-o\" aria-hidden=\"true\"></i>");
+            setMSG("<h4 class=\"header center red white-text\"> ERRO AO TENTAR ATUALIZAR <i class=\"fa fa-frown-o\" aria-hidden=\"true\"></i></h4>");
         }
 
     }

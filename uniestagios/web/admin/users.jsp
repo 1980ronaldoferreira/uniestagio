@@ -1,7 +1,9 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@include file="header.jsp" %>
 <div class="col s9 offset-4">
-    <div class="section"></div>
+    <div class="section">
+        ${msg}
+    </div>
 <nav class="col s12 offset-2 blue-grey">
             <div class="nav-wrapper">
                 <form action="" method="" name="search">
@@ -45,6 +47,7 @@
                         <td>${user.email} </td>
                         <td>
                             <a class="waves-effect waves-light btn-floating green" href="UserController?flag=edit&perfil=estudante&id=${user.user_id}"><i class="material-icons left">mode_edit</i></a>
+                            <a class="waves-effect waves-light btn-floating blue"  href="UserController?flag=destroy&perfil=estudante&id=${user.user_id}"><i class="material-icons left">description</i></a>
                             <a class="waves-effect waves-light btn-floating red " href="UserController?flag=destroy&perfil=estudante&id=${user.user_id}"><i class="material-icons left">delete</i></a>
                         </td>
                     </tr>
@@ -84,8 +87,8 @@
                     <td>${company.responsavel}</td>
                     <td>${company.ramo_atividades}</td>
                     <td>
-                        <a class="waves-effect waves-light btn-floating blue"><i class="material-icons left">description</i></a>
-                        <a class="waves-effect waves-light btn-floating blue"><i class="fa fa-briefcase" aria-hidden="true"></i></a>
+                        <a class="waves-effect waves-light btn-floating blue" href="UserController?flag=edit&perfil=empresa&id=${company.user_id}"><i class="material-icons left">description</i></a>
+                        <a class="waves-effect waves-light btn-floating yellow darken-4" href="UserController?flag=edit&perfil=empresa&id=${company.user_id}"><i class="fa fa-briefcase" aria-hidden="true"></i></a>
                         <a class="waves-effect waves-light btn-floating green" href="UserController?flag=edit&perfil=empresa&id=${company.user_id}"><i class="material-icons left">mode_edit</i></a>
                         <a class="waves-effect waves-light btn-floating red " href="UserController?flag=destroy&perfil=empresa&id=${company.user_id}"><i class="material-icons left">delete</i></a>
                     </td>

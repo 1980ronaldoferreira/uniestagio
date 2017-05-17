@@ -5,20 +5,22 @@
         <div class="row">
             <div class="section">   </div>
             <div class="row border-orange">
-                <form action="UserController" method="POST" name="cadastrar">
+                <form action="UserController" method="POST" >
 
                     <div class="section">
                         <div class="row  orange-text">
                             <h4 class="header center">ATUALIZAÇAO DE ESTUDANTE</h4> 
                             <div class="col s8 offset-s2">
-                                <input  type="hidden" name="perfil" value="Estudante">
-                                <input  type="hidden" name="flag" value="save">
                                 <c:forEach var="u" items="${listUser}">
 
-                                    <input  type="hidden" name="id" value="${u.user_id}">
+                                    <input  type="hidden" name="perfil" value="estudante">
+                                    <input  type="hidden" name="flag" value="save">
+                                    <input  type="hidden" name="id" value="${u.id}">
+                                    
                                     <div class="input-field col s6">
                                         <input id="name" type="text" name="username" value="${u.username}" focus >
                                         <label for="name">Nome de Usuário</label>
+                                        
                                     </div>
                                     <div class="input-field col s6  ">
                                         <input id="password" type="password"  name="pass" value="${u.senha}">
@@ -48,7 +50,7 @@
                                         <input placeholder="(DD) + Telefone" id="cellPhoneEstudant" type="text"  name="cellPhone" class="validate" value="${u.telefone}">
                                         <label for="cellPhoneEstudant">Telefone</label>
                                     </div>
-                                        
+
                                 </c:forEach>
                                 <div class="input-field col s12">
                                     <button class="btn waves-effect waves-light light-blue lighten-1" type="submit" name="action">ATUALIZAR

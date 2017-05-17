@@ -25,7 +25,7 @@ public class StudentDAO {
 
     private static final String SQL_INSERT = "INSERT INTO estudantes (user_id, nome, sobrenome,cpf,email,telefone) VALUES (?,?,?,?,?,?)";
 
-    private static final String SQL_UPDATE = "UPDATE users SET username=?, senha=?, perfil=? WHERE id=?";
+    private static final String SQL_UPDATE = "UPDATE estudantes SET nome=?, sobrenome=?, cpf=?, email=?, telefone=? WHERE user_id=?";
 
     private static final String SQL_DELETE = "DELETE FROM estudantes WHERE user_id=?";
 
@@ -58,34 +58,38 @@ public class StudentDAO {
 
             CONNECTION.close();
 
-            setMSG("ESTUDANTE CADASTRADO COM SUCESSO ! <i class=\"fa fa-smile-o\" aria-hidden=\"true\"></i> ");
+            setMSG("<h4 class=\"header center orange white-text\"> ESTUDANTE ATUALIZADO COM SUCESSO ! <i class=\"fa fa-smile-o\" aria-hidden=\"true\"></i></h4>");
 
         } catch (SQLException ex) {
             // Lança um erro novo personalizado 
-            setMSG("ERRO AO TENTAR CADASTRAR NOVO ESTUDANTE <i class=\"fa fa-frown-o\" aria-hidden=\"true\"></i>");
+            setMSG("h4 class=\"header center red white-text\"> ERRO AO TENTAR CADASTRAR NOVO ESTUDANTE <i class=\"fa fa-frown-o\" aria-hidden=\"true\"></i></h4>");
             System.out.println(ex.getMessage());
         }
 
     }
 
-    public void update(User u) {
+    public void update(Student s) {
 
         try {
             try (PreparedStatement ps = CONNECTION.prepareStatement(SQL_UPDATE)) {
-                ps.setString(1, u.getUsername());
-                ps.setString(2, u.getSenha());
-                ps.setString(3, u.getType());
-                ps.setInt(4, u.getId());
+                 ps.setString(1, s.getNome());
+                ps.setString(2, s.getSobrenome());
+                ps.setString(3, s.getCpf());
+                ps.setString(4, s.getEmail());
+                ps.setString(5, s.getTelefone());
+                ps.setInt(6, s.getUser_id());
                 ps.executeUpdate();
+                
+                        
             }
 
             CONNECTION.close();
 
-            setMSG("ATUALIZADO COM SUCESSO COM SUCESSO ! <i class=\"fa fa-smile-o\" aria-hidden=\"true\"></i> ");
+            setMSG("<h4 class=\"header center orange white-text\"> ATUALIZADO COM SUCESSO COM SUCESSO ! <i class=\"fa fa-smile-o\" aria-hidden=\"true\"></i> </h4>");
 
         } catch (SQLException ex) {
             // Lança um erro novo personalizado 
-            setMSG("ERRO AO TENTAR ATUALIZAR ! <i class=\"fa fa-frown-o\" aria-hidden=\"true\"></i>");
+            setMSG("<h4 class=\"header center red white-text\"> ERRO AO TENTAR ATUALIZAR ! <i class=\"fa fa-frown-o\" aria-hidden=\"true\"></i></h4>");
         }
 
     }
@@ -98,11 +102,11 @@ public class StudentDAO {
             ps.setInt(1, s.getUser_id());
             ps.executeUpdate();
 
-            setMSG("ESTUDANTE DELETADO COM SUCESSO ! <i class=\"fa fa-smile-o\" aria-hidden=\"true\"></i> ");
+            setMSG("<h4 class=\"header center orange white-text\"> ESTUDANTE DELETADO COM SUCESSO ! <i class=\"fa fa-smile-o\" aria-hidden=\"true\"></i><h4> ");
 
         } catch (SQLException ex) {
             // Lança um erro novo personalizado 
-            setMSG("ERRO AO TENTAR DELETAR ESTUDANTE ! <i class=\"fa fa-frown-o\" aria-hidden=\"true\"></i>");
+            setMSG("<h4 class=\"header center red white-text\"> ERRO AO TENTAR DELETAR ESTUDANTE ! <i class=\"fa fa-frown-o\" aria-hidden=\"true\"></i></h4>");
         }
 
     }
@@ -149,6 +153,7 @@ public class StudentDAO {
         if (rs.next()) {
             student = new Student();
             student.setId(rs.getInt("user_id"));
+            student.setType(rs.getString("perfil"));
             student.setUsername(rs.getString("username"));
             student.setSenha(rs.getString("senha"));
             student.setNome(rs.getString("nome"));

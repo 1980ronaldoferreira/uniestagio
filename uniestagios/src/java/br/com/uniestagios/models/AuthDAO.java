@@ -46,7 +46,9 @@ public class AuthDAO {
 
         if (rs.next()) {
             user = new Student();
-            user.setId(rs.getInt("estudante_id"));
+            user.setId(rs.getInt("id"));
+            user.setUser_id(rs.getInt("user_id"));
+            user.setIdStudent(rs.getInt("estudante_id"));
             user.setUsername(rs.getString("username"));
             user.setSenha(rs.getString("senha"));
             user.setType(rs.getString("perfil"));
@@ -57,7 +59,7 @@ public class AuthDAO {
             user.setTelefone(rs.getString("telefone"));
 
         }
-
+        
         return user;
     }
 
@@ -86,7 +88,11 @@ public class AuthDAO {
             user.setTelefone(rs.getString("telefone"));
 
         }
-
+        if(user != null){
+            setMSG("<h4 class=\"header center orange white-text\">SEJA BEM VINDO "+ user.getNome() + " " + user.getSobrenome() + " <i class=\"fa fa-smile-o\" aria-hidden=\"true\"></i></h4>");
+        return user;
+        }
+        
         return user;
     }
 

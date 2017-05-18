@@ -6,8 +6,6 @@
 package br.com.uniestagios.models;
 
 import br.com.uniestagios.beans.Company;
-import br.com.uniestagios.beans.Student;
-import br.com.uniestagios.beans.User;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;

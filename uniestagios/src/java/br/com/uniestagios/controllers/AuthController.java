@@ -18,7 +18,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.jsp.PageContext;
 
 /**
  *
@@ -51,7 +50,8 @@ public class AuthController extends HttpServlet {
                 request.getRequestDispatcher("index.jsp").
                         forward(request, response);
             }
-
+            
+     
             // Variáveis dos formulários
             String username;
             String senha;
@@ -72,7 +72,7 @@ public class AuthController extends HttpServlet {
             Student studentResult = new Student();
 
             Company c = new Company();
-            Company CompanyResult = new Company();
+            Company companyResult = new Company();
 
             AuthDAO authDAO = new AuthDAO();
 
@@ -101,9 +101,10 @@ public class AuthController extends HttpServlet {
                          * Repassa os valores dos atributos para o objeto DAO
                          * que irá manipular os dados e gravar no banco
                          */
-                        authDAO.setMSG("USUARIO BEM VINDO");
+                        
+                        request.getSession().setAttribute("usuario", studentResult);
                         request.setAttribute("username", username);
-                        request.setAttribute("msg", authDAO.getMSG() + "-" + studentResult);
+                        request.setAttribute("msg", authDAO.getMSG());
                         // Cria um atributo para informar sobre  a inclusão
                         //request.setAttribute("mensagem", alunoDAO.toString());
                         // Redireciona para a View
@@ -112,7 +113,7 @@ public class AuthController extends HttpServlet {
                         
                             
                         }else{
-                          authDAO.setMSG("USUARIO INVALIDO");
+                          authDAO.setMSG("<h4 class=\"header center red white-text\"> NOME DE USUARIO OU SENHA <i class=\"fa fa-frown-o\" aria-hidden=\"true\"></i></h4>");
                             /**
                          * Repassa os valores dos atributos para o objeto DAO
                          * que irá manipular os dados e gravar no banco
@@ -135,15 +136,15 @@ public class AuthController extends HttpServlet {
                         c.setCnpj(username);
                         c.setSenha(senha);
                         c.setType(type);
-                        CompanyResult = authDAO.loginCompany(c);
+                        companyResult = authDAO.loginCompany(c);
                         
-                        if(CompanyResult != null){
+                        if(companyResult != null){
                         
                              /**
                          * Repassa os valores dos atributos para o objeto DAO
                          * que irá manipular os dados e gravar no banco
                          */
-                        authDAO.setMSG("USUARIO BEM VINDO" + username);
+                         request.getSession().setAttribute("usuario", companyResult);
                         request.setAttribute("username", username);
                         request.setAttribute("msg", authDAO.getMSG());
                         // Cria um atributo para informar sobre  a inclusão
@@ -154,7 +155,7 @@ public class AuthController extends HttpServlet {
                         
                             
                         }else{
-                          authDAO.setMSG("USUARIO INVALIDO");
+                          authDAO.setMSG("<h4 class=\"header center red white-text\"> NOME DE USUARIO OU SENHA <i class=\"fa fa-frown-o\" aria-hidden=\"true\"></i></h4>");
                             /**
                          * Repassa os valores dos atributos para o objeto DAO
                          * que irá manipular os dados e gravar no banco
@@ -180,8 +181,21 @@ public class AuthController extends HttpServlet {
                         request.getRequestDispatcher("login.jsp").
                                 forward(request, response);
                     }
+                    
+                    authDAO.setMSG("<h4 class=\"header center red white-text\">FAVOR SELECIONAR O TIPO DE USUARIO</h4>");
+                    request.setAttribute("msg", authDAO.getMSG());
+                    request.getRequestDispatcher("login.jsp").
+                                forward(request, response);
 
                     break;
+                case "logout":
+                
+                    request.getSession().invalidate();
+                    response.sendRedirect("index.jsp");
+                    
+                    
+                    
+                break;
 
             }
 

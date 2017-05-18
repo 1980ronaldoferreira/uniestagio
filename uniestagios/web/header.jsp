@@ -31,11 +31,12 @@
             <div class="nav-wrapper container "><a id="logo-container" href="index.jsp" class="brand-logo"><img src="img/logo.png" class="logo-nav"></a> 
                 <ul class="right hide-on-med-and-down">
                     <li><a href="list_jobs.jsp">Vagas</a></li>
-                    <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Logar-se/Cadastrar-se<i class="material-icons right">arrow_drop_down</i></a></li>
+                    <li><a href="register_user.jsp">Cadastrar-se</a></li>
+                    <li><a href="login.jsp">Login <i class="fa fa-sign-in" aria-hidden="true"></i></a></li>
+                    <li><a class="dropdown-button" href="#!" data-activates="dropdown1"><i class="fa fa-user" aria-hidden="true"></i><i class="material-icons right">arrow_drop_down</i></a></li>
                 </ul>
                 <ul id="dropdown1" class="dropdown-content">
-                    <li><a href="login.jsp">Login</a></li>
-                    <li><a href="register_user.jsp">Criar Conta</a></li>
+                    <li><a href="my_perfil.jsp">Perfil</a></li>
                     <li class="divider"></li>
                     <li><a href="#!">Logout</a></li>
                 </ul>

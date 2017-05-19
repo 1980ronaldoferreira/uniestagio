@@ -11,7 +11,7 @@ package br.com.uniestagios.beans;
  */
 public class Job {
 
-    private String id;
+    private int job_id;
     private String empresa_id;
     private String titulo;
     private String jornada;
@@ -25,15 +25,15 @@ public class Job {
     /**
      * @return the id
      */
-    public String getId() {
-        return id;
+    public int getId() {
+        return job_id;
     }
 
     /**
      * @param id the id to set
      */
-    public void setId(String id) {
-        this.id = id;
+    public void setId(int id) {
+        this.job_id = id;
     }
 
     /**

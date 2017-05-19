@@ -4,9 +4,13 @@
         <servlet-name>UserController</servlet-name>
         <servlet-class>br.com.uniestagios.controllers.UserController</servlet-class>
     </servlet>
-        <servlet>
+    <servlet>
         <servlet-name>AuthController</servlet-name>
         <servlet-class>br.com.uniestagios.controllers.AuthController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>JobController</servlet-name>
+        <servlet-class>br.com.uniestagios.controllers.JobController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>UserController</servlet-name>
@@ -15,6 +19,10 @@
     <servlet-mapping>
         <servlet-name>AuthController</servlet-name>
         <url-pattern>/AuthController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>JobController</servlet-name>
+        <url-pattern>/JobController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

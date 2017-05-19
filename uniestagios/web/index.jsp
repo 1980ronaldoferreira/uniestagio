@@ -1,18 +1,16 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@include file="header.jsp" %>
-<div class="section">
-    <div class="container">
-        <div class="row">
-            <div class="col s12">
-                <div class="col s4  menu-banner">
-                    <a href="register_user.jsp" class="link-menu-banner flow-text menu-banner-text">EMPRESA<br>Contrate aqui seu estagiário!</a>
-                </div>
-                <div class="col s4  menu-banner-center">
-                    <a href="register_user.jsp" class="link-menu-banner flow-text menu-banner-text">ESTUDANTE OU EMPRESA <br>Cadastrar-se aqui!</a>
-                </div>
-                <div class="col s4  menu-banner">
-                    <a href="list_jobs.jsp" class="link-menu-banner  flow-text menu-banner-text">VAGAS<br>Encontre aqui!</a>
-                </div>
+<div class="container">
+    <div class="row">
+        <div class="col s12">
+            <div class="col s4  menu-banner">
+                <a href="register_user.jsp" class="link-menu-banner flow-text menu-banner-text">EMPRESA<br>Contrate aqui seu estagiário!</a>
+            </div>
+            <div class="col s4  menu-banner-center">
+                <a href="register_user.jsp" class="link-menu-banner flow-text menu-banner-text">ESTUDANTE OU EMPRESA <br>Cadastrar-se aqui!</a>
+            </div>
+            <div class="col s4  menu-banner">
+                <a href="list_jobs.jsp" class="link-menu-banner  flow-text menu-banner-text">VAGAS<br>Encontre aqui!</a>
             </div>
         </div>
     </div>

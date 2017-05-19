@@ -71,7 +71,7 @@ constraint fk_users_endereco foreign key (user_id) references users (id)
 -- CRIANDO TABLE DE VAGAS
 CREATE TABLE vagas (
 vagas_id int unsigned not null auto_increment,
-empresa_id int unsigned not null,
+user_id int unsigned not null,
 area varchar(255) not null,
 titulo varchar(255) not null,
 jornada varchar(255) not null,
@@ -83,11 +83,11 @@ obs varchar(255) not null,
 activities varchar(255),
 
 primary key(vagas_id),
-constraint fk_empresas_vagas foreign key (user_id) references empresas (id)
+constraint fk_empresas_vagas foreign key (user_id) references users (id)
 );
 
 -- Adidionando Administrador
-INSERT INTO users (username,senha,perfil) VALUES('admin','admin8520','administrador');
+INSERT INTO users (username,senha,perfil) VALUES('admin','admin8520','admin');
 
 -- Adicionado usuarios
 INSERT INTO users (id,username,senha,perfil) VALUES(2,'fabioga','la123la','estudante');
@@ -107,10 +107,11 @@ INSERT INTO estudantes (estudante_id,user_id,nome,sobrenome,cpf,email,telefone) 
 INSERT INTO estudantes (estudante_id,user_id,nome,sobrenome,cpf,email,telefone) VALUES(4,5,'ronaldo','ferreira','123453336789','1980ronaldoferreira@gmail.com','99999-9999');
 
 -- Adicionado empresas
-INSERT INTO empresas (empresa_id,user_id,cnpj,razao_social,nome_fantasia,telefone,email,responsavel,ramo_atividades) VALUES(1,6,'12345678911','uninove','uniestagio','321456787','uniestagio@estagios.com','-ss---','auxiliar administrativo');
-INSERT INTO empresas (empresa_id,user_id,cnpj,razao_social,nome_fantasia,telefone,email,responsavel,ramo_atividades) VALUES(2,7,'13549872771','optiplex','dell','58214576','dell@estagios.com','---dd-','tecnico em informatica');
-INSERT INTO empresas (empresa_id,user_id,cnpj,razao_social,nome_fantasia,telefone,email,responsavel,ramo_atividades) VALUES(3,8,'32189468775','cnesportes','cn','28641897','cnesportes@estagios.com','---ff-','recursos humanos');
-INSERT INTO empresas (empresa_id,user_id,cnpj,razao_social,nome_fantasia,telefone,email,responsavel,ramo_atividades) VALUES(4,9,'65823154685','danone','bonafonte','46548759','danone@estagios.com','--gg--','vendas');
+INSERT INTO empresas (empresa_id,user_id,cnpj,razao_social,nome_fantasia,telefone,email,responsavel,ramo_atividades) VALUES(2,6,'0000000000','uniestagios','Administrador','0000000000','uniestagio@estagios.com','-uniestagios---','estagios');
+INSERT INTO empresas (empresa_id,user_id,cnpj,razao_social,nome_fantasia,telefone,email,responsavel,ramo_atividades) VALUES(2,6,'12345678911','uninove','memorial','321456787','uniestagiouninove@estagios.com','-ss---','auxiliar administrativo');
+INSERT INTO empresas (empresa_id,user_id,cnpj,razao_social,nome_fantasia,telefone,email,responsavel,ramo_atividades) VALUES(3,7,'13549872771','optiplex','dell','58214576','dell@estagios.com','---dd-','tecnico em informatica');
+INSERT INTO empresas (empresa_id,user_id,cnpj,razao_social,nome_fantasia,telefone,email,responsavel,ramo_atividades) VALUES(4,8,'32189468775','cnesportes','cn','28641897','cnesportes@estagios.com','---ff-','recursos humanos');
+INSERT INTO empresas (empresa_id,user_id,cnpj,razao_social,nome_fantasia,telefone,email,responsavel,ramo_atividades) VALUES(5,9,'65823154685','danone','bonafonte','46548759','danone@estagios.com','--gg--','vendas');
 
 -- Adicionado endereços
 INSERT INTO enderecos (logradouro,bairro,numero,cep) VALUES('rua borges','freguesia do o','150','01123-000'(user_id));

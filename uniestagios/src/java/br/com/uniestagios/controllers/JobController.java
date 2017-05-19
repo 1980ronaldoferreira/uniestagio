@@ -23,7 +23,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author alefsilva
  */
-public class AuthController extends HttpServlet {
+public class JobController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -104,7 +104,7 @@ public class AuthController extends HttpServlet {
                             // Cria um atributo para informar sobre  a inclusão
                             //request.setAttribute("mensagem", alunoDAO.toString());
                             // Redireciona para a View
-                            request.getRequestDispatcher("userPanel/index.jsp").
+                            request.getRequestDispatcher("list_jobs.jsp").
                                     forward(request, response);
 
                         } else {
@@ -267,7 +267,7 @@ public class AuthController extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (SQLException ex) {
-            Logger.getLogger(AuthController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(JobController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -285,7 +285,7 @@ public class AuthController extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (SQLException ex) {
-            Logger.getLogger(AuthController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(JobController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

@@ -1,4 +1,5 @@
 <%@include file="header.jsp" %>
+<%@include file="validations/validadeSessionLogin.jsp" %>
 <div class="container">
     <div class="section">
         <div class="row">

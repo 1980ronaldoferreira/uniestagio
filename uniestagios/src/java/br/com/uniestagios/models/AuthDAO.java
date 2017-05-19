@@ -125,6 +125,11 @@ public class AuthDAO {
 
         }
 
+        if(user != null){
+            setMSG("<h4 class=\"header center orange white-text\">SEJA BEM VINDO "+ user.getNome_fantasia() + " <i class=\"fa fa-smile-o\" aria-hidden=\"true\"></i></h4>");
+        return user;
+        }
+        
         return user;
     }
 

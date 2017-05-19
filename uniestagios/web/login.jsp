@@ -1,6 +1,8 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@include file="header.jsp" %>
-<div class="section">       ${ msg }   </div>
+<div class="section">   
+    ${ msg }
+</div>
 <div class="container">
     <div class="row">
         <div class="col s12 m8 offset-m2">
@@ -29,6 +31,10 @@
                             <div class="col s1 offset-m1">
                                 <input class="with-gap" name="perfil" type="radio" id="student" value="estudante"/>
                                 <label for="student">Estudante</label>
+                            </div>
+                            <div class="col s1 offset-m1">
+                                <input class="with-gap" name="perfil" type="radio" id="admin" value="admin"/>
+                                <label for="admin">Administrador</label>
                             </div>
                         </div>
 

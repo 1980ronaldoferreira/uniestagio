@@ -1,12 +1,5 @@
 <%@include file="header.jsp" %>
-<div class="section"> 
-<% if(request.getSession().getAttribute("usuario") != null ){%> 
-    
-    ${ msg }
-    
- <% }%>
-
-</div>
+<%@include file="validations/validadeSessionLogin.jsp" %>
 <div class="section">
     <div class="row">
         <h1 class="header center orange-text ">Vagas Disponíveis</h1>

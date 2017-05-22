@@ -1,7 +1,9 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
+    <%@include file="validations/validadeSessionLogin.jsp" %>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
@@ -29,21 +31,21 @@
     <body>
         <%-- <%@include file="validations/validadeSessionLogin.jsp" %> --%>
         <nav class="light-blue lighten-1" role="navigation">
-            <div class="nav-wrapper container "><a id="logo-container" href="http://localhost:8080/uniestagios/index.jsp" class="brand-logo"><img src="http://localhost:8080/uniestagios/img/logo.png" class="logo-nav"></a> 
+            <div class="nav-wrapper container "><a id="logo-container" href="index.jsp" class="brand-logo"><img src="img/logo.png" class="logo-nav"></a> 
                 <ul class="right hide-on-med-and-down">
-                    <li><a href="http://localhost:8080/uniestagios/">SITE</a></li>
-                    <li><a href="http://localhost:8080/uniestagios/list_jobs.jsp">Vagas</a></li>
+                    <li><a href="index.jsp">SITE</a></li>
+                    <li><a href="list_jobs.jsp">Vagas</a></li>
                         <% if (request.getSession().getAttribute("usuario") == null) {%> 
                     <li><a href="../register_user.jsp">Cadastrar-se</a></li>
-                    <li><a href="http://localhost:8080/uniestagios/login.jsp">Login <i class="fa fa-sign-in" aria-hidden="true"></i></a></li>
+                    <li><a href="login.jsp">Login <i class="fa fa-sign-in" aria-hidden="true"></i></a></li>
                             <% } else {%> 
                     <li><a class="dropdown-button" href="#!" data-activates="dropdown1">${usuario.username} <i class="fa fa-user" aria-hidden="true"></i><i class="material-icons right">arrow_drop_down</i></a></li>
                                 <% }%>
                 </ul>
                 <ul id="dropdown1" class="dropdown-content">
-                    <li><a href="http://localhost:8080/uniestagios/userPanel/">Perfil</a></li>
+                    <li><a href="panel_user.jsp">Perfil</a></li>
                     <li class="divider"></li>
-                    <li><a href="http://localhost:8080/uniestagios/AuthController?flag=logout">Logout</a></li>
+                    <li><a href="AuthController?flag=logout">Logout</a></li>
                 </ul>
                 <ul id="nav-mobile" class="side-nav" style="transform: translateX(-50px);">
                     <% if (request.getSession().getAttribute("usuario") == null) {%> 
@@ -52,7 +54,7 @@
                     <li class="divider"></li>
                         <% } else {%> 
                     <li><a href="my_perfil.jsp">...:::: Perfil ::::...</a></li>
-                    <li><a href="http://localhost:8080/uniestagios/AuthController?flag=logout">...:::: Logout :::...</a></li>
+                    <li><a href="AuthController?flag=logout">...:::: Logout :::...</a></li>
                         <% }%> 
                 </ul> 
                 <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
@@ -65,24 +67,55 @@
                     <div class="col s12">
                         <div class="card grey lighten-4">
                             <div class="card-content white-text">
-                                <span class="card-title black-text"><a href="index.jsp"><b>PAINEL DE USUÁRIO</b></a></span>
+                                <span class="card-title black-text"><a href="panel_user.jsp"><b>PAINEL DE USUÁRIO</b></a></span>
                                 <div class="card-action">
                                 </div>
+                                <%   if (request.getSession().getAttribute("perfil").equals("estudante")) { %>
                                 <ul>
                                     <li class="grey lighten-1">
-                                        <span  class="black-text "> <b>ATUALIZAR DADOS</b></span>
+                                        <span  class="black-text"> <b>ATUALIZAR DADOS</b></span>
                                     </li>
                                     <li>
-                                        <a  class="orange-text" href="http://localhost:8080/uniestagios/UserController?flag=list">PESSOAIS</a>
+                                        <a  class="orange-text" href="UserController?flag=list">PESSOAIS</a>
                                     </li>
                                     <li>
-                                        <a  class="orange-text" href="http://localhost:8080/uniestagios/UserController?flag=list">ENDEREÇO</a>
+                                        <a  class="orange-text" href="UserController?flag=list">ENDEREÇO</a>
                                     </li>
                                     <br>
                                     <li class="grey lighten-1">
                                         <span  class="black-text"> <b>VAGAS</b></span>
                                     </li>
+                                    <li>
+                                        <a  class="orange-text" href="UserController?flag=list">MINHAS VAGAS</a>
+                                    </li>
+
                                 </ul>
+
+
+                                <% } else {%>
+                                <ul>
+                                    <li class="grey lighten-1">
+                                        <span  class="black-text"> <b>ATUALIZAR DADOS</b></span>
+                                    </li>
+                                    <li>
+                                        <a  class="orange-text" href="UserController?flag=list">EMPRESARIAS</a>
+                                    </li>
+                                    <li>
+                                        <a  class="orange-text" href="UserController?flag=list">ENDEREÇO</a>
+                                    </li>
+                                    <br>
+                                    <li class="grey lighten-1">
+                                        <span  class="black-text"> <b>VAGAS</b></span>
+                                    </li>
+                                    <li>
+                                        <a  class="orange-text" href="UserController?flag=list">MINHAS VAGAS</a>
+                                    </li>
+
+                                </ul>
+
+                                
+                                
+                                <% }%>
                             </div>
                         </div>
                     </div>

@@ -61,10 +61,9 @@
         <table class="striped">
             <thead>
                 <tr>
-                    <th>#</th>
                     <th>USERNAME</th>
                     <th>CNPJ</th>
-                    <th>RAZÃO SOCIAL</th>
+                    <th>RAZÃO</th>
                     <th>NOME FANTASIA</th>
                     <th>TELEFONE</th>
                     <th>EMAIL</th>
@@ -77,7 +76,6 @@
             <tbody>
                 <c:forEach var="company" items="${listaCompany}">
                     <tr>
-                        <td>${company.user_id}</td>
                         <td>${company.username}</td>
                         <td>${company.cnpj}</td>
                         <td>${company.razao_social}</td>
@@ -88,15 +86,8 @@
                         <td>${company.ramo_atividades}</td>
                         <td>
                             <a class="waves-effect waves-light btn-floating blue" href="UserController?flag=edit&perfil=empresa&id=${company.user_id}"><i class="material-icons left">description</i></a>
-                        </td>
-
-                        <td>
                             <a class="waves-effect waves-light btn-floating yellow darken-4" href="UserController?flag=edit&perfil=empresa&id=${company.user_id}"><i class="fa fa-briefcase" aria-hidden="true"></i></a>
-                        </td>
-                        <td>
                             <a class="waves-effect waves-light btn-floating green" href="UserController?flag=edit&perfil=empresa&id=${company.user_id}"><i class="material-icons left">mode_edit</i></a>
-                        </td>
-                        <td>
                             <a class="waves-effect waves-light btn-floating red " href="UserController?flag=destroy&perfil=empresa&id=${company.user_id}"><i class="material-icons left">delete</i></a>
                         </td>
 

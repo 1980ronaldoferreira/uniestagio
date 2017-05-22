@@ -14,6 +14,7 @@ import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.jms.Session;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -100,11 +101,12 @@ public class AuthController extends HttpServlet {
                              */
                             request.getSession().setAttribute("usuario", studentResult);
                             request.setAttribute("username", username);
+                             request.getSession().setAttribute("perfil", type);
                             request.setAttribute("msg", authDAO.getMSG());
                             // Cria um atributo para informar sobre  a inclusão
                             //request.setAttribute("mensagem", alunoDAO.toString());
                             // Redireciona para a View
-                            request.getRequestDispatcher("userPanel/index.jsp").
+                            request.getRequestDispatcher("panel_user.jsp").
                                     forward(request, response);
 
                         } else {
@@ -140,11 +142,12 @@ public class AuthController extends HttpServlet {
                              */
                             request.getSession().setAttribute("usuario", companyResult);
                             request.setAttribute("username", username);
+                             request.getSession().setAttribute("perfil", type);
                             request.setAttribute("msg", authDAO.getMSG());
                             // Cria um atributo para informar sobre  a inclusão
                             //request.setAttribute("mensagem", alunoDAO.toString());
                             // Redireciona para a View
-                            request.getRequestDispatcher("my_jobs.jsp").
+                            request.getRequestDispatcher("panel_user.jsp").
                                     forward(request, response);
 
                         } else {

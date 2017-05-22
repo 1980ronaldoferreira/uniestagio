@@ -60,6 +60,7 @@ CREATE TABLE enderecos (
 endereco_id int unsigned not null auto_increment,
 user_id int unsigned not null,
 logradouro varchar(255) not null,
+complemeto varchar(255) not null,
 bairro varchar(255) not null,
 numero varchar(255) not null,
 cep varchar(255) not null,

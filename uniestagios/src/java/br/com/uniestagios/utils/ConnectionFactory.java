@@ -28,7 +28,7 @@ public class ConnectionFactory {
      * private final String driver = "oracle.jdbc.driver.OracleDriver"; private
      * final String url = "jdbc:oracle:thin:@localhost:1521:xe";
      */
-    private final String usuario = "user";
+    private final String usuario = "root";
     private final String senha = "root";
 
     private static ConnectionFactory connectionFactory = null;

@@ -1,9 +1,8 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
+<%@include file="validations/validadeSessionLogin.jsp" %>
 <!DOCTYPE html>
 <html lang="pt-BR">
-    <%@include file="validations/validadeSessionLogin.jsp" %>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
@@ -76,10 +75,10 @@
                                         <span  class="black-text"> <b>ATUALIZAR DADOS</b></span>
                                     </li>
                                     <li>
-                                        <a  class="orange-text" href="UserController?flag=list">PESSOAIS</a>
+                                        <a  class="orange-text" href="register_address.jsp?id=${usuario.id}">PESSOAIS</a>
                                     </li>
                                     <li>
-                                        <a  class="orange-text" href="UserController?flag=list">ENDEREÇO</a>
+                                        <a  class="orange-text" href="register_address.jsp?id=${usuario.id}">ENDEREÇO</a>
                                     </li>
                                     <br>
                                     <li class="grey lighten-1">
@@ -98,10 +97,10 @@
                                         <span  class="black-text"> <b>ATUALIZAR DADOS</b></span>
                                     </li>
                                     <li>
-                                        <a  class="orange-text" href="UserController?flag=list">EMPRESARIAS</a>
+                                        <a  class="orange-text" href="UserController?flag=edit&perfil=empresa&id=${usuario.id}">EMPRESARIAS</a>
                                     </li>
                                     <li>
-                                        <a  class="orange-text" href="UserController?flag=list">ENDEREÇO</a>
+                                        <a  class="orange-text" href="register_address.jsp?id=${usuario.id}">ENDEREÇO</a>
                                     </li>
                                     <br>
                                     <li class="grey lighten-1">

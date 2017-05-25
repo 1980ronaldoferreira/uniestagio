@@ -1,6 +1,6 @@
 <% if(request.getSession().getAttribute("usuario") != null ){%> 
 
-${ msg }
+${ welcome }
 
  <% }else {
 

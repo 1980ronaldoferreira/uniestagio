@@ -1,9 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@include file="header.jsp" %>
 <div class="col s9 offset-4">
-    <div class="section">
-        ${msg}
-    </div>
     <nav class="col s12 offset-2 blue-grey">
         <div class="nav-wrapper">
             <form action="" method="" name="search">

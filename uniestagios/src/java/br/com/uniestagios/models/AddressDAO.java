@@ -6,7 +6,6 @@
 package br.com.uniestagios.models;
 
 import br.com.uniestagios.beans.Address;
-import br.com.uniestagios.beans.User;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -24,7 +23,9 @@ public class AddressDAO {
     private static final String SQL_INSERT = "INSERT INTO enderecos (user_id, logradouro, complemento,bairro,numero,cep) VALUES (?,?,?,?,?,?)";
     private static final String SQL_UPDATE = "UPDATE enderecos SET logradouro=?, complemento=?, bairro=? ,numero=?, cep=? WHERE user_id=?";
     private static final String SQL_DELETE = "DELETE FROM enderecos WHERE user_id=?";
-    private static final String SQL_FIND_USER_ADDRESS = "SELECT * FROM users INNER JOIN enderecos ON users.id = enderecos.user_id";
+    private static final String SQL_FIND_USER_ADDRESS = "SELECT * FROM users INNER JOIN enderecos ON users.id = enderecos.user_id WHERE user_id = ?";
+    
+    
 
     public AddressDAO() throws SQLException {
 
@@ -104,7 +105,7 @@ public class AddressDAO {
 
     public Address findAddress(Address adr) throws SQLException {
         PreparedStatement ps = CONNECTION.prepareStatement(SQL_FIND_USER_ADDRESS);
-        ps.setInt(1 , adr.getId());
+        ps.setInt(1 , adr.getUser_id());
 
         ResultSet rs = ps.executeQuery();
 
@@ -112,10 +113,6 @@ public class AddressDAO {
 
         if (rs.next()) {
             user = new Address();
-            user.setId(rs.getInt("user_id"));
-            user.setUsername(rs.getString("username"));
-            user.setSenha(rs.getString("senha"));
-            user.setType(rs.getString("perfil"));
             user.setLogradouro(rs.getString("logradouro"));
             user.setNumero(rs.getString("numero"));
             user.setBairro(rs.getString("bairro"));

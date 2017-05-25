@@ -76,8 +76,29 @@ public class AddressTest {
 //    }
 
 
-        User u = new User();
-        u.setId(5);
+//        User u = new User();
+//        u.setId(5);
+//
+//        try {
+//
+//            UserDAO uDAO = new UserDAO();
+//            User uresult = uDAO.findId(u);
+//
+//            Address adrU = new Address();
+//            adrU.setUser_id(uresult.getId());
+//
+//            AddressDAO adrDAO = new AddressDAO();
+//            adrDAO.destroy(adrU);
+//
+//            System.out.println("sucesso! => " + adrDAO.getMSG());
+//
+//        } catch (SQLException ex) {
+//            System.out.println("Erro ! =>" + ex.getMessage());
+//            ex.getStackTrace();
+//        }
+    
+  User u = new User();
+        u.setId(3);
 
         try {
 
@@ -88,14 +109,15 @@ public class AddressTest {
             adrU.setUser_id(uresult.getId());
 
             AddressDAO adrDAO = new AddressDAO();
-            adrDAO.destroy(adrU);
+            adrDAO.findAddress(adrU);
 
-            System.out.println("sucesso! => " + adrDAO.getMSG());
+            System.out.println("sucesso! => " + adrDAO.findAddress(adrU));
 
         } catch (SQLException ex) {
             System.out.println("Erro ! =>" + ex.getMessage());
             ex.getStackTrace();
         }
+
 
     }
 

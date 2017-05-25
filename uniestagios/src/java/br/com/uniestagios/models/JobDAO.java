@@ -24,15 +24,15 @@ public class JobDAO {
     private static Connection CONNECTION = null;
     private static String MSG = null;
 
-    private static final String SQL_INSERT = "INSERT INTO users (username, senha, perfil) VALUES (?,?,?)";
-    private static final String SQL_UPDATE = "UPDATE users SET username=?, senha=?, perfil=? WHERE id=?";
-    private static final String SQL_DELETE = "DELETE FROM users WHERE id=?";
-    private static final String SQL_FIND_ID = "SELECT * FROM users WHERE id = ?";
-    private static final String SQL_FIND_ALL_ORDER_NAME = "SELECT * FROM users ORDER BY username";
-    private static final String SQL_FIND_SEARCH = "SELECT * FROM users WHERE username LIKE ? or perfil LIKE ?";
+    private static final String SQL_INSERT = "INSERT INTO vagas (username, senha, perfil) VALUES (?,?,?)";
+    private static final String SQL_UPDATE = "UPDATE vagas SET username=?, senha=?, perfil=? WHERE id=?";
+    private static final String SQL_DELETE = "DELETE FROM vagas WHERE id=?";
+    private static final String SQL_FIND_ID = "SELECT * FROM vagas WHERE id = ?";
+    private static final String SQL_FIND_ALL_ORDER_NAME = "SELECT * FROM vagas ORDER BY titulo";
+    private static final String SQL_FIND_SEARCH = "SELECT * FROM vagas WHERE username LIKE ? or perfil LIKE ?";
     private static final String SQL_FIND_ALL_STUDENT = "SELECT * FROM users INNER JOIN estudantes ON users.id = estudantes.user_id";
     private static final String SQL_FIND_ALL_COMPANY = "SELECT * FROM users INNER JOIN empresas ON users.id = empresas.user_id";
-    private static final String SQL_FIND_LAST_ID = "SELECT id FROM users ORDER BY id DESC LIMIT 1";
+    private static final String SQL_FIND_LAST_ID = "SELECT * FROM vagas ORDER BY id DESC LIMIT 3";
 
     public JobDAO() throws SQLException {
 

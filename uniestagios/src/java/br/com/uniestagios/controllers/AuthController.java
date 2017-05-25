@@ -5,16 +5,17 @@
  */
 package br.com.uniestagios.controllers;
 
+import br.com.uniestagios.beans.Address;
 import br.com.uniestagios.beans.Company;
 import br.com.uniestagios.beans.Student;
 import br.com.uniestagios.beans.User;
+import br.com.uniestagios.models.AddressDAO;
 import br.com.uniestagios.models.AuthDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.jms.Session;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -42,7 +43,6 @@ public class AuthController extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
 
             String flag = request.getParameter("flag");
-            System.out.println("flag => " + flag);
             /**
              * Direciona para a página que está determinada no parâmetro do
              * método
@@ -76,6 +76,10 @@ public class AuthController extends HttpServlet {
 
             AuthDAO authDAO = new AuthDAO();
 
+            Address adr = new Address();
+            AddressDAO adrDAO = new AddressDAO();
+            Address adrResult = new Address();
+
             switch (flag) {
                 case "logar":
 
@@ -93,6 +97,13 @@ public class AuthController extends HttpServlet {
                         s.setType(type);
                         studentResult = authDAO.loginStudent(s);
 
+                        
+                        adr = new Address();
+                        adr.setUser_id(studentResult.getId());
+                        
+                        adrResult = adrDAO.findAddress(adr);
+                        
+
                         if (studentResult != null) {
 
                             /**
@@ -100,9 +111,11 @@ public class AuthController extends HttpServlet {
                              * DAO que irá manipular os dados e gravar no banco
                              */
                             request.getSession().setAttribute("usuario", studentResult);
+                            request.getSession().setAttribute("endereco", adrResult);
+                            request.getSession().setAttribute("id", s.getId());
                             request.setAttribute("username", username);
-                             request.getSession().setAttribute("perfil", type);
-                            request.setAttribute("msg", authDAO.getMSG());
+                            request.getSession().setAttribute("perfil", type);
+                            request.setAttribute("welcome", authDAO.getMSG());
                             // Cria um atributo para informar sobre  a inclusão
                             //request.setAttribute("mensagem", alunoDAO.toString());
                             // Redireciona para a View
@@ -134,6 +147,10 @@ public class AuthController extends HttpServlet {
                         c.setType(type);
                         companyResult = authDAO.loginCompany(c);
 
+                        adr = new Address();
+                        adr.setUser_id(c.getId());
+                        adrResult = adrDAO.findAddress(adr);
+
                         if (companyResult != null) {
 
                             /**
@@ -141,9 +158,11 @@ public class AuthController extends HttpServlet {
                              * DAO que irá manipular os dados e gravar no banco
                              */
                             request.getSession().setAttribute("usuario", companyResult);
+                            request.getSession().setAttribute("endereco", adrResult);
+                            request.getSession().setAttribute("id", c.getId());
                             request.setAttribute("username", username);
-                             request.getSession().setAttribute("perfil", type);
-                            request.setAttribute("msg", authDAO.getMSG());
+                            request.getSession().setAttribute("perfil", type);
+                            request.setAttribute("welcome", authDAO.getMSG());
                             // Cria um atributo para informar sobre  a inclusão
                             //request.setAttribute("mensagem", alunoDAO.toString());
                             // Redireciona para a View
@@ -185,6 +204,10 @@ public class AuthController extends HttpServlet {
                         c.setType(type);
                         companyResult = authDAO.loginCompany(c);
 
+                        adr = new Address();
+                        adr.setUser_id(c.getId());
+                        adrResult = adrDAO.findAddress(adr);
+
                         if (companyResult != null) {
 
                             /**
@@ -192,6 +215,8 @@ public class AuthController extends HttpServlet {
                              * DAO que irá manipular os dados e gravar no banco
                              */
                             request.getSession().setAttribute("usuario", companyResult);
+                            request.getSession().setAttribute("usuario", adrResult);
+                            request.getSession().setAttribute("id", c.getId());
                             request.setAttribute("username", username);
                             request.setAttribute("msg", authDAO.getMSG());
                             // Cria um atributo para informar sobre  a inclusão

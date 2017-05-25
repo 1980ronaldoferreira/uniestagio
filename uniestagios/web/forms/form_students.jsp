@@ -1,6 +1,6 @@
 
     <div class="input-field col s6">
-        <input id="name" type="text" name="username" value="" focus >
+        <input id="name" type="text" name="username" value="" autofocus >
         <label for="name">Nome de Usuário</label>
     </div>
     <div class="input-field col s6  ">

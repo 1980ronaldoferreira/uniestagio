@@ -30,38 +30,6 @@ public class AuthDAO {
         AuthDAO.CONNECTION = ConnectionFactory.getInstance().getConnection();
 
     }
-    
-    
-    public Student Student(Student u) throws SQLException {
-        PreparedStatement ps = CONNECTION.prepareStatement(SQL_LOGIN_ESTUDENT);
-        ps.setString(1, u.getUsername());
-        ps.setString(2, u.getSenha());
-
-        ps.setString(3, u.getCpf());
-        ps.setString(4, u.getSenha());
-
-        ResultSet rs = ps.executeQuery();
-
-        Student user = null;
-
-        if (rs.next()) {
-            user = new Student();
-            user.setId(rs.getInt("id"));
-            user.setUser_id(rs.getInt("user_id"));
-            user.setIdStudent(rs.getInt("estudante_id"));
-            user.setUsername(rs.getString("username"));
-            user.setSenha(rs.getString("senha"));
-            user.setType(rs.getString("perfil"));
-            user.setNome(rs.getString("nome"));
-            user.setSobrenome(rs.getString("sobrenome"));
-            user.setCpf(rs.getString("cpf"));
-            user.setEmail(rs.getString("email"));
-            user.setTelefone(rs.getString("telefone"));
-
-        }
-        
-        return user;
-    }
 
     public Student loginStudent(Student u) throws SQLException {
         PreparedStatement ps = CONNECTION.prepareStatement(SQL_LOGIN_ESTUDENT);
@@ -77,7 +45,7 @@ public class AuthDAO {
 
         if (rs.next()) {
             user = new Student();
-            user.setId(rs.getInt("estudante_id"));
+            user.setId(rs.getInt("user_id"));
             user.setUsername(rs.getString("username"));
             user.setSenha(rs.getString("senha"));
             user.setType(rs.getString("perfil"));
@@ -111,7 +79,7 @@ public class AuthDAO {
 
         if (rs.next()) {
             user = new Company();
-            user.setId(rs.getInt("empresa_id"));
+            user.setId(rs.getInt("user_id"));
             user.setUsername(rs.getString("username"));
             user.setSenha(rs.getString("senha"));
             user.setType(rs.getString("perfil"));

@@ -62,7 +62,7 @@ public class StudentDAO {
 
         } catch (SQLException ex) {
             // Lança um erro novo personalizado 
-            setMSG("h4 class=\"header center red white-text\"> ERRO AO TENTAR CADASTRAR NOVO ESTUDANTE <i class=\"fa fa-frown-o\" aria-hidden=\"true\"></i></h4>");
+            setMSG("<h4 class=\"header center red white-text\"> ERRO AO TENTAR CADASTRAR NOVO ESTUDANTE <i class=\"fa fa-frown-o\" aria-hidden=\"true\"></i></h4>");
             System.out.println(ex.getMessage());
         }
 

@@ -16,6 +16,7 @@ import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -122,11 +123,36 @@ public class UserController extends HttpServlet {
                     user.setUsername(username);
                     user.setSenha(senha);
                     user.setType(type);
+                        
+                       User u = new User();
+                       u.setUsername(username);
 
+                    UserDAO uDAO = new UserDAO();
+                    ArrayList<User> list = uDAO.search(u);
+
+                    list.forEach((User u1) -> {
+                if (u1.getUsername().equals(username)) {
+                    
+                     request.setAttribute("msg", "<h4 class=\"header center red white-text\"> ERRO NOME DE USUARIO JA EXISTENTE <i class=\"fa fa-frown-o\" aria-hidden=\"true\"></i></h4>");
+                    try {
+                        // Cria um atributo para informar sobre  a inclusão
+                        //request.setAttribute("mensagem", alunoDAO.toString());
+                        // Redireciona para a View
+                        request.getRequestDispatcher("register_user.jsp").
+                                forward(request, response);
+                        
+                    } catch (ServletException | IOException ex) {
+                        System.out.println("ERRO" + ex);
+                    }
+                    
+                } 
+            });
+               
+            
                     userDAO = new UserDAO();
                     userDAO.create(user);
 
-                    UserDAO uDAO = new UserDAO();
+                    
                     user_id = userDAO.findLastid().getId();
 
 

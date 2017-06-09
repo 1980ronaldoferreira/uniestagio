@@ -8,6 +8,10 @@
     </div>
 </div>
 
+<div class="section">   
+    <h4 class="header orange-text">${ msg }</h4>
+</div>
+
 <div class="container">
     <div class="section">
         <div class="row">

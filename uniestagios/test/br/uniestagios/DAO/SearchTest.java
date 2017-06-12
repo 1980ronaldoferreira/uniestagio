@@ -39,7 +39,7 @@ public class SearchTest {
 //                    System.out.println(listStudents);
 //                    System.out.println(listCompanys);
         Company c = new Company();
-        c.setUser_id(63);
+        c.setUser_id(32);
 
         CompanyDAO cDAO = new CompanyDAO();
         ArrayList<Company> uresult = cDAO.findId(c);

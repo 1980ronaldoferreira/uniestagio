@@ -16,7 +16,6 @@ import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Consumer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -70,9 +69,7 @@ public class UserController extends HttpServlet {
             String cellPhone;
             String email;
 
-            
             // Tabela Esmpresas
-
             String cnpj;
             String socialReason;
             String nameCompany;
@@ -93,137 +90,197 @@ public class UserController extends HttpServlet {
             List<User> listUsersCompanys;
             List<User> pesquisa;
             List<User> userUpdateDAO;
-            
+
             ArrayList<Student> listStudents = new ArrayList();
             List<Student> StudentEdit;
-            
+
             ArrayList<Company> listCompanys = new ArrayList();
-            List<Company> companyEdit;           
-           
-                    
+            List<Company> companyEdit;
+
             Student s = new Student();
             Student studentResult = new Student();
             StudentDAO stDAO = new StudentDAO();
-            
-            
+
             Company c = new Company();
             CompanyDAO cDAO = new CompanyDAO();
             Company CompanyResult = new Company();
-            
-            
+
             switch (flag) {
                 case "cadastrar":
 
                     username = request.getParameter("username");
                     senha = request.getParameter("pass");
                     type = request.getParameter("perfil");
+                    email = request.getParameter("email");
+
+                    cpf = request.getParameter("cpf");
+                    name = request.getParameter("name");
+                    lastName = request.getParameter("last_name");
+                    cellPhone = request.getParameter("cellPhone");
+
+                    cnpj = request.getParameter("cnpj");
+                    socialReason = request.getParameter("socialReason");
+                    nameCompany = request.getParameter("nameCompany");
+                    phoneCompany = request.getParameter("phoneCompany");
+                    responsible = request.getParameter("responsible");
+                    companyBranch = request.getParameter("companyBranch");
+
+                    request.setAttribute("username", username);
+                    request.setAttribute("email", email);
+                    request.setAttribute("cpf", cpf);
+                    request.setAttribute("name", name);
+                    request.setAttribute("lastName", lastName);
+                    request.setAttribute("cellPhone", cellPhone);
+
+                    request.setAttribute("cnpj", cnpj);
+                    request.setAttribute("socialReason", socialReason);
+                    request.setAttribute("nameCompany", nameCompany);
+                    request.setAttribute("phoneCompany", phoneCompany);
+                    request.setAttribute("responsible", responsible);
+                    request.setAttribute("companyBranch", companyBranch);
 
                     // Cria o objeto e e atribui os dados recebidos
                     user = new User();
                     user.setUsername(username);
                     user.setSenha(senha);
                     user.setType(type);
-                        
-                       User u = new User();
-                       u.setUsername(username);
+
+                    User u = new User();
+                    u.setUsername(username);
 
                     UserDAO uDAO = new UserDAO();
                     ArrayList<User> list = uDAO.search(u);
 
-                    list.forEach((User u1) -> {
-                if (u1.getUsername().equals(username)) {
-                    
-                     request.setAttribute("msg", "<h4 class=\"header center red white-text\"> ERRO NOME DE USUARIO JA EXISTENTE <i class=\"fa fa-frown-o\" aria-hidden=\"true\"></i></h4>");
-                    try {
-                        // Cria um atributo para informar sobre  a inclusão
-                        //request.setAttribute("mensagem", alunoDAO.toString());
-                        // Redireciona para a View
-                        request.getRequestDispatcher("register_user.jsp").
-                                forward(request, response);
+                    s = new Student();
+                    s.setCpf(cpf);
+                    s.setEmail(email);
+                    s.setUsername(username);
+
+                    c = new Company();
+                    c.setCnpj(cnpj);
+                    c.setEmail(email);
+                    c.setUsername(username);
+
+                    listStudents = stDAO.search(s);
+                    listCompanys = cDAO.search(c);
+
+                    if ("student".equals(type)) {
+
+                        for (Student listStu : listStudents) {
+
+                                if (listStu.getCpf().equals(cpf)) {
+
+                                    request.setAttribute("msg", "<h4 class=\"header center red white-text\"> ERRO CPF JA CADASTRADO <i class=\"fa fa-frown-o\" aria-hidden=\"true\"></i></h4>");
+                                    request.setAttribute("actStudent", "active");
+
+                                    request.getRequestDispatcher("register_user.jsp").
+                                            forward(request, response);
+
+                                } else if (listStu.getEmail().equals(email)) {
+
+                                    request.setAttribute("msg", "<h4 class=\"header center red white-text\"> ERRO E-MAIL JA CADASTRADO <i class=\"fa fa-frown-o\" aria-hidden=\"true\"></i></h4>");
+                                    request.setAttribute("actStudent", "active");
+                                    request.getRequestDispatcher("register_user.jsp").
+                                            forward(request, response);
+
+                                } else if (listStu.getUsername().equals(username)) {
+
+                                    request.setAttribute("msg", "<h4 class=\"header center red white-text\"> ERRO NOME DE USUARIO JA EXISTENTE <i class=\"fa fa-frown-o\" aria-hidden=\"true\"></i></h4>");
+                                    request.setAttribute("actStudent", "active");
+                                    request.getRequestDispatcher("register_user.jsp").
+                                            forward(request, response);
+
+                                }
+
+
+                        }
                         
-                    } catch (ServletException | IOException ex) {
-                        System.out.println("ERRO" + ex);
-                    }
-                    
-                } 
-            });
-               
-            
-                    userDAO = new UserDAO();
-                    userDAO.create(user);
+                            userDAO = new UserDAO();
+                            userDAO.create(user);
+                            user_id = userDAO.findLastid().getId();
 
-                    
-                    user_id = userDAO.findLastid().getId();
+                            s = new Student();
+                            s.setUser_id(user_id);
+                            s.setNome(name);
+                            s.setSobrenome(lastName);
+                            s.setCpf(cpf);
+                            s.setEmail(email);
+                            s.setTelefone(cellPhone);
+
+                            stDAO = new StudentDAO();
+                            stDAO.create(s);
+
+                            /**
+                             * Repassa os valores dos atributos para o objeto
+                             * DAO que irá manipular os dados e gravar no banco
+                             */
+                            request.setAttribute("msg", stDAO.getMSG());
+                            // Cria um atributo para informar sobre  a inclusão
+                            //request.setAttribute("mensagem", alunoDAO.toString());
+                            // Redireciona para a View
+                            request.getRequestDispatcher("login.jsp").
+                                    forward(request, response);
 
 
-                    if ("Estudante".equals(type)) {
+                    } else if ("company".equals(type)) {
 
-                        name = request.getParameter("name");
-                        lastName = request.getParameter("last_name");
-                        cpf = request.getParameter("cpf");
-                        email = request.getParameter("email");
-                        cellPhone = request.getParameter("cellPhone");
+                        for (Company listCom : listCompanys) {
 
-                        System.out.println(cpf);
 
-                        s = new Student();
-                        s.setUser_id(user_id);
-                        s.setNome(name);
-                        s.setSobrenome(lastName);
-                        s.setCpf(cpf);
-                        s.setEmail(email);
-                        s.setTelefone(cellPhone);
+                                if (listCom.getCnpj().equals(cnpj)) {
 
-                        stDAO = new StudentDAO();
-                        stDAO.create(s);
+                                    request.setAttribute("msg", "<h4 class=\"header center red white-text\"> ERRO CNPJ JA CADASTRADO <i class=\"fa fa-frown-o\" aria-hidden=\"true\"></i></h4>");
+                                    request.setAttribute("actCompany", "active");
+                                    request.getRequestDispatcher("register_user.jsp").
+                                            forward(request, response);
 
-                        /**
-                         * Repassa os valores dos atributos para o objeto DAO
-                         * que irá manipular os dados e gravar no banco
-                         */
-                        request.setAttribute("username", username);
-                        request.setAttribute("msg", stDAO.getMSG());
-                        // Cria um atributo para informar sobre  a inclusão
-                        //request.setAttribute("mensagem", alunoDAO.toString());
-                        // Redireciona para a View
-                        request.getRequestDispatcher("login.jsp").
-                                forward(request, response);
+                                } else if (listCom.getEmail().equals(email)) {
 
-                    } else {
-                        
-                        cnpj = request.getParameter("cnpj");
-                        socialReason = request.getParameter("socialReason");
-                        nameCompany = request.getParameter("nameCompany");
-                        emailCompany = request.getParameter("email");
-                        phoneCompany = request.getParameter("phoneCompany");
-                        responsible = request.getParameter("responsible");
-                        companyBranch = request.getParameter("companyBranch");
-                        
+                                    request.setAttribute("msg", "<h4 class=\"header center red white-text\"> ERRO E-MAIL JA CADASTRADO <i class=\"fa fa-frown-o\" aria-hidden=\"true\"></i></h4>");
+                                    request.setAttribute("actCompany", "active");
+                                    request.getRequestDispatcher("register_user.jsp").
+                                            forward(request, response);
+
+                                } else if (listCom.getUsername().equals(username)) {
+
+                                    request.setAttribute("msg", "<h4 class=\"header center red white-text\"> ERRO USUÁRIO JÁ CADASTRADO <i class=\"fa fa-frown-o\" aria-hidden=\"true\"></i></h4>");
+                                    request.setAttribute("actCompany", "active");
+                                    request.getRequestDispatcher("register_user.jsp").
+                                            forward(request, response);
+
+                                }
+
+
+                        }
+
+                        userDAO = new UserDAO();
+                        userDAO.create(user);
+                        user_id = userDAO.findLastid().getId();
+
                         c = new Company();
                         c.setUser_id(user_id);
                         c.setCnpj(cnpj);
                         c.setRazao_social(socialReason);
                         c.setNome_fantasia(nameCompany);
-                        c.setEmail(emailCompany);
+                        c.setEmail(email);
                         c.setTelefone(phoneCompany);
                         c.setResponsavel(responsible);
                         c.setRamo_atividades(companyBranch);
-                        
+
                         cDAO = new CompanyDAO();
                         cDAO.create(c);
-                                              
 
                         /**
                          * Repassa os valores dos atributos para o objeto DAO
                          * que irá manipular os dados e gravar no banco
                          */
-                        request.setAttribute("username", username);
-                        request.setAttribute("msg",  cDAO.getMSG());
+                        request.setAttribute("msg", cDAO.getMSG());
                         // Cria um atributo para informar sobre  a inclusão
                         //request.setAttribute("mensagem", alunoDAO.toString());
                         // Redireciona para a View
                         request.getRequestDispatcher("login.jsp").
                                 forward(request, response);
+
                     }
 
                     break;
@@ -234,7 +291,6 @@ public class UserController extends HttpServlet {
                     // Coloca todos os alunos em uma lista
                     listUsersStudents = userDAO.findAllStudent();
                     listUsersCompanys = userDAO.findAllCompany();
-                    
 
                     // se não for encontrado nenhum registro, retorna a mensagem
 //                    if (listUsersStudents.isEmpty() || listUsersCompanys.isEmpty()) {
@@ -247,18 +303,17 @@ public class UserController extends HttpServlet {
 //                            request.setAttribute("msg", "Não há Empresas Cadastradas para serem listados");
 //                        }
 //                        
-                                              
-                        // Redireciona para a View
+                    // Redireciona para a View
 //                        request.getRequestDispatcher("admin/users.jsp").
 //                                forward(request, response);
 //                    } else {
-                        // Cria um atributo com o aluno para ser utilizado na View
-                        request.setAttribute("listaUsers", listUsersStudents);
-                        request.setAttribute("listaCompany", listUsersCompanys);
+                    // Cria um atributo com o aluno para ser utilizado na View
+                    request.setAttribute("listaUsers", listUsersStudents);
+                    request.setAttribute("listaCompany", listUsersCompanys);
 
-                        // Redireciona para a View
-                        request.getRequestDispatcher("admin/users.jsp").
-                                forward(request, response);
+                    // Redireciona para a View
+                    request.getRequestDispatcher("admin/users.jsp").
+                            forward(request, response);
 //                    }
 
                     break;
@@ -267,6 +322,7 @@ public class UserController extends HttpServlet {
                     // Cria um novo estudante e nova empresa
                     s = new Student();
                     c = new Company();
+
                     /**
                      * Atribui os valores recuperados do formulário O parâmetro
                      * utilizado "pesquisa" é igual para os três campos, pois
@@ -275,32 +331,29 @@ public class UserController extends HttpServlet {
                     s.setUsername(request.getParameter("search"));
                     s.setNome(request.getParameter("search"));
                     s.setSobrenome(request.getParameter("search"));
-                    s.setEmail(request.getParameter("search")); 
+                    s.setEmail(request.getParameter("search"));
                     s.setCpf(request.getParameter("search"));
-                    
-                    
-                      /**
+
+                    /**
                      * Atribui os valores recuperados do formulário O parâmetro
                      * utilizado "pesquisa" é igual para os três campos, pois
                      * está sendo utilizado o LIKE na instrução SQL do DAO
                      */
-                    
                     c.setUsername(request.getParameter("search"));
                     c.setCnpj(request.getParameter("search"));
                     c.setRazao_social(request.getParameter("search"));
-                    c.setNome_fantasia(request.getParameter("search")); 
+                    c.setNome_fantasia(request.getParameter("search"));
                     c.setEmail(request.getParameter("search"));
                     c.setResponsavel(request.getParameter("search"));
                     c.setRamo_atividades(request.getParameter("search"));
-                    
+
                     // Busca no model (DAO) os dados
                     stDAO = new StudentDAO();
                     cDAO = new CompanyDAO();
-                    
-                     // Coloca todos os usuarios em uma lista
+
+                    // Coloca todos os usuarios em uma lista
                     listStudents = stDAO.search(s);
                     listCompanys = cDAO.search(c);
-                    
 
                     // se não for encontrado nenhum registro, retorna a mensagem
                     if (listCompanys.isEmpty() || listStudents.isEmpty()) {
@@ -308,20 +361,19 @@ public class UserController extends HttpServlet {
                         request.setAttribute("listaUsers", listStudents);
                         request.setAttribute("listaCompany", listCompanys);
 
-                       if(listStudents.isEmpty()){
-                           request.setAttribute("NotFoundStudent", "Ops !! Nenhum Usuário Estudante Encontrado <button class=\"waves-effect waves-light btn blue-grey\" onclick=\"history.go(-1);\" \">Voltar<button>");
-                       }
-                       if(listCompanys.isEmpty()){
-                           request.setAttribute("NotFoundCompany", "Ops !! Nenhum Usuário Empresa Encontrado <button class=\"waves-effect waves-light btn blue-grey\" onclick=\"history.go(-1);\" \">Voltar<button>");
-                       }     
-                        
+                        if (listStudents.isEmpty()) {
+                            request.setAttribute("NotFoundStudent", "Ops !! Nenhum Usuário Estudante Encontrado <button class=\"waves-effect waves-light btn blue-grey\" onclick=\"history.go(-1);\" \">Voltar<button>");
+                        }
+                        if (listCompanys.isEmpty()) {
+                            request.setAttribute("NotFoundCompany", "Ops !! Nenhum Usuário Empresa Encontrado <button class=\"waves-effect waves-light btn blue-grey\" onclick=\"history.go(-1);\" \">Voltar<button>");
+                        }
 
                         // Redireciona para a View
                         request.getRequestDispatcher("admin/users.jsp").
                                 forward(request, response);
                     } else {
                         // Cria um atributo com o aluno para ser utilizado na View
-                             request.setAttribute("listaUsers", listStudents);
+                        request.setAttribute("listaUsers", listStudents);
                         request.setAttribute("listaCompany", listCompanys);
 
                         // Redireciona para a View
@@ -331,48 +383,44 @@ public class UserController extends HttpServlet {
 
                     break;
                 case "edit":
-                    
+
                     type = request.getParameter("perfil");
                     /**
                      * Cria o objeto aluno e atribui o RA para pesquisa
                      */
-                   if("estudante".equals(type)){
-                     s = new Student();
-                                        
-                    s.setUser_id(Integer.parseInt(request.getParameter("id")));
-                    
-                    
-                    stDAO = new StudentDAO();
-                    StudentEdit = stDAO.findId(s);
-                    request.setAttribute("listUser", StudentEdit);
-                    
-                    // Redireciona para a View
-                    request.getRequestDispatcher("edit_user_student.jsp").
-                            forward(request, response);
+                    if ("estudante".equals(type)) {
+                        s = new Student();
 
-                    
+                        s.setUser_id(Integer.parseInt(request.getParameter("id")));
+
+                        stDAO = new StudentDAO();
+                        StudentEdit = stDAO.findId(s);
+                        request.setAttribute("listUser", StudentEdit);
+
+                        // Redireciona para a View
+                        request.getRequestDispatcher("edit_user_student.jsp").
+                                forward(request, response);
+
+                    } else if ("empresa".equals(type)) {
+
+                        c = new Company();
+                        c.setUser_id(Integer.parseInt(request.getParameter("id")));
+
+                        cDAO = new CompanyDAO();
+                        companyEdit = cDAO.findId(c);
+
+                        request.setAttribute("listUser", companyEdit);
+                        System.out.println(companyEdit);
+                        // Redireciona para a View
+                        request.getRequestDispatcher("edit_user_company.jsp").
+                                forward(request, response);
+
                     }
-                    else if("empresa".equals(type)){
-                        
-                    c = new Company();  
-                    c.setUser_id(Integer.parseInt(request.getParameter("id")));
-                    
-                    cDAO = new CompanyDAO();
-                    companyEdit = cDAO.findId(c);
-                    
-                    request.setAttribute("listUser", companyEdit);
-                       System.out.println(companyEdit);
-                    // Redireciona para a View
-                    request.getRequestDispatcher("edit_user_company.jsp").
-                            forward(request, response);
-                    
-                        
-                  }
-                    
+
                     break;
 
                 case "save":
-                    
+
                     int id = Integer.parseInt(request.getParameter("id"));
                     username = request.getParameter("username");
                     senha = request.getParameter("pass");
@@ -388,7 +436,6 @@ public class UserController extends HttpServlet {
                     userDAO = new UserDAO();
                     userDAO.update(user);
 
-
                     if ("estudante".equals(type)) {
 
                         name = request.getParameter("name");
@@ -396,7 +443,6 @@ public class UserController extends HttpServlet {
                         cpf = request.getParameter("cpf");
                         email = request.getParameter("email");
                         cellPhone = request.getParameter("cellPhone");
-
 
                         s = new Student();
                         s.setUser_id(id);
@@ -421,8 +467,8 @@ public class UserController extends HttpServlet {
                         request.getRequestDispatcher("UserController?flag=list").
                                 forward(request, response);
 
-                    } else if("empresa".equals(type)){
-                        
+                    } else if ("empresa".equals(type)) {
+
                         cnpj = request.getParameter("cnpj");
                         socialReason = request.getParameter("socialReason");
                         nameCompany = request.getParameter("nameCompany");
@@ -430,7 +476,7 @@ public class UserController extends HttpServlet {
                         phoneCompany = request.getParameter("phoneCompany");
                         responsible = request.getParameter("responsible");
                         companyBranch = request.getParameter("companyBranch");
-                        
+
                         c = new Company();
                         c.setUser_id(id);
                         c.setCnpj(cnpj);
@@ -440,25 +486,24 @@ public class UserController extends HttpServlet {
                         c.setTelefone(phoneCompany);
                         c.setResponsavel(responsible);
                         c.setRamo_atividades(companyBranch);
-                        
+
                         cDAO = new CompanyDAO();
                         cDAO.update(c);
-                                              
 
                         /**
                          * Repassa os valores dos atributos para o objeto DAO
                          * que irá manipular os dados e gravar no banco
                          */
                         request.setAttribute("username", username);
-                        request.setAttribute("msg",  cDAO.getMSG());
+                        request.setAttribute("msg", cDAO.getMSG());
                         // Cria um atributo para informar sobre  a inclusão
                         //request.setAttribute("mensagem", alunoDAO.toString());
                         // Redireciona para a View
                         request.getRequestDispatcher("UserController?flag=list").
                                 forward(request, response);
-                    }else{
-                        
-                         request.getRequestDispatcher("index.jsp").
+                    } else {
+
+                        request.getRequestDispatcher("index.jsp").
                                 forward(request, response);
                     }
 
@@ -466,49 +511,45 @@ public class UserController extends HttpServlet {
 
                 case "destroy":
                     String perfil;
-                    
+
                     perfil = request.getParameter("perfil");
-                    
-                    if("estudante".equals(perfil)){
-                    s = new Student();
-                    s.setUser_id(Integer.parseInt(request.getParameter("id")));
-                    
-                    user = new User();
-                    user.setId(s.getUser_id());
 
-                    stDAO = new StudentDAO();
-                    stDAO.destroy(s);
+                    if ("estudante".equals(perfil)) {
+                        s = new Student();
+                        s.setUser_id(Integer.parseInt(request.getParameter("id")));
 
-                    userDAO = new UserDAO();
-                    userDAO.destroy(user);
-                    
-                    request.setAttribute("msg", stDAO.getMSG());
-                    
+                        user = new User();
+                        user.setId(s.getUser_id());
+
+                        stDAO = new StudentDAO();
+                        stDAO.destroy(s);
+
+                        userDAO = new UserDAO();
+                        userDAO.destroy(user);
+
+                        request.setAttribute("msg", stDAO.getMSG());
+
                     }
-                    
-                    if("empresa".equals(perfil)){
-                    c = new Company();
-                    c.setUser_id(Integer.parseInt(request.getParameter("id")));
-                    
-                    user = new User();
-                    user.setId(c.getUser_id());
 
-                    cDAO = new CompanyDAO();
-                    cDAO.destroy(c);
+                    if ("empresa".equals(perfil)) {
+                        c = new Company();
+                        c.setUser_id(Integer.parseInt(request.getParameter("id")));
 
-                    userDAO = new UserDAO();
-                    userDAO.destroy(user);
-                   
-                    request.setAttribute("msg", cDAO.getMSG());
-                    
+                        user = new User();
+                        user.setId(c.getUser_id());
+
+                        cDAO = new CompanyDAO();
+                        cDAO.destroy(c);
+
+                        userDAO = new UserDAO();
+                        userDAO.destroy(user);
+
+                        request.setAttribute("msg", cDAO.getMSG());
+
                     }
-                    
-                    
-                   
-                    
+
                     // Cria um atributo com o aluno para ser utilizado na View
                     //request.setAttribute("mensagem", userDAO.toString());
-
                     // Redireciona para a View
                     request.getRequestDispatcher("UserController?flag=list").
                             forward(request, response);

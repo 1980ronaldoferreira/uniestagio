@@ -58,7 +58,7 @@ public class StudentDAO {
 
             CONNECTION.close();
 
-            setMSG("<h4 class=\"header center orange white-text\"> ESTUDANTE ATUALIZADO COM SUCESSO ! <i class=\"fa fa-smile-o\" aria-hidden=\"true\"></i></h4>");
+            setMSG("<h4 class=\"header center orange white-text\"> ESTUDANTE CADASTRADO COM SUCESSO ! <i class=\"fa fa-smile-o\" aria-hidden=\"true\"></i></h4>");
 
         } catch (SQLException ex) {
             // Lança um erro novo personalizado 

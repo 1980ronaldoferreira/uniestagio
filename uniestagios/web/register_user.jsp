@@ -16,12 +16,13 @@
     <div class="section">
         <div class="row">
             <div class="col s12 offset-s1">
-                <ul class="tabs">
+                <ul id="tabs-swipe-demo" class="tabs">
                     <li class="tab col s3"><a href="#clear" >Quem é você ? <i class="fa fa-arrow-right" aria-hidden="true"></i></a></li>
-                    <li class="tab col s3"><a href="#tab1" >Estudante ?</a></li>
-                    <li class="tab col s3"><a href="#tab2">Empresa ?</a></li>
+                    <li class="tab col s3"><a href="#tab1" class="${actStudent}" >Estudante ?</a></li>
+                    <li class="tab col s3"><a href="#tab2" class="${ actCompany }">Empresa ?</a></li>
                 </ul>
             </div>
+                
             <div id="clear" class="col s12">
                 <h4 class="header center orange-text">ESCOLHA SEU PERFIL DE CADASTRO NOS LINKS ACIMA.</h4>                
             </div>
@@ -34,7 +35,7 @@
                                 <h4 class="header center">CADASTRO DE ESTUDANTE</h4> 
                                 <div class="col s8 offset-s2">
                                     <div class="section"></div>
-                                        <input  type="hidden" name="perfil" value="Estudante">
+                                        <input  type="hidden" name="perfil" value="student">
                                         <input  type="hidden" name="flag" value="cadastrar">
 
                                     <%@include file="forms/form_students.jsp" %>

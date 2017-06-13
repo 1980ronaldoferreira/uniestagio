@@ -1,6 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@include file="header.jsp" %>
-<div class="col s9 offset-4">
+<div class="col s10 offset-4">
     <nav class="col s12 offset-2 blue-grey">
         <div class="nav-wrapper">
             <form action="" method="" name="search">
@@ -20,6 +20,9 @@
     </ul>
     <div id="test-swipe-1" class="col s12">
         <h4 class="header center red white-text">${ NotFoundStudent } </h4>  
+        <div class="excel btn-group">
+            <a download="tabela.xls" href="#" onclick="return ExcellentExport.excel(this, 'tabela', 'Sheet Name Here');"><button class="btn">Exportar Excel <i class="fa fa-file-excel-o" aria-hidden="true"></i></button></a>
+        </div>
         <table class="striped">
             <thead>
                 <tr>
@@ -43,9 +46,9 @@
                         <td>${user.telefone} </td>
                         <td>${user.email} </td>
                         <td>
-                        <a class="waves-effect waves-light btn-floating green" href="UserController?flag=edit&perfil=estudante&id=${user.user_id}"><i class="material-icons left">mode_edit</i></a>
-                        <a class="waves-effect waves-light btn-floating blue"  href="UserController?flag=destroy&perfil=estudante&id=${user.user_id}"><i class="material-icons left">description</i></a>
-                        <a class="waves-effect waves-light btn-floating red " href="UserController?flag=destroy&perfil=estudante&id=${user.user_id}"><i class="material-icons left">delete</i></a>
+                            <a class="waves-effect waves-light btn-floating green" href="UserController?flag=edit&perfil=estudante&id=${user.user_id}"><i class="material-icons left">mode_edit</i></a>
+                            <a class="waves-effect waves-light btn-floating blue"  href="UserController?flag=destroy&perfil=estudante&id=${user.user_id}"><i class="material-icons left">description</i></a>
+                            <a class="waves-effect waves-light btn-floating red " href="UserController?flag=destroy&perfil=estudante&id=${user.user_id}"><i class="material-icons left">delete</i></a>
                         </td>
                     </tr>
                 </c:forEach>
@@ -55,6 +58,9 @@
     </div>
     <div id="test-swipe-2" class="col s12">
         <h4 class="header center red white-text">${ NotFoundCompany } </h4>
+         <div class="excel btn-group">
+            <a download="tabela.xls" href="#" onclick="return ExcellentExport.excel(this, 'tabela', 'Sheet Name Here');"><button class="btn">Exportar Excel <i class="fa fa-file-excel-o" aria-hidden="true"></i></button></a>
+        </div>
         <table class="striped">
             <thead>
                 <tr>

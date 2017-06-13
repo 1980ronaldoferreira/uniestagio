@@ -215,7 +215,7 @@ public class AuthController extends HttpServlet {
                              * DAO que irá manipular os dados e gravar no banco
                              */
                             request.getSession().setAttribute("usuario", companyResult);
-                            request.getSession().setAttribute("usuario", adrResult);
+                            request.getSession().setAttribute("address", adrResult);
                             request.getSession().setAttribute("id", c.getId());
                             request.setAttribute("username", username);
                             request.setAttribute("msg", authDAO.getMSG());

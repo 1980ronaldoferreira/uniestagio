@@ -5,12 +5,14 @@
 
 <script src="../assets/js/materialize.js"></script>
 <script src="../assets/js/init.js"></script>
+<script src="../assets/js/excellentexport.js"></script>
 
 <script src="assets/js/materialize.js"></script>
 <script src="assets/js/init.js"></script>
+<script src="assets/js/excellentexport.js"></script>
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js"></script> 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 </body>
 </html>

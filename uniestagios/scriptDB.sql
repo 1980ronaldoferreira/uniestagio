@@ -88,7 +88,7 @@ constraint fk_empresas_vagas foreign key (user_id) references users (id)
 );
 
 -- Adidionando Administrador
-INSERT INTO users (username,senha,perfil) VALUES('admin','admin8520','admin');
+INSERT INTO users (id,username,senha,perfil) VALUES(1,'admin','admin8520','admin');
 
 -- Adicionado usuarios
 INSERT INTO users (id,username,senha,perfil) VALUES(2,'fabioga','la123la','estudante');
@@ -108,24 +108,24 @@ INSERT INTO estudantes (estudante_id,user_id,nome,sobrenome,cpf,email,telefone) 
 INSERT INTO estudantes (estudante_id,user_id,nome,sobrenome,cpf,email,telefone) VALUES(4,5,'ronaldo','ferreira','123453336789','1980ronaldoferreira@gmail.com','99999-9999');
 
 -- Adicionado empresas
-INSERT INTO empresas (empresa_id,user_id,cnpj,razao_social,nome_fantasia,telefone,email,responsavel,ramo_atividades) VALUES(2,6,'0000000000','uniestagios','Administrador','0000000000','uniestagio@estagios.com','-uniestagios---','estagios');
-INSERT INTO empresas (empresa_id,user_id,cnpj,razao_social,nome_fantasia,telefone,email,responsavel,ramo_atividades) VALUES(2,6,'12345678911','uninove','memorial','321456787','uniestagiouninove@estagios.com','-ss---','auxiliar administrativo');
-INSERT INTO empresas (empresa_id,user_id,cnpj,razao_social,nome_fantasia,telefone,email,responsavel,ramo_atividades) VALUES(3,7,'13549872771','optiplex','dell','58214576','dell@estagios.com','---dd-','tecnico em informatica');
-INSERT INTO empresas (empresa_id,user_id,cnpj,razao_social,nome_fantasia,telefone,email,responsavel,ramo_atividades) VALUES(4,8,'32189468775','cnesportes','cn','28641897','cnesportes@estagios.com','---ff-','recursos humanos');
-INSERT INTO empresas (empresa_id,user_id,cnpj,razao_social,nome_fantasia,telefone,email,responsavel,ramo_atividades) VALUES(5,9,'65823154685','danone','bonafonte','46548759','danone@estagios.com','--gg--','vendas');
+INSERT INTO empresas (empresa_id,user_id,cnpj,razao_social,nome_fantasia,telefone,email,responsavel,ramo_atividades) VALUES(1,1,'0000000000','uniestagios','Administrador','0000000000','uniestagio@estagios.com','uniestagios','estagios');
+INSERT INTO empresas (empresa_id,user_id,cnpj,razao_social,nome_fantasia,telefone,email,responsavel,ramo_atividades) VALUES(2,6,'12345678911','uninove','memorial','321456787','uniestagiouninove@estagios.com','ss','auxiliar administrativo');
+INSERT INTO empresas (empresa_id,user_id,cnpj,razao_social,nome_fantasia,telefone,email,responsavel,ramo_atividades) VALUES(3,7,'13549872771','optiplex','dell','58214576','dell@estagios.com','dd','tecnico em informatica');
+INSERT INTO empresas (empresa_id,user_id,cnpj,razao_social,nome_fantasia,telefone,email,responsavel,ramo_atividades) VALUES(4,8,'32189468775','cnesportes','cn','28641897','cnesportes@estagios.com','ff','recursos humanos');
+INSERT INTO empresas (empresa_id,user_id,cnpj,razao_social,nome_fantasia,telefone,email,responsavel,ramo_atividades) VALUES(5,9,'65823154685','danone','bonafonte','46548759','danone@estagios.com','gg','vendas');
 
 -- Adicionado endereços
-INSERT INTO enderecos (logradouro,bairro,numero,cep) VALUES('rua borges','freguesia do o','150','01123-000'(user_id));
-INSERT INTO enderecos (logradouro,bairro,numero,cep) VALUES('rua hermenegildo','itaquaquecetuba','3012','02233-000'(user_id));
-INSERT INTO enderecos (logradouro,bairro,numero,cep) VALUES('rua osasco','novo osasco','1476','02845-000'(user_id));
-INSERT INTO enderecos (logradouro,bairro,numero,cep) VALUES('rua santo andre','parque guarani','258','03464-000'(user_id));
-INSERT INTO enderecos (logradouro,bairro,numero,cep) VALUES('rua tagipuru','barra funda','150','06487-000'(user_id));
-INSERT INTO enderecos (logradouro,bairro,numero,cep) VALUES('rua flor','vila silvana','2945','01364-000'(user_id));
-INSERT INTO enderecos (logradouro,bairro,numero,cep) VALUES('rua parauapeba','penha','1637','02131-000'(user_id));
-INSERT INTO enderecos (logradouro,bairro,numero,cep) VALUES('rua pereque','pinheiros','651','02531-000'(user_id));
+INSERT INTO enderecos (endereco_id,user_id,logradouro,bairro,numero,cep) VALUES(1'rua borges','freguesia do o','150','01123-000');
+INSERT INTO enderecos (endereco_id,user_id,logradouro,bairro,numero,cep) VALUES(2'rua hermenegildo','itaquaquecetuba','3012','02233-000');
+INSERT INTO enderecos (endereco_id,user_id,logradouro,bairro,numero,cep) VALUES(3'rua osasco','novo osasco','1476','02845-000');
+INSERT INTO enderecos (endereco_id,user_id,logradouro,bairro,numero,cep) VALUES(4'rua santo andre','parque guarani','258','03464-000');
+INSERT INTO enderecos (endereco_id,user_id,logradouro,bairro,numero,cep) VALUES(5'rua tagipuru','barra funda','150','06487-000');
+INSERT INTO enderecos (endereco_id,user_id,logradouro,bairro,numero,cep) VALUES(6'rua flor','vila silvana','2945','01364-000');
+INSERT INTO enderecos (endereco_id,user_id,logradouro,bairro,numero,cep) VALUES(7'rua parauapeba','penha','1637','02131-000');
+INSERT INTO enderecos (endereco_id,user_id,logradouro,bairro,numero,cep) VALUES(8'rua pereque','pinheiros','651','02531-000');
 
 -- Adicionado vagas
-INSERT INTO vagas (area,titulo,jornada,contrato,salario,estado,cidade,obs,activities) VALUES('financeiro','titulo','jornada','estagio','salario','estado','cidade','observação','activities'(empresa_id));
-INSERT INTO vagas (area,titulo,jornada,contrato,salario,estado,cidade,obs,activities) VALUES('informatica','titulo','jornada','estagio','salario','estado','cidade','observação','activities'(empresa_id));
-INSERT INTO vagas (area,titulo,jornada,contrato,salario,estado,cidade,obs,activities) VALUES('rh','titulo','jornada','estagio','salario','estado','cidade','observação','activities'(empresa_id));
-INSERT INTO vagas (area,titulo,jornada,contrato,salario,estado,cidade,obs,activities) VALUES('vendas','titulo','jornada','estagio','salario','estado','cidade','observação','activities'(empresa_id));
+INSERT INTO vagas (area,titulo,jornada,contrato,salario,estado,cidade,obs,activities,user_id) VALUES('financeiro','titulo','jornada','estagio','salario','estado','cidade','observação','activities',6);
+INSERT INTO vagas (area,titulo,jornada,contrato,salario,estado,cidade,obs,activities,user_id) VALUES('informatica','titulo','jornada','estagio','salario','estado','cidade','observação','activities',7);
+INSERT INTO vagas (area,titulo,jornada,contrato,salario,estado,cidade,obs,activities,user_id) VALUES('rh','titulo','jornada','estagio','salario','estado','cidade','observação','activities',8);
+INSERT INTO vagas (area,titulo,jornada,contrato,salario,estado,cidade,obs,activities,user_id) VALUES('vendas','titulo','jornada','estagio','salario','estado','cidade','observação','activities',9);

@@ -22,8 +22,8 @@ public class AuthDAO {
     private static Connection CONNECTION = null;
     private static String MSG = null;
 
-    private static final String SQL_LOGIN_ESTUDENT = "SELECT * FROM users INNER JOIN estudantes ON users.id = estudantes.user_id WHERE username=? AND senha=? OR cpf=? AND senha=?";
-    private static final String SQL_LOGIN_COMPANY = "SELECT * FROM users INNER JOIN empresas ON users.id = empresas.user_id WHERE username=? AND senha=? OR cnpj=? AND senha=?";
+    private static final String SQL_LOGIN_ESTUDENT = "SELECT * FROM users INNER JOIN estudantes ON users.id = estudantes.user_id WHERE username=? AND senha=? AND perfil =? OR cpf=? AND senha=? AND perfil =?";
+    private static final String SQL_LOGIN_COMPANY = "SELECT * FROM users INNER JOIN empresas ON users.id = empresas.user_id WHERE username=? AND senha=?  AND perfil =? OR cnpj=? AND senha=? AND perfil =?";
 
     public AuthDAO() throws SQLException {
 
@@ -35,9 +35,11 @@ public class AuthDAO {
         PreparedStatement ps = CONNECTION.prepareStatement(SQL_LOGIN_ESTUDENT);
         ps.setString(1, u.getUsername());
         ps.setString(2, u.getSenha());
+        ps.setString(3, u.getType());
 
-        ps.setString(3, u.getCpf());
-        ps.setString(4, u.getSenha());
+        ps.setString(4, u.getCpf());
+        ps.setString(5, u.getSenha());
+        ps.setString(6, u.getType());
 
         ResultSet rs = ps.executeQuery();
 
@@ -69,9 +71,11 @@ public class AuthDAO {
 
         ps.setString(1, u.getUsername());
         ps.setString(2, u.getSenha());
+        ps.setString(3, u.getType());
 
-        ps.setString(3, u.getCnpj());
-        ps.setString(4, u.getSenha());
+        ps.setString(4, u.getCnpj());
+        ps.setString(5, u.getSenha());
+        ps.setString(6, u.getType());
 
         ResultSet rs = ps.executeQuery();
 

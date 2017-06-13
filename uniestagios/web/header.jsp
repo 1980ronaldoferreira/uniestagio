@@ -40,7 +40,7 @@
                      <% }%>
                 </ul>
                 <ul id="dropdown1" class="dropdown-content">
-                    <li><a href="my_perfil.jsp">Perfil</a></li>
+                    <li><a href="panel_user.jsp">Perfil</a></li>
                     <li class="divider"></li>
                     <li><a href="AuthController?flag=logout">Logout</a></li>
                 </ul>
@@ -50,7 +50,7 @@
                     <li><a href="register_user.jsp">...:::: Criar Conta :::...</a></li>
                     <li class="divider"></li>
                     <% }else{%> 
-                    <li><a href="my_perfil.jsp">...:::: Perfil ::::...</a></li>
+                    <li><a href="panel_user.jsp">...:::: Perfil ::::...</a></li>
                     <li><a href="AuthController?flag=logout">...:::: Logout :::...</a></li>
                     <% }%> 
                 </ul> 

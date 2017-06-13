@@ -50,7 +50,6 @@ public class UserDAO {
                 ps.executeUpdate();
             }
 
-            CONNECTION.close();
 
             setMSG("CADASTRADO COM SUCESSO ! <i class=\"fa fa-smile-o\" aria-hidden=\"true\"></i>");
 

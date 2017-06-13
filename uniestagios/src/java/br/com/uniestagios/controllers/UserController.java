@@ -163,6 +163,9 @@ public class UserController extends HttpServlet {
 
                     listStudents = stDAO.search(s);
                     listCompanys = cDAO.search(c);
+                    
+                    System.out.println("Estudantes - " + listStudents);
+                    System.out.println("Empresasa - " + listCompanys);
 
                     if ("student".equals(type)) {
 
